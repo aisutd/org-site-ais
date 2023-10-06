@@ -83,7 +83,9 @@ export default function HomePage() {
             <Events speed="100"/>
           </div>
         </section>
-        <Partners/>
+        <section id="sponsors">
+          <Partners/>
+        </section>
         <section id="callToAction" className="relative grid bg-ais-black h-[13rem] mt-[12rem]">
           <Paper className="absolute grid text-left rounded-3xl shadow-ais-black justify-self-center -top-[7.5rem] h-[15rem] mx-5" elevation={24}>
             <div className="justify-self-center self-center gap-16 px-16 lg:flex">

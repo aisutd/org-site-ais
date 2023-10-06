@@ -17,7 +17,7 @@ interface TeamPageProps {
   officers: Officer[];
 }
 
-const spacing = 10;
+const spacing = 0;
 /**
  * A page that displays all officers in the organization.
  */
@@ -54,7 +54,7 @@ export default function TeamPage({ officers }: TeamPageProps) {
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta
           name="description"
-          content="The past and present officers of the Artificial Intelligence Society - the people who make this all possible."
+          content="The officers of the Artificial Intelligence Society - the people who make this all possible."
         />
       </Head>
       <main className="min-h-screen bg-ais-light-gray">

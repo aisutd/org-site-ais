@@ -22,6 +22,16 @@ module.exports = {
           navy: '#202042',
           gray: '#B8B8B8',
         },
+        'ais-new': {
+          'dark-blue': '#361CFF',
+          'med-blue': '#3E6EFF',
+          'light-blue': '#88CAFF',
+          orange: '#FFBC85',
+          'soft-black': '#293039',
+          black: '#1A2025',
+          white: '#FFFFFF',
+          beige: '#FFF8F3'
+        }
       },
       scale: {
         85: '0.85',
@@ -35,7 +45,9 @@ module.exports = {
     fontFamily: {
       sans: ['IBM Plex Sans', 'sans-serif'],
       cairo: ['Cairo', 'sans-serif'],
-      hind: ['Hind Siliguri']
+      hind: ['Hind Siliguri'],
+      roboto: ['var(--roboto)'],
+      robotoMed: ['var(--robotoMed)']
     },
   },
   variants: {
