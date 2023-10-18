@@ -52,57 +52,60 @@ export default function SiteHeader() {
   return (
     <div className="fixed z-20 backdrop-blur-sm">
       <AppbarBG transparencyThreshold="0.1" className=""/>
-      <nav className="bg-none w-[100vw] h-[5rem] grid grid-cols-2 md:grid-cols-3 place-items-center">
+      <nav className="bg-none w-[100vw] h-[5rem] grid grid-cols-2 place-items-center md:grid-cols-3 2xl:grid-cols-4">
         <div onClick={() => {handleItemClick('/')}} className="flex gap-4 items-center [cursor:pointer]">
           <img src="images/ais_logo_black.png" className="h-[2rem] object-cover"/>
         </div>
-        <div className="gap-10 col-span-2 justify-self-start hidden md:flex lg:col-span-1 lg:justify-self-center text-ais-new-soft-black font-robotoMed text-[0.9rem] leading-normal">
-          <NavButton handleItemClick={handleItemClick} link="/events" title="Events"/>
-          <NavButton handleItemClick={handleItemClick} link="/about" title="About Us"/>
-          <NavButton handleItemClick={handleItemClick} link="/team" title="Our Team"/>
-          <NavButton handleItemClick={handleItemClick} link="/join" title="Join Us"/>
-        </div>
-        <div className="flex md:hidden">
-          <Button
-            id="basic-button"
-            aria-controls={open ? 'basic-menu' : undefined}
-            aria-haspopup="true"
-            aria-expanded={open ? 'true' : undefined}
-            onClick={handleMenu}
-          >
-            <img src="images/hamburger-icon.svg" className="h-[1.5rem] object-contain"/>
-          </Button>
-          <Menu
-            id="basic-menu"
-            anchorEl={anchorEl}
-            open={open}
-            onClose={handleClose}
-            MenuListProps={{
-              'aria-labelledby': 'basic-button'
-            }}
-          >
-              <MenuItem onClick={() => {handleItemClick('/events')}}>Events</MenuItem>
-              <MenuItem onClick={() => {handleItemClick('/about')}}>About Us</MenuItem>
-              <MenuItem onClick={() => {handleItemClick('/team')}}>Our Team</MenuItem>
-              <MenuItem onClick={() => {handleItemClick('/join')}}>Join Us</MenuItem>
-           
-          </Menu>
-        </div>
-        <div className="hidden lg:block">
-          <Box sx={{ display: { xs: 'none', sm: 'none', md: "flex" } }}>
-            <IconButton onClick={() => {window.open("/insta", "_blank")}}>
-              <InstagramIcon className='h-6 text-ais-new-med-blue'/>
-            </IconButton>
-            <IconButton onClick={() => {window.open("/linkedin", "_blank")}}>
-              <LinkedInIcon className='h-6 text-ais-new-med-blue'/>
-            </IconButton>
-            <IconButton onClick={() => {window.open("/yt", "_blank")}}>
-              <YouTubeIcon className='h-6 text-ais-new-med-blue'/>
-            </IconButton>
-            <IconButton onClick={() => {window.open("/dc", "_blank")}}>
-              <img src="/discord.svg" className="h-5" />
-            </IconButton>
-          </Box>
+        <div className="hidden 2xl:block"/>
+        <div className="items-center md:col-span-2 md:flex md:gap-[1rem]">
+          <div className="gap-[2rem] col-span-2 justify-self-start hidden md:flex lg:col-span-1 lg:justify-self-center text-ais-new-soft-black font-robotoMed text-[0.9rem] leading-normal">
+            <NavButton handleItemClick={handleItemClick} link="/events" title="Events"/>
+            <NavButton handleItemClick={handleItemClick} link="/about" title="About Us"/>
+            <NavButton handleItemClick={handleItemClick} link="/team" title="Our Team"/>
+            <NavButton handleItemClick={handleItemClick} link="/join" title="Join Us"/>
+          </div>
+          <div className="flex md:hidden">
+            <Button
+              id="basic-button"
+              aria-controls={open ? 'basic-menu' : undefined}
+              aria-haspopup="true"
+              aria-expanded={open ? 'true' : undefined}
+              onClick={handleMenu}
+            >
+              <img src="images/hamburger-icon.svg" className="h-[1.5rem] object-contain"/>
+            </Button>
+            <Menu
+              id="basic-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              MenuListProps={{
+                'aria-labelledby': 'basic-button'
+              }}
+            >
+                <MenuItem onClick={() => {handleItemClick('/events')}}>Events</MenuItem>
+                <MenuItem onClick={() => {handleItemClick('/about')}}>About Us</MenuItem>
+                <MenuItem onClick={() => {handleItemClick('/team')}}>Our Team</MenuItem>
+                <MenuItem onClick={() => {handleItemClick('/join')}}>Join Us</MenuItem>
+            
+            </Menu>
+          </div>
+          <div className="hidden lg:block">
+            <Box sx={{ display: { xs: 'none', sm: 'none', md: "flex" } }}>
+              <IconButton onClick={() => {window.open("/insta", "_blank")}}>
+                <InstagramIcon className='h-6 text-ais-new-med-blue'/>
+              </IconButton>
+              <IconButton onClick={() => {window.open("/linkedin", "_blank")}}>
+                <LinkedInIcon className='h-6 text-ais-new-med-blue'/>
+              </IconButton>
+              <IconButton onClick={() => {window.open("/yt", "_blank")}}>
+                <YouTubeIcon className='h-6 text-ais-new-med-blue'/>
+              </IconButton>
+              <IconButton onClick={() => {window.open("/dc", "_blank")}}>
+                <img src="/discord.svg" className="h-5" />
+              </IconButton>
+            </Box>
+          </div>
         </div>
       </nav>
     </div>
