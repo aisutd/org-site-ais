@@ -16,7 +16,7 @@ import "@fontsource/montserrat";
 import { AccountCircle } from '@mui/icons-material';
 import { Menu, MenuItem, Switch } from '@mui/material';
 import { useTheme } from 'next-themes';
-import { useScroll, animated } from 'react-spring'
+import { useScroll, animated } from 'react-spring';
 
 /**
  * The default header for the website.
@@ -95,14 +95,14 @@ export default function SiteHeader() {
               <IconButton onClick={() => {window.open("/insta", "_blank")}}>
                 <InstagramIcon className='h-6 text-ais-new-med-blue'/>
               </IconButton>
+              <IconButton onClick={() => {window.open("/dc", "_blank")}}>
+                <img src="/discord.svg" className="h-5" />
+              </IconButton>
               <IconButton onClick={() => {window.open("/linkedin", "_blank")}}>
                 <LinkedInIcon className='h-6 text-ais-new-med-blue'/>
               </IconButton>
               <IconButton onClick={() => {window.open("/yt", "_blank")}}>
                 <YouTubeIcon className='h-6 text-ais-new-med-blue'/>
-              </IconButton>
-              <IconButton onClick={() => {window.open("/dc", "_blank")}}>
-                <img src="/discord.svg" className="h-5" />
               </IconButton>
             </Box>
           </div>
@@ -147,7 +147,7 @@ function NavButton(props)
       <button
         onClick={() => props.handleItemClick(props.link)}
         className="
-          h-[2rem] border-[2px] border-ais-new-med-blue rounded-[1rem] whitespace-nowrap px-[1rem]
+          h-[2rem] w-[6.5rem] border-[2px] border-ais-new-med-blue rounded-[1rem]
           hover:bg-ais-new-med-blue hover:text-ais-new-beige"
       >
         {props.title}
