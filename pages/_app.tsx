@@ -22,6 +22,12 @@ const robotoMed = localFont({
   ]
 });
 
+function Icon(){
+  return (
+      <img src="/images/ais_logo_black.png" className="h-[32px] w-[32px] object-contain"/>
+    )
+ }
+
 /**
  * A wrapper for the root website component.
  */
@@ -29,10 +35,11 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-          <link rel="shortcut icon" href="/favicon.ico" />
-          <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+          <title>Home &ndash; AIS</title>
+          <link rel="icon" href="/images/ais_logo_black.png" type="image/png" sizes="any"/>
+          {/*<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
           <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
-          <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
+          <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>*/}
       </Head>
       <style jsx global>{`
         :root {

@@ -28,8 +28,8 @@ export default function HomePage() {
     <div>
       {/*<KickoffModal />*/}
       <Head>
-        <title>Home &ndash; AIS</title>
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        {/*<title>Home &ndash; AIS</title>
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" className="object-cover"/>*/}
         <meta
           name="description"
           content="Welcome to the Artificial Intelligence Society at UTD. We make AI understandable and accessible to everyone"
