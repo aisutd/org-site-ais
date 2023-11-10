@@ -5,7 +5,7 @@ import { maxWidth } from '@mui/system';
 /**
  * A page showing off the history of the organization and how far we've come.
  */
-const spacing = 10;
+const spacing = 0;
 
 
 export default function AboutPage() {

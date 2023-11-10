@@ -1,0 +1,13 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@font-face {
+  font-family: "";
+  src: local("roboto"),
+    url("./public/fonts/Roboto/Roboto-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "";
+  src: local("robotoMed"),
+    url("./public/fonts/Roboto/Roboto-Medium.ttf") format("truetype");
+}

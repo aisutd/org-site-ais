@@ -3,34 +3,49 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        black: "var(--black)",
-        "variable-collection-bg": "var(--variable-collection-bg)",
-        "variable-collection-blue1": "var(--variable-collection-blue1)",
-        "variable-collection-blue2": "var(--variable-collection-blue2)",
-        "variable-collection-blue3": "var(--variable-collection-blue3)",
-        "variable-collection-dark-blue": "var(--variable-collection-dark-blue)",
-        "variable-collection-dark-blue1": "var(--variable-collection-dark-blue1)",
-        white: "var(--white)",
+        ais: {
+          black: '#1F1E1E',
+          'blue-gray': '#E1E8ED',
+          'light-blue': '#11BBFD',
+          'dark-blue': '#4565B8',
+          'light-gray': '#f5f5f5',
+          'dark-gray': '#444444',
+          'indigo': '#24314D',
+          'hover-indigo': '#374b75',
+          white: '#fafafa',
+          navy: '#202042',
+          gray: '#B8B8B8',
+        },
+        'ais-new': {
+          'dark-blue': '#361CFF',
+          'med-blue': '#3E6EFF',
+          'light-blue': '#88CAFF',
+          orange: '#FFBC85',
+          'soft-black': '#293039',
+          black: '#1A2025',
+          white: '#FFFFFF',
+          beige: '#FFF8F3'
+        }
       },
-      fontFamily: {
-        h1: "var(--h1-font-family)",
-        h2: "var(--h2-font-family)",
-        h3: "var(--h3-font-family)",
-        label: "var(--label-font-family)",
-        "text-1": "var(--text-1-font-family)",
-        "text-2": "var(--text-2-font-family)",
-        "text-small-link": "var(--text-small-link-font-family)",
+      scale: {
+        85: '0.85',
+        300: '3',
+        400: '4',
       },
-      boxShadow: {
-        large: "var(--large)",
-        medium: "var(--medium)",
-        small: "var(--small)",
-        xlarge: "var(--xlarge)",
-        xsmall: "var(--xsmall)",
-        xxlarge: "var(--xxlarge)",
-        xxsmall: "var(--xxsmall)",
+      margin: {
+        73: '18.75rem',
       },
     },
+    fontFamily: {
+      sans: ['IBM Plex Sans', 'sans-serif'],
+      cairo: ['Cairo', 'sans-serif'],
+      hind: ['Hind Siliguri'],
+      roboto: ['var(--roboto)'],
+      robotoMed: ['var(--robotoMed)']
+    },
+  },
+  variants: {
+    extend: {},
   },
   plugins: [],
 };

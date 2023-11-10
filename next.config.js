@@ -2,6 +2,12 @@ module.exports = {
   async redirects() {
     return [
         {
+          source: '/rsvp/startup',
+          destination: 'https://coda.io/form/AIS-Startup-Panel-RSVP-Form_dn01eqoJGES',
+          basePath: false,
+          permanent: true,
+        },
+        {
           source: '/member/attendance',
           destination: 'https://coda.io/form/AIS-Event-Attendance-Form_dVQqccTC16L',
           basePath: false,
@@ -52,13 +58,13 @@ module.exports = {
           permanent: true,
         },
         {
-          source: '/aim/mentor-info',
+          source: '/aim/mentor/info',
           destination: 'https://docs.google.com/document/d/1py105xfpWlvjWc5c7175m5qDaCIeusuwCle2xnyI8Fo/edit',
           basePath: false,
           permanent: true,
         },
         {
-          source: '/aim/mentor-apply',
+          source: '/aim/mentor/apply',
           destination: 'https://docs.google.com/forms/d/e/1FAIpQLScR6YrTT1xPIKTvlQUqBPrMPuctEuxHVcIlmhYYcsGIwEiMBA/viewform',
           basePath: false,
           permanent: true,
