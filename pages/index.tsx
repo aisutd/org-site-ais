@@ -11,11 +11,14 @@ import SlideInDescription from '../components/homepage/SlideInDescription';
 import AnimatedJoinBtn from '../components/homepage/AnimatedJoinBtn';
 import WhoWeAre from '../components/homepage/WhoWeAre';
 import WhatIsHappening from '../components/homepage/WhatIsHappening';
+import PastEvent from '../components/homepage/PastEvent';
 import Events from '../components/homepage/Events';
 import Subscribe from '../components/join/Subscribe';
 import KickoffModal from '../components/events/KickoffModal';
 import { JavascriptRounded } from '@mui/icons-material';
 import Partners from '../components/homepage/Sponsors';
+import Summary from '../components/homepage/Summary';
+import SplitContent from '../components/homepage/SplitContent';
 
 /**
  * The root page for the organization website.
@@ -36,35 +39,41 @@ export default function HomePage() {
         />
       </Head>
       <main className="min-h-screen bg-ais-white text-hind subpixel-antialiased overflow-x-hidden">
-        <section id="intro" className="bg-[url('/bg_rec.svg')] bg-no-repeat bg-cover h-[24rem] w-full mb-10 lg:mb-20 sm:h-[34rem] sm:flex xl:h-[40rem]">
-          <div className="grid w-full self-center lg:grid-cols-2 lg:pb-20 2xl:grid-cols-3">
-            <div className="text-center 2xl:col-span-2">
-              <div className="font-[1000] sm:flex sm:justify-center">
-                <div className="text-ais-navy text-5xl mt-5 p-2">
-                  we are the
-                </div>
-                <div className="text-black text-7xl p-2">
-                  <SlideInAIS duration="300"/>
-                </div>
-              </div>
-              <div className="text-ais-dark-gray font-cairo text-2xl font-thin py-10 px-10 hidden sm:block lg:text-xl xl:text-2xl 2xl:mx-20">
-                <SlideInDescription duration="400" delay="900"/>
-              </div>
-              <div className="pt-16 sm:pt-10">
-                <AnimatedJoinBtn duration="500" delay="1300"/>
-              </div>
-            </div>
-          </div>
-          <div className="absolute top-0 right-0 h-[42rem] hidden lg:block  xl:h-[49rem]">
-            <img src="ellipse.svg" className="h-full"/>
-          </div>
-          <SpringyLaptop />
-        </section>
+      <section id="intro" className="bg-ais-white h-[24rem] w-full mb-10 lg:mb-20 sm:flex xl:h-[40rem]">
+      <div className="flex flex-col h-full justify-center items-center text-center">
+  <div className="text-ais-blue text-4xl sm:text-5xl lg:text-6xl font-semibold mb-4">
+    STEP INTO
+  </div>
+  <div className="text-ais-blue text-4xl sm:text-5xl lg:text-6xl font-semibold mb-4">
+    THE WORLD OF
+  </div>
+  {/*
+  <div className="text-ais-blue text-4xl sm:text-5xl lg:text-6xl font-semibold">
+    ARTIFICIAL INTELLIGENCE
+  </div>*/
+}
+<div className="flex items-center text-4xl sm:text-5xl lg:text-6xl font-semibold">
+  <span className="bg-gradient-to-r from-purple-900 to-yellow-400 text-transparent bg-clip-text">
+    ARTIFICIAL
+  </span>
+  <img src="/AIstar.png" alt="AI Star" className="mx-2" />
+  <span className="bg-gradient-to-r from-purple-900 to-yellow-400 text-transparent bg-clip-text">
+    INTELLIGENCE
+  </span>
+</div>
+
+
+  <button className="border border-ais-blue text-ais-blue bg-white px-4 py-2 mt-4 rounded-md text-lg font-semibold">
+    Join Us
+  </button>
+</div>
+
+</section>
         <section id="who-we-are" className="bg-ais-white">
           <WhoWeAre duration="400"/>
         </section>
         <section id="what-is-happening" className="relative bg-[url('/bg_rec.svg')] bg-no-repeat bg-cover lg:h-[44rem]">
-          <div className="relative w-full z-0 -top-8 sm:-top-10 md:-top-16 lg:-top-20 xl:-top-32 2xl:-top-40">
+        <div className="relative w-full z-0 -top-8 sm:-top-10 md:-top-16 lg:-top-20 xl:-top-32 2xl:-top-40">
             <img src="white_blob_1.svg" className="bg-no-repeat bg-cover w-full"/>
           </div>
           <div className="absolute top-8 w-[11%] hidden xl:block">
@@ -78,10 +87,21 @@ export default function HomePage() {
             <img src="white_blob_2.svg" className="w-full bg-no-repeat bg-cover"></img>
           </div>
         </section>
-        <section id="events" className="relative py-10">
-          <div className="bg-ais-white text-center">
-            <Events speed="100"/>
-          </div>
+        <section id="summary" className="relative">
+          <Summary/>
+        </section>
+        <section id="past event" className="relative">
+          <PastEvent/>
+        </section>
+        <section id="split content" className="relative">
+        <SplitContent
+        topImageSrc="/cube.png"
+        topTitle="Title 1"
+        topBodyText="Body text goes here."
+        bottomImageSrc="/cube.png"
+        bottomTitle="Title 1"
+        bottomBodyText="Body text goes here."
+      />
         </section>
         <Partners/>
         <section id="callToAction" className="relative grid bg-ais-black h-[13rem] mt-[12rem]">
