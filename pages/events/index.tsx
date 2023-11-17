@@ -220,7 +220,7 @@ export default function EventsPage({ demos }: DemoPageProps) {
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta
           name="description"
-          content="An overview of all our AI/ML projects, including explanations and interactive demos."
+          content="An overview of all our events"
         />
       </Head>
 

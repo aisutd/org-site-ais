@@ -31,8 +31,8 @@ export default function HomePage() {
     <div>
       {/*<KickoffModal />*/}
       <Head>
-        <title>Home &ndash; AIS</title>
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        {/*<title>Home &ndash; AIS</title>
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" className="object-cover"/>*/}
         <meta
           name="description"
           content="Welcome to the Artificial Intelligence Society at UTD. We make AI understandable and accessible to everyone"
@@ -103,7 +103,9 @@ export default function HomePage() {
         bottomBodyText="Body text goes here."
       />
         </section>
-        <Partners/>
+        <section id="sponsors">
+          <Partners/>
+        </section>
         <section id="callToAction" className="relative grid bg-ais-black h-[13rem] mt-[12rem]">
           <Paper className="absolute grid text-left rounded-3xl shadow-ais-black justify-self-center -top-[7.5rem] h-[15rem] mx-5" elevation={24}>
             <div className="justify-self-center self-center gap-16 px-16 lg:flex">

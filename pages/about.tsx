@@ -5,7 +5,7 @@ import { maxWidth } from '@mui/system';
 /**
  * A page showing off the history of the organization and how far we've come.
  */
-const spacing = 10;
+const spacing = 0;
 
 const storyText = [
   ["Jeff Bezos, the founder and executive chairman of Amazon, stated in May of 2016 that society is on the cusp of entering the golden age of artificial intelligence (AI). That, over the next two decades, human society and AI will become intertwined in a way that would seem like science fiction today. That modern AI tools, such as Alexa, IBM Watson, and Google TensorFlow, only scratch the surface of what's possible.", false],
