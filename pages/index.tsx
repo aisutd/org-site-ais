@@ -16,7 +16,7 @@ import Subscribe from '../components/join/Subscribe';
 import KickoffModal from '../components/events/KickoffModal';
 import { JavascriptRounded } from '@mui/icons-material';
 import Partners from '../components/homepage/Sponsors';
-
+import JoinUs from '../components/homepage/JoinUs';
 /**
  * The root page for the organization website.
  *
@@ -35,7 +35,7 @@ export default function HomePage() {
           content="Welcome to the Artificial Intelligence Society at UTD. We make AI understandable and accessible to everyone"
         />
       </Head>
-      <main className="min-h-screen bg-ais-white text-hind subpixel-antialiased overflow-x-hidden">
+      <main className="min-h-screen bg-ais-new-beige text-hind subpixel-antialiased overflow-x-hidden">
         <section id="intro" className="bg-[url('/bg_rec.svg')] bg-no-repeat bg-cover h-[24rem] w-full mb-10 lg:mb-20 sm:h-[34rem] sm:flex xl:h-[40rem]">
           <div className="grid w-full self-center lg:grid-cols-2 lg:pb-20 2xl:grid-cols-3">
             <div className="text-center 2xl:col-span-2">
@@ -60,7 +60,7 @@ export default function HomePage() {
           </div>
           <SpringyLaptop />
         </section>
-        <section id="who-we-are" className="bg-ais-white">
+        <section id="who-we-are" className="bg-ais-new-beige">
           <WhoWeAre duration="400"/>
         </section>
         <section id="what-is-happening" className="relative bg-[url('/bg_rec.svg')] bg-no-repeat bg-cover lg:h-[44rem]">
@@ -79,7 +79,7 @@ export default function HomePage() {
           </div>
         </section>
         <section id="events" className="relative py-10">
-          <div className="bg-ais-white text-center">
+          <div className="bg-ais-new-beige text-center">
             <Events speed="100"/>
           </div>
         </section>
@@ -106,6 +106,9 @@ export default function HomePage() {
               </div>
             </div>
           </Paper>
+        </section>
+        <section>
+          <JoinUs/>
         </section>
       </main>
     </div>

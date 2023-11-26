@@ -7,7 +7,7 @@ import IconButton from '@mui/material/IconButton';
 
 export default function SiteFooterAlt() {
   return (
-    <footer className="bg-ais-black text-white pt-6">
+    <footer className="bg-ais-new-darker-blue text-white pt-6">
       <div className="border-white border-b-2 mx-auto max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-4xl 2xl:max-w-6xl flex justify-between py-4">
         <div className="grid grid-col-1 grid-flow-row py-2">
           <div className="flex gap-4 [cursor:pointer]">
