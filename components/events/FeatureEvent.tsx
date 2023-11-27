@@ -65,27 +65,34 @@ export default function FeatureEvent({ event, onGoing }: EventItemProps) {
     <div
       key={id}
       className={
-        'font-bold mx-4 h-full p-4 rounded-3xl border-r-4 border-b-4 border-t-2 border-l-2 border-ais-new-light-blue'
+        'font-bold mx-4 h-full p-4 rounded-3xl border-r-8 border-b-8 border-t-2 border-l-2 border-ais-new-light-blue'
       }
     >
-      <div className="bg-slate-300 w-full h-52 rounded-2xl mb-4"></div>
-      <div className="font-bold text-ais-dark-blue text-xs flex flex-wrap justify-between gap-2">
+      <div className="bg-slate-300 w-full h-52 rounded-t-2xl mb-4"></div>
+      <div className="font-bold text-black text-xs flex flex-wrap justify-between gap-2">
         {eventType.toUpperCase()}
       </div>
       <div className="flex text-xl font-bold py-2">{title}</div>
       <div className="mb-2 font-bold text-ais-dark-blue text-xs flex flex-wrap justify-between gap-2">
-        <div className="flex text-gray-600">
+        <div className="flex text-ais-new-dark-blue">
           <CalendarTodayIcon style={{ fontSize: 14 }} />
           <div className="mx-2 ">{eventTime}</div>
         </div>
       </div>
       <div>
-        <div className="text-xs">{description}</div>
+        <div className="text-xs text-ais-dark-gray">{description}</div>
       </div>
-      <div className="flex text-ais-light-blue text-sm gap-4 font-bold pt-6">
-        <Link href={eventLink}>LEARN MORE</Link>
+      {onGoing ? 
+      <div className="flex text-ais-dark-blue text-sm gap-4 font-bold pt-6">
+        <Link href={eventLink}>
+          <button
+            className="h-[2rem] w-20 border-[2px] text-xs text-ais-new-dark-blue border-ais-new-dark-blue rounded-[1rem] whitespace-nowrap px-[1rem] hover:bg-ais-new-dark-blue hover:text-ais-new-beige"
+          >
+            RSVP
+          </button>
+        </Link>
         <Menu as="div" className="relative">
-          <Menu.Button className="font-bold">SAVE</Menu.Button>
+          <Menu.Button className="font-bold"><img src="rsvp-icon.png" className="mt-1" width="24"></img></Menu.Button>
           <Menu.Items className="origin-top-left absolute left-0 rounded-md w-28 bg-ais-white shadow-xl z-10 text-black">
             <Menu.Item>
               <a
@@ -123,6 +130,17 @@ export default function FeatureEvent({ event, onGoing }: EventItemProps) {
           </Menu.Items>
         </Menu>
       </div>
+      :
+      <div className="flex text-ais-dark-blue text-sm gap-4 font-bold pt-6">
+        <Link href={eventLink}>
+          <button
+            className="h-[2rem] w-28 border-[2px] text-xs text-ais-new-dark-blue border-ais-new-dark-blue rounded-[1rem] whitespace-nowrap px-[1rem] hover:bg-ais-new-dark-blue hover:text-ais-new-beige"
+          >
+            Learn more
+          </button>
+        </Link>
+      </div>
+    }
     </div>
   );
 }

@@ -27,7 +27,7 @@ export default function EventsPage({ events }: EventsPageProps) {
   const pastEventCards = pastEvents.map((event) => {
     return (
       <div key={event.id} className="my-4">
-        <FeatureEvent key={event.id} event={event} />
+        <FeatureEvent key={event.id} event={event} onGoing={false}/>
       </div>
     );
   });
@@ -59,10 +59,11 @@ export default function EventsPage({ events }: EventsPageProps) {
   let upComingEventDiv;
     upComingEventDiv = (
       <div>
-        <div className="text-center font-bold h-full p-10 rounded-3xl border-r-4 border-b-4 border-t-2 border-l-2 border-ais-new-light-blue m-auto mt-auto">
-          <p className="text-4xl font-bold text-slate-700 sm:visible lg:invisible text-center justify-center content-center sm:pt-9 mt-[100px]">
+        <div className="text-center font-bold h-full p-10 rounded-3xl border-r-8 border-b-8 border-t-2 border-l-2 border-ais-new-light-blue m-auto mt-auto">
+          <p className="text-4xl font-bold text-slate-700 text-center justify-center content-center my-28">
             Upcoming Event
           </p>
+          {futureEventCards[0]}
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 items-start">
           <div className="flex mt-5">
@@ -152,8 +153,8 @@ export default function EventsPage({ events }: EventsPageProps) {
               className="mb-10"
             />
             {pastEventsDiv}
-            <div className="items-end py-4">
-              <EventsButton className="" title="View All"/>
+            <div className="items-end py-4 w-full">
+              <img src="viewall-btn.png" className='ml-auto'></img>
             </div>
           </div>
         </section>
@@ -176,7 +177,7 @@ function EventsButton(props)
 {
   return(
     <button
-      className="h-[2rem] w-32 border-[2px] text-sm text-ais-new-med-blue border-ais-new-med-blue rounded-[1rem] whitespace-nowrap px-[1rem] hover:bg-ais-new-med-blue hover:text-ais-new-beige ml-2"
+      className="h-[2rem] w-32 border-[2px] text-sm text-ais-new-dark-blue border-ais-new-dark-blue rounded-[1rem] whitespace-nowrap px-[1rem] hover:bg-ais-new-dark-blue hover:text-ais-new-beige ml-2"
     >
       {props.title}
     </button>
