@@ -61,7 +61,7 @@ export default function EventsPage({ events }: EventsPageProps) {
       <div>
         <div className="text-center font-bold h-full p-10 rounded-3xl border-r-8 border-b-8 border-t-2 border-l-2 border-ais-new-light-blue m-auto mt-auto">
           <p className="text-4xl font-bold text-slate-700 text-center justify-center content-center my-28">
-            Upcoming Event
+            Coming Soon
           </p>
           {futureEventCards[0]}
         </div>
@@ -134,7 +134,7 @@ export default function EventsPage({ events }: EventsPageProps) {
       <main className="flex flex-col justify-center min-h-screen bg-ais-new-beige">
         {onGoingEventDiv}
         <section className="py-8 px-2 mt-10">
-          <div className="mx-auto max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-4xl 2xl:max-w-6xl py-2">
+          <div className="relative mx-auto max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-4xl 2xl:max-w-6xl py-2">
           <img
               src="decoration2.png"
               className="mb-10"
@@ -142,7 +142,7 @@ export default function EventsPage({ events }: EventsPageProps) {
             {upComingEventDiv}
             <img
               src="decoration1.png"
-              className="w-30 float-right translate-x-20 -translate-y-20 opacity-80 invisible lg:visible"
+              className="absolute right-0 w-30 translate-x-20 -translate-y-20 opacity-80 invisible lg:visible"
             />
           </div>
         </section>

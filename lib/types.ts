@@ -49,7 +49,7 @@ export interface PresenterInfo {
  */
 export interface Event {
   /**
-   * A unique identifier for this event
+   * A unique identifier for this event. This is also used as the url extension.
    */
   id: string;
 
@@ -79,34 +79,19 @@ export interface Event {
   eventType: string;
 
   /**
-   * If location is 'physical', then this will be the room this event will be
-   * hosted, or the building/address if that is unavailable.
-   */
-  detailedLocation?: string;
-
-  /**
-   * A direct link to the meeting or event if location is not 'physical'
+   * A direct link to the meeting or event if location is not in-person
    */
   joinLink?: string;
 
   /**
-   * The room no. in which the event will take place if its in-person or hybrid
+   * If the event requires an rsvp, then this will be the link for that
    */
-  roomNo?: string;
+  rsvpLink?: string;
 
-  /**
-   * A link to a sign-up for in-person attendance of hybrid events
-   */
-  signup?: string;
   /**
    * A direct link to google slides presentation of an event
    */
   slides?: string;
-
-  /**
-   * Categorizes used to group this event with other related ones.
-   */
-  tags: string[];
 
   /**
    * A flyer/cover image for the event
@@ -131,7 +116,7 @@ export interface Event {
   /**
    * Additional resources for this event.
    */
-  supplements: SupplementaryMaterial[];
+  //supplements: SupplementaryMaterial[];
 }
 
 /**

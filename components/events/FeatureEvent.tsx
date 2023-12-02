@@ -14,7 +14,7 @@ interface EventItemProps {
  * An item that displays event details
  */
 export default function FeatureEvent({ event, onGoing }: EventItemProps) {
-  const { id, title, description, eventType, startDate, endDate, location, joinLink, tags } = event;
+  const { id, title, description, eventType, startDate, endDate, location, joinLink, rsvpLink } = event;
   const eventLink = `/events/${event.id}`;
   const eventTime = Moment(new Date(startDate)).format('MMM D, YYYY');
 
@@ -23,8 +23,7 @@ export default function FeatureEvent({ event, onGoing }: EventItemProps) {
     description: description,
     start: startDate,
     end: endDate,
-    location: location === 'In-person' ? joinLink : null,
-    url: location !== 'In-person' ? joinLink : null,
+    location: location === 'In-person' ? joinLink : null
   };
 
   let pulsingDiv;
@@ -40,14 +39,6 @@ export default function FeatureEvent({ event, onGoing }: EventItemProps) {
       </div>
     );
   }
-
-  const tagElements = tags.map((tag) => {
-    return (
-      <div key={tag} className="bg-ais-dark-blue text-white rounded-xl p-2 text-xs font-bold">
-        {tag.toLowerCase()}
-      </div>
-    );
-  });
 
   /**
   let tagDiv;
@@ -84,7 +75,7 @@ export default function FeatureEvent({ event, onGoing }: EventItemProps) {
       </div>
       {onGoing ? 
       <div className="flex text-ais-dark-blue text-sm gap-4 font-bold pt-6">
-        <Link href={eventLink}>
+        <Link href={rsvpLink}>
           <button
             className="h-[2rem] w-20 border-[2px] text-xs text-ais-new-dark-blue border-ais-new-dark-blue rounded-[1rem] whitespace-nowrap px-[1rem] hover:bg-ais-new-dark-blue hover:text-ais-new-beige"
           >
