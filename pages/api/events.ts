@@ -38,7 +38,7 @@ export const getAllEvents = async (fields?: string[]): Promise<Event[]> => {
      * Coda API
      * How to get an API KEY:
      * 1. Go to https://coda.io/account and scroll down to "Coda API Tokens"
-     * 2. Generate a new API key WITH RESTRICTIONS of read only access to this doc: https://coda.io/d/Event-Tracking_dluD4Jth4qA/Events_suqfB#All-Events_tuipI/r5
+     * 2. Generate a new API key WITH RESTRICTIONS of read only access to this doc: https://coda.io/d/_dluD4Jth4qA/Events_suqfB#_luipI
      * 3. Create a file ".env.local" in your project directory
      * 4. Add the following entry: "CODA_API_KEY='{Your API key}'"
      */
@@ -47,11 +47,11 @@ export const getAllEvents = async (fields?: string[]): Promise<Event[]> => {
     const doc = await CodaAPI.getDoc('luD4Jth4qA'); // Grab Event Tracking Doc from Coda API using the Doc ID at https://coda.io/developers/apis/v1
     const table = await doc.getTable('All Events'); // Grab the actual table from the doc
     const rows = await table.listRows({ useColumnNames: true, valueFormat: 'rich' }); // Grab all the event entries in the doc
+
+    // For each event in the table
     for (let i = 0; i < rows.length; i++) {
-      // For each event in the table
-      const eventTags: string[] = rows[i].values['Keywords'].replace(/```/gi, '').split(', ');
       const eventPresenters: { name: string; link: string }[] = [];
-      for (const presenterName of rows[i].values['Presenter Names']
+      for (const presenterName of rows[i].values['Presenter(s)']
         .replace(/```/gi, '')
         .split(', ')) {
         eventPresenters.push({
@@ -59,18 +59,16 @@ export const getAllEvents = async (fields?: string[]): Promise<Event[]> => {
           link: '',
         });
       }
-      let revLink: string;
+
+      let watchLink: string;
       if (typeof rows[i].values['Watch Link'] == 'string')
-        revLink = rows[i].values['Watch Link'].replace(/```/gi, '');
-      else revLink = rows[i].values['Watch Link']['url'];
+        watchLink = rows[i].values['Watch Link'].replace(/```/gi, '');
+      else watchLink = rows[i].values['Watch Link']['url'];
 
-      let signUpLink: string;
-      if (typeof rows[i].values['Sign-up Link'] == 'string')
-        signUpLink = rows[i].values['Sign-up Link'].replace(/```/gi, '');
-      else signUpLink = rows[i].values['Sign-up Link']['url'];
-
-      if (revLink.search('\\)') != -1)
-        revLink = revLink.substring(revLink.indexOf('(') + 1, revLink.indexOf(')'));
+      let rsvp: string;
+      if (typeof rows[i].values['RSVP Link'] == 'string')
+        rsvp = rows[i].values['RSVP Link'].replace(/```/gi, '');
+      else rsvp = rows[i].values['RSVP Link']['url'];
 
       let imageUrl = rows[i].values['Flyer'];
       if (typeof imageUrl == 'string')
@@ -89,22 +87,19 @@ export const getAllEvents = async (fields?: string[]): Promise<Event[]> => {
       }
 
       const eventToAdd: Event = {
-        id: rows[i].values['Shortened Event Title'].replace(/```/gi, ''),
+        id: rows[i].values['URL Extension'].replace(/```/gi, ''),
         title: rows[i].values['Event Title'].replace(/```/gi, ''),
         description: rows[i].values['Description'].replace(/```/gi, ''),
         presenters: eventPresenters,
-        location: rows[i].values['Platform'].replace(/```/gi, ''),
+        location: rows[i].values['Location'].replace(/```/gi, ''),
         eventType: rows[i].values['Event Type'].replace(/```/gi, ''),
-        joinLink: revLink,
-        roomNo: rows[i].values['Room No.'].replace(/```/gi, ''),
-        signup: signUpLink,
-        startDate: rows[i].values['Event Date'].replace(/```/gi, ''),
-        endDate: rows[i].values['Event End Date'].replace(/```/gi, ''),
-        tags: eventTags,
+        joinLink: watchLink,
+        rsvpLink: rsvp,
+        startDate: rows[i].values['Event Date'].length > 0 ? rows[i].values['Event Date'] : null,
+        endDate: rows[i].values['Event End Date'].length > 0 ? rows[i].values['Event End Date'] : null,
         image: imageUrl,
         slides: slideLink,
         lastUpdated: new Date().toISOString(),
-        supplements: [],
       };
       //console.log(rows[i].values);
       if (eventToAdd['id'] === '') continue;
