@@ -1,5 +1,6 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+  content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}', './src/**/*.{html,js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {
@@ -24,8 +25,35 @@ module.exports = {
           'soft-black': '#293039',
           black: '#1A2025',
           white: '#FFFFFF',
-          beige: '#FFF8F3'
-        }
+          beige: '#FFF8F3',
+        },
+        black: 'var(--black)',
+        'variable-collection-bg': 'var(--variable-collection-bg)',
+        'variable-collection-black': 'var(--variable-collection-black)',
+        'variable-collection-blue1': 'var(--variable-collection-blue1)',
+        'variable-collection-blue2': 'var(--variable-collection-blue2)',
+        'variable-collection-blue3': 'var(--variable-collection-blue3)',
+        'variable-collection-dark-blue': 'var(--variable-collection-dark-blue)',
+        'variable-collection-dark-blue1': 'var(--variable-collection-dark-blue1)',
+        'variable-collection-orange': 'var(--variable-collection-orange)',
+        white: 'var(--white)',
+      },
+      fontFamily: {
+        sans: ['IBM Plex Sans', 'sans-serif'],
+        cairo: ['Cairo', 'sans-serif'],
+        hind: ['Hind Siliguri'],
+        roboto: ['var(--roboto)'],
+        robotoMed: ['var(--robotoMed)'],
+        h1: 'var(--h1-font-family)',
+        h2: 'var(--h2-font-family)',
+        h3: 'var(--h3-font-family)',
+        'heading-h6': 'var(--heading-h6-font-family)',
+        label: 'var(--label-font-family)',
+        text: 'var(--text-font-family)',
+        'text-1': 'var(--text-1-font-family)',
+        'text-2': 'var(--text-2-font-family)',
+        'text-regular-semi-bold': 'var(--text-regular-semi-bold-font-family)',
+        'text-small-link': 'var(--text-small-link-font-family)',
       },
       scale: {
         85: '0.85',
@@ -35,13 +63,15 @@ module.exports = {
       margin: {
         73: '18.75rem',
       },
-    },
-    fontFamily: {
-      sans: ['IBM Plex Sans', 'sans-serif'],
-      cairo: ['Cairo', 'sans-serif'],
-      hind: ['Hind Siliguri'],
-      roboto: ['var(--roboto)'],
-      robotoMed: ['var(--robotoMed)']
+      boxShadow: {
+        large: 'var(--large)',
+        medium: 'var(--medium)',
+        small: 'var(--small)',
+        xlarge: 'var(--xlarge)',
+        xsmall: 'var(--xsmall)',
+        xxlarge: 'var(--xxlarge)',
+        xxsmall: 'var(--xxsmall)',
+      },
     },
   },
   variants: {
