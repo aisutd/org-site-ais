@@ -62,7 +62,9 @@ export default function FeatureEvent({ event, onGoing }: EventItemProps) {
       
       {onGoing ? 
       <div className="flex justify-center items-center text-ais-dark-blue text-sm gap-4 font-bold">
-        <div className="bg-slate-300 w-8/12 h-96 rounded-2xl"></div>
+        <div className="bg-slate-300 w-8/12 h-96 rounded-2xl">
+          <div className="bg-slate-100 w-2/12 h-24 rounded-2xl ml-auto text-center">Dec</div>
+        </div>
         <div className="h-auto w-1/2 px-8">
           <div className="font-bold text-black text-xs flex flex-wrap justify-between gap-2">
             {eventType.toUpperCase()}

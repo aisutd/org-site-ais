@@ -14,6 +14,8 @@ export default function EventsPage({ events }: EventsPageProps) {
   const onGoingEvents: Event[] = [];
   const pastEvents: Event[] = [];
   const pastEventsCols = [[], [], []];
+  const [viewAllPastEvents, setViewAllPastEvents] = useState(false);
+
 
   events.forEach(function (eachEvent) {
     const startTime = new Date(eachEvent.startDate);
@@ -48,12 +50,20 @@ export default function EventsPage({ events }: EventsPageProps) {
   let pastEventsDiv;
   if (pastEvents.length == 0) {
     pastEventsDiv = <div>There are no past events</div>
-  } else {
+  } else if (!viewAllPastEvents){
     pastEventsDiv = (
       <div className="flex flex-row flex-wrap">
         <div className="flex flex-col w-1/3 min-w-full xl:min-w-0">{pastEventsCols[0][0]}</div>
         <div className="flex flex-col w-1/3 min-w-full xl:min-w-0">{pastEventsCols[1][0]}</div>
         <div className="flex flex-col w-1/3 min-w-full xl:min-w-0">{pastEventsCols[2][0]}</div>
+      </div>
+    );
+  } else {
+    pastEventsDiv = (
+      <div className="flex flex-row flex-wrap">
+        <div className="flex flex-col w-1/3 min-w-full xl:min-w-0">{pastEventsCols[0]}</div>
+        <div className="flex flex-col w-1/3 min-w-full xl:min-w-0">{pastEventsCols[1]}</div>
+        <div className="flex flex-col w-1/3 min-w-full xl:min-w-0">{pastEventsCols[2]}</div>
       </div>
     );
   }
@@ -132,7 +142,7 @@ export default function EventsPage({ events }: EventsPageProps) {
               <EventsButton title="Others"/>
             </div>
             {pastEventsDiv}
-            <div className="items-end py-4 w-full">
+            <div className="items-end py-4 w-full" onClick={() => (viewAllPastEvents ? setViewAllPastEvents(false) : setViewAllPastEvents(true))} >
               <img src="viewall-btn.png" className='ml-auto'></img>
             </div>
           </div>
