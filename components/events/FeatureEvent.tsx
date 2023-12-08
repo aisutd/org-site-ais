@@ -59,70 +59,90 @@ export default function FeatureEvent({ event, onGoing }: EventItemProps) {
         'font-bold mx-4 h-full p-4 rounded-3xl border-r-8 border-b-8 border-t-2 border-l-2 border-ais-new-light-blue'
       }
     >
-      <div className="bg-slate-300 w-full h-52 rounded-t-2xl mb-4"></div>
-      <div className="font-bold text-black text-xs flex flex-wrap justify-between gap-2">
-        {eventType.toUpperCase()}
-      </div>
-      <div className="flex text-xl font-bold py-2">{title}</div>
-      <div className="mb-2 font-bold text-ais-dark-blue text-xs flex flex-wrap justify-between gap-2">
-        <div className="flex text-ais-new-dark-blue">
-          <CalendarTodayIcon style={{ fontSize: 14 }} />
-          <div className="mx-2 ">{eventTime}</div>
+      
+      {onGoing ? 
+      <div className="flex justify-center items-center text-ais-dark-blue text-sm gap-4 font-bold">
+        <div className="bg-slate-300 w-8/12 h-96 rounded-2xl"></div>
+        <div className="h-auto w-1/2 px-8">
+          <div className="font-bold text-black text-xs flex flex-wrap justify-between gap-2">
+            {eventType.toUpperCase()}
+          </div>
+          <div className="flex text-black text-4xl font-bold py-2">{title}</div>
+          <div className="mb-2 font-bold text-ais-dark-blue text-xs flex flex-wrap justify-between gap-2">
+            <div className="py-2 flex text-ais-new-dark-blue">
+              <CalendarTodayIcon style={{ fontSize: 14 }} />
+              <div className="mx-2 ">{eventTime}</div>
+            </div>
+          </div>
+          <div>
+            <div className="text-xs text-ais-dark-gray">{description}</div>
+          </div>
+          <div className="flex py-2">
+            <Link href={rsvpLink} className="ml-auto mr-2">
+              <button
+                className="h-[2rem] w-20 border-[2px] text-xs text-ais-new-dark-blue border-ais-new-dark-blue rounded-[1rem] whitespace-nowrap px-[1rem] hover:bg-ais-new-dark-blue hover:text-ais-new-beige"
+              >
+                RSVP
+              </button>
+            </Link>
+            <Menu as="div" className="relative">
+              <Menu.Button className="font-bold"><img src="rsvp-icon.png" className="mt-1" width="24"></img></Menu.Button>
+              <Menu.Items className="origin-top-left absolute left-0 rounded-md w-28 bg-ais-white shadow-xl z-10 text-black">
+                <Menu.Item>
+                  <a
+                    target="_blank"
+                    href={ics(calEvent)}
+                    className="transition duration-400 group flex gap-2 items-center px-4 py-2 text-sm hover:bg-ais-blue-gray hover:text-black rounded-sm"
+                    rel="noreferrer"
+                  >
+                    <img src="/apple.svg" className="h-5" />
+                    Apple
+                  </a>
+                </Menu.Item>
+                <Menu.Item>
+                  <a
+                    target="_blank"
+                    href={google(calEvent)}
+                    className="transition duration-400 group flex gap-2 items-center px-4 py-2 text-sm hover:bg-ais-blue-gray hover:text-black rounded-sm"
+                    rel="noreferrer"
+                  >
+                    <img src="/google.svg" className="h-4" />
+                    Google
+                  </a>
+                </Menu.Item>
+                <Menu.Item>
+                  <a
+                    target="_blank"
+                    href={outlook(calEvent)}
+                    className="transition duration-400 group flex gap-2 items-center px-4 py-2 text-sm hover:bg-ais-blue-gray hover:text-black rounded-sm"
+                    rel="noreferrer"
+                  >
+                    <img src="/outlook.svg" className="h-4" />
+                    Outlook
+                  </a>
+                </Menu.Item>
+              </Menu.Items>
+            </Menu>
+          </div>
         </div>
       </div>
-      <div>
-        <div className="text-xs text-ais-dark-gray">{description}</div>
-      </div>
-      {onGoing ? 
-      <div className="flex text-ais-dark-blue text-sm gap-4 font-bold pt-6">
-        <Link href={rsvpLink}>
-          <button
-            className="h-[2rem] w-20 border-[2px] text-xs text-ais-new-dark-blue border-ais-new-dark-blue rounded-[1rem] whitespace-nowrap px-[1rem] hover:bg-ais-new-dark-blue hover:text-ais-new-beige"
-          >
-            RSVP
-          </button>
-        </Link>
-        <Menu as="div" className="relative">
-          <Menu.Button className="font-bold"><img src="rsvp-icon.png" className="mt-1" width="24"></img></Menu.Button>
-          <Menu.Items className="origin-top-left absolute left-0 rounded-md w-28 bg-ais-white shadow-xl z-10 text-black">
-            <Menu.Item>
-              <a
-                target="_blank"
-                href={ics(calEvent)}
-                className="transition duration-400 group flex gap-2 items-center px-4 py-2 text-sm hover:bg-ais-blue-gray hover:text-black rounded-sm"
-                rel="noreferrer"
-              >
-                <img src="/apple.svg" className="h-5" />
-                Apple
-              </a>
-            </Menu.Item>
-            <Menu.Item>
-              <a
-                target="_blank"
-                href={google(calEvent)}
-                className="transition duration-400 group flex gap-2 items-center px-4 py-2 text-sm hover:bg-ais-blue-gray hover:text-black rounded-sm"
-                rel="noreferrer"
-              >
-                <img src="/google.svg" className="h-4" />
-                Google
-              </a>
-            </Menu.Item>
-            <Menu.Item>
-              <a
-                target="_blank"
-                href={outlook(calEvent)}
-                className="transition duration-400 group flex gap-2 items-center px-4 py-2 text-sm hover:bg-ais-blue-gray hover:text-black rounded-sm"
-                rel="noreferrer"
-              >
-                <img src="/outlook.svg" className="h-4" />
-                Outlook
-              </a>
-            </Menu.Item>
-          </Menu.Items>
-        </Menu>
-      </div>
       :
-      <div className="flex text-ais-dark-blue text-sm gap-4 font-bold pt-6">
+      <div>
+        <div className="bg-slate-300 w-full h-52 rounded-t-2xl mb-4"></div>
+        <div className="font-bold text-black text-xs flex flex-wrap justify-between gap-2">
+          {eventType.toUpperCase()}
+        </div>
+        <div className="flex text-xl font-bold py-2">{title}</div>
+        <div className="mb-2 font-bold text-ais-dark-blue text-xs flex flex-wrap justify-between gap-2">
+          <div className="flex text-ais-new-dark-blue">
+            <CalendarTodayIcon style={{ fontSize: 14 }} />
+            <div className="mx-2 ">{eventTime}</div>
+          </div>
+        </div>
+        <div>
+          <div className="text-xs text-ais-dark-gray">{description}</div>
+        </div>
+        <div className="flex text-ais-dark-blue text-sm gap-4 font-bold pt-6">
         <Link href={eventLink}>
           <button
             className="h-[2rem] w-28 border-[2px] text-xs text-ais-new-dark-blue border-ais-new-dark-blue rounded-[1rem] whitespace-nowrap px-[1rem] hover:bg-ais-new-dark-blue hover:text-ais-new-beige"
@@ -130,6 +150,7 @@ export default function FeatureEvent({ event, onGoing }: EventItemProps) {
             Learn more
           </button>
         </Link>
+      </div>
       </div>
     }
     </div>
