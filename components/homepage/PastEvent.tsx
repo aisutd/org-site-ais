@@ -15,7 +15,7 @@ function PastEvent() {
             </div>
             <div className="w-1/2 p-20 pl-5 bg-ais-off-white flex items-center">
                 <div className="mx-auto max-h-full max-w-full">
-                    <img src="/web1.jpg" alt="Image" className="mx-auto" />
+                    <img src="/Placeholder Image.png" alt="HackAI Image" className="mx-auto" />
                 </div>
             </div>
         </div>
