@@ -17,6 +17,7 @@ import Subscribe from '../components/join/Subscribe';
 import KickoffModal from '../components/events/KickoffModal';
 import { JavascriptRounded } from '@mui/icons-material';
 import Partners from '../components/homepage/Sponsors';
+import JoinUs from '../components/homepage/JoinUs';
 import Summary from '../components/homepage/Summary';
 import SplitContent from '../components/homepage/SplitContent';
 
@@ -111,6 +112,9 @@ export default function HomePage() {
             </div>
           </Paper>
         </section>
+        {/*<section>
+          <JoinUs/>
+        </section>*/}
       </main>
     </div>
   );

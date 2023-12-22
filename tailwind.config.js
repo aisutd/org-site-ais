@@ -25,6 +25,7 @@ module.exports = {
           
         },
         'ais-new': {
+          'darker-blue': '#293039',
           'dark-blue': '#361CFF',
           'med-blue': '#3E6EFF',
           'light-blue': '#88CAFF',

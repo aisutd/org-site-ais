@@ -14,7 +14,7 @@ interface EventItemProps {
  * An item that displays event details
  */
 export default function FeatureEvent({ event, onGoing }: EventItemProps) {
-  const { id, title, description, eventType, startDate, endDate, location, joinLink, tags } = event;
+  const { id, title, description, eventType, startDate, endDate, location, joinLink, rsvpLink } = event;
   const eventLink = `/events/${event.id}`;
   const eventTime = Moment(new Date(startDate)).format('MMM D, YYYY');
 
@@ -23,8 +23,7 @@ export default function FeatureEvent({ event, onGoing }: EventItemProps) {
     description: description,
     start: startDate,
     end: endDate,
-    location: location === 'In-person' ? joinLink : null,
-    url: location !== 'In-person' ? joinLink : null,
+    location: location === 'In-person' ? joinLink : null
   };
 
   let pulsingDiv;
@@ -41,14 +40,7 @@ export default function FeatureEvent({ event, onGoing }: EventItemProps) {
     );
   }
 
-  const tagElements = tags.map((tag) => {
-    return (
-      <div key={tag} className="bg-ais-dark-blue text-white rounded-xl p-2 text-xs font-bold">
-        {tag.toLowerCase()}
-      </div>
-    );
-  });
-
+  /**
   let tagDiv;
   if (tags.length != 0) {
     tagDiv = (
@@ -58,32 +50,40 @@ export default function FeatureEvent({ event, onGoing }: EventItemProps) {
       </div>
     );
   }
+   */
 
   return (
     <div
       key={id}
       className={
-        pulsingBG +
-        'inline-block max-w-full p-4 m-2 bg-white shadow-sm transition duration-400 hover:shadow-md focus:shadow-md rounded-md hover:bg-ais-blue-gray relative'
+        'font-bold mx-4 h-full p-4 rounded-3xl border-r-8 border-b-8 border-t-2 border-l-2 border-ais-new-light-blue'
       }
     >
-      {pulsingDiv}
-      <div className="font-bold text-ais-dark-blue text-sm flex flex-wrap justify-between gap-2">
+      <div className="bg-slate-300 w-full h-52 rounded-t-2xl mb-4"></div>
+      <div className="font-bold text-black text-xs flex flex-wrap justify-between gap-2">
         {eventType.toUpperCase()}
-        <div className="flex items-center text-gray-600">
-          <CalendarTodayIcon style={{ fontSize: 18 }} />
+      </div>
+      <div className="flex text-xl font-bold py-2">{title}</div>
+      <div className="mb-2 font-bold text-ais-dark-blue text-xs flex flex-wrap justify-between gap-2">
+        <div className="flex text-ais-new-dark-blue">
+          <CalendarTodayIcon style={{ fontSize: 14 }} />
           <div className="mx-2 ">{eventTime}</div>
         </div>
       </div>
-      <div className="text-xl font-bold py-2">{title}</div>
       <div>
-        <div className="text-md">{description}</div>
+        <div className="text-xs text-ais-dark-gray">{description}</div>
       </div>
-      {tagDiv}
-      <div className="flex text-ais-light-blue text-sm gap-4 font-bold justify-end pt-2">
-        <Link href={eventLink}>LEARN MORE</Link>
+      {onGoing ? 
+      <div className="flex text-ais-dark-blue text-sm gap-4 font-bold pt-6">
+        <Link href={rsvpLink}>
+          <button
+            className="h-[2rem] w-20 border-[2px] text-xs text-ais-new-dark-blue border-ais-new-dark-blue rounded-[1rem] whitespace-nowrap px-[1rem] hover:bg-ais-new-dark-blue hover:text-ais-new-beige"
+          >
+            RSVP
+          </button>
+        </Link>
         <Menu as="div" className="relative">
-          <Menu.Button className="font-bold">SAVE</Menu.Button>
+          <Menu.Button className="font-bold"><img src="rsvp-icon.png" className="mt-1" width="24"></img></Menu.Button>
           <Menu.Items className="origin-top-left absolute left-0 rounded-md w-28 bg-ais-white shadow-xl z-10 text-black">
             <Menu.Item>
               <a
@@ -121,6 +121,17 @@ export default function FeatureEvent({ event, onGoing }: EventItemProps) {
           </Menu.Items>
         </Menu>
       </div>
+      :
+      <div className="flex text-ais-dark-blue text-sm gap-4 font-bold pt-6">
+        <Link href={eventLink}>
+          <button
+            className="h-[2rem] w-28 border-[2px] text-xs text-ais-new-dark-blue border-ais-new-dark-blue rounded-[1rem] whitespace-nowrap px-[1rem] hover:bg-ais-new-dark-blue hover:text-ais-new-beige"
+          >
+            Learn more
+          </button>
+        </Link>
+      </div>
+    }
     </div>
   );
 }

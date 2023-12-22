@@ -50,7 +50,7 @@ export default function SiteHeader() {
   };
 
   return (
-    <div className="fixed z-20 backdrop-blur-sm">
+    <div className="fixed z-20 backdrop-blur-sm z-40">
       <AppbarBG transparencyThreshold="0.1" className=""/>
       <nav className="bg-none w-[100vw] h-[5rem] grid grid-cols-2 place-items-center md:grid-cols-3 2xl:grid-cols-4">
         <div onClick={() => {handleItemClick('/')}} className="flex gap-4 items-center [cursor:pointer]">

@@ -1,19 +1,14 @@
-/*import Head from 'next/head';
-import Link from 'next/link';
-import Search from '@mui/icons-material/Search';
-import EventItem from '../../components/events/EventItem';
-import FeatureEvent from '../../components/events/FeatureEvent';
+import Head from 'next/head';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { Event } from '../../lib/types';
+import { useTransition, animated } from '@react-spring/web';
+import FeatureEvent from '../../components/events/FeatureEvent';
 import { getAllEvents } from '../api/events';
-import { GetServerSideProps } from 'next';
 
 interface EventsPageProps {
   events: Event[];
 }
 
-/**
- * A page that shows a searchable list of past events.
- /
 export default function EventsPage({ events }: EventsPageProps) {
   const futureEvents: Event[] = [];
   const onGoingEvents: Event[] = [];
@@ -31,8 +26,8 @@ export default function EventsPage({ events }: EventsPageProps) {
 
   const pastEventCards = pastEvents.map((event) => {
     return (
-      <div key={event.id} className="">
-        <FeatureEvent key={event.id} event={event} />
+      <div key={event.id} className="my-4">
+        <FeatureEvent key={event.id} event={event} onGoing={false}/>
       </div>
     );
   });
@@ -62,15 +57,25 @@ export default function EventsPage({ events }: EventsPageProps) {
   }
 
   let upComingEventDiv;
-  if (futureEvents.length == 0) {
-    upComingEventDiv = <div>No upcoming events as of yet, Please check back again!</div>;
-  } else {
     upComingEventDiv = (
-      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 items-start">
-        {futureEventCards.reverse()}
+      <div>
+        <div className="text-center font-bold h-full p-10 rounded-3xl border-r-8 border-b-8 border-t-2 border-l-2 border-ais-new-light-blue m-auto mt-auto">
+          <p className="text-4xl font-bold text-slate-700 text-center justify-center content-center my-28">
+            Coming Soon
+          </p>
+          {futureEventCards[0]}
+        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 items-start">
+          <div className="flex mt-5">
+            <EventsButton title="View All"/>
+            <EventsButton title="Workshops"/>
+            <EventsButton title="Socials"/>
+            <EventsButton title="Others"/>
+          </div>
+          {futureEventCards.reverse()}
+        </div>
       </div>
     );
-  }
 
   let onGoingEventDiv;
   if (onGoingEvents.length != 0) {
@@ -84,103 +89,6 @@ export default function EventsPage({ events }: EventsPageProps) {
     );
   }
 
-  return (
-    <div>
-      <Head>
-        <title>Events &ndash; AIS</title>
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <meta
-          name="description"
-          content=" We host workshops, seminars, and social events to help students learn about artificial
-          intelligence. Take a look at our past, on-going or future events. "
-        />
-      </Head>
-      <main className="min-h-screen bg-ais-light-gray">
-        <section className="py-8 bg-ais-blue-gray">
-          {/* Hero /}
-          <div className="mx-auto max-w-sm sm:max-w-md md:max-wgetStaticProps-lg lg:max-w-2xl xl:max-w-4xl 2xl:max-w-6xl py-8 px-2">
-            <div className="mt-2 mb-8 text-5xl font-bold">Events</div>
-            <div className="text-xl">
-              We host workshops, seminars, and social events to help students learn about artificial
-              intelligence.
-            </div>
-            <div className="text-xl">See upcoming events and look through event archives here.</div>
-            {/* TODO: SEARCH
-          
-          <div className="flex rounded-md shadow-md bg-white">
-            <input
-              className="inline-block flex-1 p-4 rounded-l-md focus:outline-none"
-              type="search"
-              name="search"
-              placeholder="Search for an event"
-            />
-            <button className="inline-block mr-4 my-4">
-              <Search />
-            </button>
-          </div> /}
-          </div>
-        </section>
-        {onGoingEventDiv}
-        <section className="bg-ais-light-gray py-8 px-2">
-          <div className="mx-auto max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-4xl 2xl:max-w-6xl py-2">
-            <div className="text-3xl font-bold mb-4">Upcoming Events</div>
-            {upComingEventDiv}
-          </div>
-        </section>
-        <section className="bg-ais-light-gray py-8 px-2">
-          <div className="mx-auto max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-4xl 2xl:max-w-6xl py-2">
-            <div className="text-3xl font-bold mb-4">Event Archive</div>
-            {pastEventsDiv}
-          </div>
-        </section>
-      </main>
-    </div>
-  );
-}
-
-/**
- * Fetch event information for the EventsPage.
- /
-export async function getServerSideProps() {
-  const allEvents = await getAllEvents();
-  //   [
-  //   'title',
-  //   'date',
-  //   'slug',
-  //   'author',
-  //   'coverImage',
-  //   'excerpt',
-  // ]
-
-  return {
-    props: {
-      events: allEvents,
-    },
-  };
-}*/
-
-import { GetStaticProps } from 'next';
-import Head from 'next/head';
-import React, { useState, useCallback, useRef, useEffect } from 'react';
-import { getDemos } from '../api/projects';
-import { ProjectDemo } from '../../lib/types';
-import { transform } from 'typescript';
-import { useTransition, animated } from '@react-spring/web';
-import styles from '../../style/projects.module.css';
-import { AlignHorizontalCenterOutlined } from '@mui/icons-material';
-
-const fast = { tension: 1200, friction: 40 };
-const slow = { mass: 10, tension: 200, friction: 50 };
-const trans = (x: number, y: number) => `translate3d(${x}px, ${y}px, 0) translate3d(-50%, -50%, 0)`;
-
-interface DemoPageProps {
-  demos: ProjectDemo[]; 
-}
-
-/**
- * A list of demoable projects.
- */
-export default function EventsPage({ demos }: DemoPageProps) {
   const ref = useRef<ReturnType<typeof setTimeout>[]>([]);
   const [items, set] = useState<string[]>([]);
   const transitions = useTransition(items, {
@@ -220,54 +128,58 @@ export default function EventsPage({ demos }: DemoPageProps) {
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta
           name="description"
-          content="An overview of all our events"
+          content="An overview of all our AI/ML projects, including explanations and interactive demos."
         />
       </Head>
-
-      {/*reacg-spring gooey effect */}
-      <main className="flex flex-col justify-center min-h-screen bg-gradient-to-r from-blue-100 to-blue-50">
-        <div className="text-center font-bold w-9/12 h-full p-10 rounded-3xl shadow-lg shadow-slate-500 m-auto mt-auto">
-          <p className="text-4xl font-bold text-slate-700 sm:visible lg:invisible text-center justify-center content-center sm:pt-9 mt-[100px]">
-            Coming Soon
-          </p>
+      <main className="flex flex-col justify-center min-h-screen bg-ais-new-beige">
+        {onGoingEventDiv}
+        <section className="py-8 px-2 mt-10">
+          <div className="relative mx-auto max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-4xl 2xl:max-w-6xl py-2">
           <img
-            src="images/RoundCube-Blue-Glossy.png"
-            className="w-30 float-right translate-x-20 translate-y-20 opacity-80 invisible lg:visible"
-          />
-          <img
-            src="images/SuperToroid-2.png"
-            className="w-30 float-left -translate-x-3/4 -translate-y-12 opacity-90 invisible lg:visible"
-          />
-          <div className={(styles.container, 'sm:invisible')}>
-            <div className={(styles.main, 'sm:invisble')}>
-              {transitions(({ innerHeight, ...rest }, item) => (
-                <animated.div
-                  className={
-                    (styles.transitionsItem,
-                    'flex flex-col justify-center items-center text-5xl invisible lg:visible sm:invisible')
-                  }
-                  style={rest}
-                  onClick={reset}
-                >
-                  <animated.div style={{ overflow: 'hidden', height: innerHeight }}>
-                    {item}
-                  </animated.div>
-                </animated.div>
-              ))}
+              src="decoration2.png"
+              className="mb-10"
+            />
+            {upComingEventDiv}
+            <img
+              src="decoration1.png"
+              className="absolute right-0 w-30 translate-x-20 -translate-y-20 opacity-80 invisible lg:visible"
+            />
+          </div>
+        </section>
+        <section className="py-8 px-2">
+          <div className="mx-auto max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-4xl 2xl:max-w-6xl py-2">
+            <img
+              src="decoration3.png"
+              className="mb-10"
+            />
+            {pastEventsDiv}
+            <div className="items-end py-4 w-full">
+              <img src="viewall-btn.png" className='ml-auto'></img>
             </div>
           </div>
-        </div>
+        </section>
       </main>
     </div>
   );
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-  const demos = getDemos();
+export async function getServerSideProps() {
+  const allEvents = await getAllEvents();
 
   return {
     props: {
-      demos,
+      events: allEvents,
     },
   };
-};
+}
+
+function EventsButton(props)
+{
+  return(
+    <button
+      className="h-[2rem] w-32 border-[2px] text-sm text-ais-new-dark-blue border-ais-new-dark-blue rounded-[1rem] whitespace-nowrap px-[1rem] hover:bg-ais-new-dark-blue hover:text-ais-new-beige ml-2"
+    >
+      {props.title}
+    </button>
+  );
+}
