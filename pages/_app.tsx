@@ -3,7 +3,7 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import React from 'react';
 import 'tailwindcss/tailwind.css';
-import localFont from '@next/font/local';
+import localFont from "@next/font/local";
 import SiteLayout from '../components/common/SiteLayout';
 
 const roboto = localFont({

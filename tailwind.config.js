@@ -13,9 +13,11 @@ module.exports = {
           'dark-gray': '#444444',
           'indigo': '#24314D',
           'hover-indigo': '#374b75',
+          'blue': '#3E6EFF',
           white: '#fafafa',
           navy: '#202042',
           gray: '#B8B8B8',
+          
         },
         'ais-new': {
           'darker-blue': '#293039',

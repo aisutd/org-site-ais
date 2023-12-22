@@ -29,7 +29,7 @@ function officerImage(officer: Officer) {
     return (
       //<animated.div className="flex justify-center h-52" style={isPresident ? animatedProps : noStyle}>
       <div className="flex justify-center h-52 w-full">
-        <img src={officer.image} className="rounded-full p-4 h-52 w-52 object-cover" />
+        <img src={officer.image} className="rounded-full p-4 h-52 w-52 object-cover"/>
       </div>
       //</animated.div>
     );
