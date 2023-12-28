@@ -33,7 +33,7 @@ export default function TeamPage({ officers }: TeamPageProps) {
   const hrTeam: Officer[] = [];
   const [value, setValue] = React.useState('All Members');
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-  setValue(newValue);
+    setValue(newValue);
   };
 
   for (const off of officers) {
@@ -57,42 +57,27 @@ export default function TeamPage({ officers }: TeamPageProps) {
           content="The officers of the Artificial Intelligence Society - the people who make this all possible."
         />
       </Head>
-      <main className="min-h-screen bg-ais-light-gray">
-      <Box marginTop={spacing} sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}>
-          <Box textAlign="center" sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            backgroundImage: 'url("top.png")',
-            backgroundSize: "cover",
-            width: "1440px",
-            height: "350px"
-          }}>
-            <Box>
-              <Typography marginBottom="1rem" color="white" textTransform="uppercase" 
-                          fontFamily="Avenir" fontSize="2rem" fontWeight="800" >
-                MEET THE TEAM
-              </Typography>
-              <Typography color="white" fontFamily="Vollkorn" fontSize="1.3rem" >
-                Meet everyone that helps run the Artificial Intelligence Society at UT Dallas 
-              </Typography>
-            </Box>
-          </Box>
-        </Box>
-      {/* <picture>
-        <source media="(min-width: 1200px)" srcSet="/hero.png" />
-        <img src="placeholder.png" alt=""/>
-      </picture> */}
-          <div className="mx-auto max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-4xl 2xl:max-w-6xl py-10 md:py-20 ">
-          </div>
+      <main className="min-h-screen bg-ais-new-beige">
+        <div className="mx-auto max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-4xl 2xl:max-w-6xl py-10 md:py-20 ">
+        </div>
         <section id="officers">
-          <div className="flex flex-grow flex-wrap -mt-10 mx-20 pb-8 gap-8 justify-around">
+          <div className="text-7xl font-bold text-ais-new-med-blue mb-4 p-4 text-center">
+            MEET THE TEAM
+          </div>
+          <div className="flex flex-grow flex-wrap -mt-10 pt-10 pb-8 gap-8 justify-around relative">
+            {/* absolutes */}
+            <img
+              src="/team_blue_star.png"
+              alt="Blue star"
+              className="absolute bottom-10 -right-20 h-80 w-80"
+            />
+            <img
+              src="/team_yellow_star.png"
+              alt="Yellow star"
+              className="absolute top-40 -left-20 h-60 w-60"
+            />
             <TabContext value={value}>
-              <Tabs value={value} onChange={handleChange} defaultValue={"All Members"} aria-label="teams" scrollButtons={true} centered>
+              <Tabs value={value} onChange={handleChange} defaultValue={"All Members"} aria-label="teams" scrollButtons={true} style={{ backgroundColor: 'orange' }} centered className="w-full">
                 <Tab value="All Members" label="All" />
                 <Tab value="Executive Members" label="Executive" />
                 <Tab value="Membership Members" label="Membership" />
@@ -102,15 +87,30 @@ export default function TeamPage({ officers }: TeamPageProps) {
                 <Tab value="Marketing Members" label="Marketing" />
                 <Tab value="Industry Members" label="Industry" />
                 <Tab value="AIM Members" label="AIM" />
-              </Tabs> 
+              </Tabs>
               <TabPanel value="All Members">
+                <div className="team-header text-center text-2xl font-bold text-ais-dark-blue">Executive Team</div>
                 <TeamItem officers={execTeam} team={'Executive'} />
+
+                <div className="team-header text-center text-2xl font-bold text-ais-dark-blue mt-40">Membership Team</div>
                 <TeamItem officers={hrTeam} team={'Membership'} />
+
+                <div className="team-header text-center text-2xl font-bold text-ais-dark-blue mt-40">Operations Team</div>
                 <TeamItem officers={operationsTeam} team={'Operations'} />
+
+                <div className="team-header text-center text-2xl font-bold text-ais-dark-blue mt-40">Finance Team</div>
                 <TeamItem officers={financeTeam} team={'Finance'} />
+
+                <div className="team-header text-center text-2xl font-bold text-ais-dark-blue mt-40">Technology Team</div>
                 <TeamItem officers={techTeam} team={'Technology'} />
+
+                <div className="team-header text-center text-2xl font-bold text-ais-dark-blue mt-40">Marketing Team</div>
                 <TeamItem officers={marketingTeam} team={'Marketing'} />
+
+                <div className="team-header text-center text-2xl font-bold text-ais-dark-blue mt-40">Industry Team</div>
                 <TeamItem officers={industryTeam} team={'Industry'} />
+
+                <div className="team-header text-center text-2xl font-bold text-ais-dark-blue mt-40">AIM Team</div>
                 <TeamItem officers={aimTeam} team={'AIM'} />
               </TabPanel>
               <TabPanel value="Executive Members">
@@ -136,7 +136,7 @@ export default function TeamPage({ officers }: TeamPageProps) {
               </TabPanel>
               <TabPanel value="AIM Members">
                 <TeamItem officers={aimTeam} team={'AIM'} />
-              </TabPanel> 
+              </TabPanel>
             </TabContext>
           </div>
         </section>
@@ -157,7 +157,7 @@ export async function getStaticProps() {
   // ]
 
   return {
-    props: {      
+    props: {
       officers: allOfficers,
     },
   };

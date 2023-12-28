@@ -11,12 +11,16 @@ import SlideInDescription from '../components/homepage/SlideInDescription';
 import AnimatedJoinBtn from '../components/homepage/AnimatedJoinBtn';
 import WhoWeAre from '../components/homepage/WhoWeAre';
 import WhatIsHappening from '../components/homepage/WhatIsHappening';
+import PastEvent from '../components/homepage/PastEvent';
 import Events from '../components/homepage/Events';
 import Subscribe from '../components/join/Subscribe';
 import KickoffModal from '../components/events/KickoffModal';
 import { JavascriptRounded } from '@mui/icons-material';
 import Partners from '../components/homepage/Sponsors';
 import JoinUs from '../components/homepage/JoinUs';
+import Summary from '../components/homepage/Summary';
+import SplitContent from '../components/homepage/SplitContent';
+
 /**
  * The root page for the organization website.
  *
@@ -35,56 +39,57 @@ export default function HomePage() {
           content="Welcome to the Artificial Intelligence Society at UTD. We make AI understandable and accessible to everyone"
         />
       </Head>
-      <main className="min-h-screen bg-ais-new-beige text-hind subpixel-antialiased overflow-x-hidden">
-        <section id="intro" className="bg-[url('/bg_rec.svg')] bg-no-repeat bg-cover h-[24rem] w-full mb-10 lg:mb-20 sm:h-[34rem] sm:flex xl:h-[40rem]">
-          <div className="grid w-full self-center lg:grid-cols-2 lg:pb-20 2xl:grid-cols-3">
-            <div className="text-center 2xl:col-span-2">
-              <div className="font-[1000] sm:flex sm:justify-center">
-                <div className="text-ais-navy text-5xl mt-5 p-2">
-                  we are the
-                </div>
-                <div className="text-black text-7xl p-2">
-                  <SlideInAIS duration="300"/>
-                </div>
-              </div>
-              <div className="text-ais-dark-gray font-cairo text-2xl font-thin py-10 px-10 hidden sm:block lg:text-xl xl:text-2xl 2xl:mx-20">
-                <SlideInDescription duration="400" delay="900"/>
-              </div>
-              <div className="pt-16 sm:pt-10">
-                <AnimatedJoinBtn duration="500" delay="1300"/>
-              </div>
+      <main className="min-h-screen bg-ais-white text-hind subpixel-antialiased overflow-x-hidden">
+        <section id="intro" className="bg-ais-white h-[24rem] w-full mb-10 lg:mb-10 sm:flex xl:h-[40rem] relative">
+          <div className="flex flex-col h-full justify-center items-start text-center">
+            <img
+              src="/home_string.png"
+              alt="Home string"
+              className="absolute top-40 left-0 h-80 w-80"
+            />
+            <div className="flex items-center text-ais-blue text-6xl sm:text-7xl lg:text-8xl font-semibold mb-8 pl-48">
+              <span>
+                STEP INTO
+              </span>
+              <img src='/home_arrow.png' alt="Step into arrow" className="mx-2 h-8 w-8" />
+            </div>
+            <div className="text-ais-blue text-6xl sm:text-7xl lg:text-8xl font-semibold mb-8 pl-72">
+              THE WORLD OF
+            </div>
+            <div className="flex items-center pl-10 text-6xl sm:text-7xl lg:text-8xl font-semibold">
+              <span className="bg-gradient-to-r from-purple-900 to-yellow-400 text-transparent bg-clip-text">
+                ARTIFICIAL
+              </span>
+              <img src="/AIstar.png" alt="AI Star" className="mx-2 h-16 w-16" />
+              <span className="bg-gradient-to-r from-purple-900 to-yellow-400 text-transparent bg-clip-text">
+                INTELLIGENCE
+              </span>
+            </div>
+            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+              <button className="border border-ais-blue text-ais-blue bg-white px-12 py-1.5 rounded-xl text-lg font-semibold">
+                Join Us
+              </button>
             </div>
           </div>
-          <div className="absolute top-0 right-0 h-[42rem] hidden lg:block  xl:h-[49rem]">
-            <img src="ellipse.svg" className="h-full"/>
-          </div>
-          <SpringyLaptop />
         </section>
-        <section id="who-we-are" className="bg-ais-new-beige">
-          <WhoWeAre duration="400"/>
+
+        <section id="summary" className="relative">
+          <Summary />
         </section>
-        <section id="what-is-happening" className="relative bg-[url('/bg_rec.svg')] bg-no-repeat bg-cover lg:h-[44rem]">
-          <div className="relative w-full z-0 -top-8 sm:-top-10 md:-top-16 lg:-top-20 xl:-top-32 2xl:-top-40">
-            <img src="white_blob_1.svg" className="bg-no-repeat bg-cover w-full"/>
-          </div>
-          <div className="absolute top-8 w-[11%] hidden xl:block">
-            <img src="toroid.svg" className="w-full"/>
-          </div>
-          <div className="absolute bottom-20 right-0 hidden xl:block">
-            <img src="round_cube.svg" className="h-60"/>
-          </div>
-          <WhatIsHappening speed="100"/>
-          <div className="relative z-0 top-14 sm:top-16 md:top-20 lg:-top-2 xl:-top-10 2xl:-top-20">
-            <img src="white_blob_2.svg" className="w-full bg-no-repeat bg-cover"></img>
-          </div>
+        <section id="past event" className="relative">
+          <PastEvent />
         </section>
-        <section id="events" className="relative py-10">
-          <div className="bg-ais-new-beige text-center">
-            <Events speed="100"/>
-          </div>
+        <section id="split content" className="relative">
+          <SplitContent
+            topImageSrc="/Placeholder Image.png"
+            topBodyText="Lorem ipsum dolor sit amet consectetur. Morbi consectetur habitant purus lacus a mauris elementum eleifend arcu. Sem purus tristique ut praesent adipiscing."
+            bottomImageSrc="/Placeholder Image.png"
+            bottomTitle="AI MENTORSHIP"
+            bottomBodyText="Lorem ipsum dolor sit amet consectetur. Morbi consectetur habitant purus lacus a mauris elementum eleifend arcu. Sem purus tristique ut praesent adipiscing."
+          />
         </section>
         <section id="sponsors">
-          <Partners/>
+          <Partners />
         </section>
         <section id="callToAction" className="relative grid bg-ais-black h-[13rem] mt-[12rem]">
           <Paper className="absolute grid text-left rounded-3xl shadow-ais-black justify-self-center -top-[7.5rem] h-[15rem] mx-5" elevation={24}>
@@ -100,16 +105,16 @@ export default function HomePage() {
                   {Subscribe()}
                 </div>
                 <div className="text-ais-dark-gray font-semibold text-center px-10 py-1">or</div>
-                <Button variant="outlined" size="medium" style={{borderColor: "#24314D", borderRadius: "9px"}} className="grow w-[13rem] h-[3rem] hover:bg-slate-200">
+                <Button variant="outlined" size="medium" style={{ borderColor: "#24314D", borderRadius: "9px" }} className="grow w-[13rem] h-[3rem] hover:bg-slate-200">
                   <Link href="/join" className="text-ais-navy normal-case font-semibold tracking-wide">Join the Team</Link>
                 </Button>
               </div>
             </div>
           </Paper>
         </section>
-        <section>
+        {/*<section>
           <JoinUs/>
-        </section>
+        </section>*/}
       </main>
     </div>
   );
