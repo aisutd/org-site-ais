@@ -3,19 +3,9 @@ import Link from 'next/link';
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
-import SpringyLaptop from '../components/homepage/SpringyLaptop';
-import SlideInAIS from '../components/homepage/SlideInAIS';
-import SlideInDescription from '../components/homepage/SlideInDescription';
-import AnimatedJoinBtn from '../components/homepage/AnimatedJoinBtn';
-import WhoWeAre from '../components/homepage/WhoWeAre';
-import WhatIsHappening from '../components/homepage/WhatIsHappening';
 import PastEvent from '../components/homepage/PastEvent';
-import Events from '../components/homepage/Events';
 import Subscribe from '../components/join/Subscribe';
-import KickoffModal from '../components/events/KickoffModal';
-import { JavascriptRounded } from '@mui/icons-material';
 import Partners from '../components/homepage/Sponsors';
 import JoinUs from '../components/homepage/JoinUs';
 import Summary from '../components/homepage/Summary';
@@ -39,8 +29,8 @@ export default function HomePage() {
           content="Welcome to the Artificial Intelligence Society at UTD. We make AI understandable and accessible to everyone"
         />
       </Head>
-      <main className="min-h-screen bg-ais-white text-hind subpixel-antialiased overflow-x-hidden">
-        <section id="intro" className="bg-ais-white h-[24rem] w-full mb-10 lg:mb-10 sm:flex xl:h-[40rem] relative">
+      <main className="min-h-screen bg-ais-new-beige text-hind subpixel-antialiased overflow-x-hidden">
+        <section id="intro" className="bg-ais-new-beige h-[24rem] w-full mb-10 lg:mb-10 sm:flex xl:h-[40rem] relative">
           <div className="flex flex-col h-full justify-center items-start text-center">
             <img
               src="/home_string.png"
@@ -72,7 +62,6 @@ export default function HomePage() {
             </div>
           </div>
         </section>
-
         <section id="summary" className="relative">
           <Summary />
         </section>
@@ -88,33 +77,9 @@ export default function HomePage() {
             bottomBodyText="Lorem ipsum dolor sit amet consectetur. Morbi consectetur habitant purus lacus a mauris elementum eleifend arcu. Sem purus tristique ut praesent adipiscing."
           />
         </section>
-        <section id="sponsors">
-          <Partners />
-        </section>
-        <section id="callToAction" className="relative grid bg-ais-black h-[13rem] mt-[12rem]">
-          <Paper className="absolute grid text-left rounded-3xl shadow-ais-black justify-self-center -top-[7.5rem] h-[15rem] mx-5" elevation={24}>
-            <div className="justify-self-center self-center gap-16 px-16 lg:flex">
-              <div className="max-w-[22rem] text-center md:text-left">
-                <div className="text-ais-navy text-3xl font-bold pb-5 lg:pb-2">Want to get involved?</div>
-                <div className="text-ais-dark-gray text-lg hidden xl:block">
-                  Join our mailing list to get email reminders about our upcoming events.
-                </div>
-              </div>
-              <div className="grid grow items-center justify-center md:flex lg:justify-self-right">
-                <div>
-                  {Subscribe()}
-                </div>
-                <div className="text-ais-dark-gray font-semibold text-center px-10 py-1">or</div>
-                <Button variant="outlined" size="medium" style={{ borderColor: "#24314D", borderRadius: "9px" }} className="grow w-[13rem] h-[3rem] hover:bg-slate-200">
-                  <Link href="/join" className="text-ais-navy normal-case font-semibold tracking-wide">Join the Team</Link>
-                </Button>
-              </div>
-            </div>
-          </Paper>
-        </section>
-        {/*<section>
+        <section>
           <JoinUs/>
-        </section>*/}
+        </section>
       </main>
     </div>
   );

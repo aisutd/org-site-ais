@@ -14,7 +14,7 @@ module.exports = {
           'indigo': '#24314D',
           'hover-indigo': '#374b75',
           'blue': '#3E6EFF',
-          white: '#fafafa',
+          white: '#FFFFFF',
           navy: '#202042',
           gray: '#B8B8B8',
           

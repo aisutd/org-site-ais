@@ -41,11 +41,11 @@ export default function EventsPage({ events }: EventsPageProps) {
     return <FeatureEvent key={event.id} event={event} onGoing={true}/>;
   });
 
-  /** 
+  
   const onGoingEventCards = onGoingEvents.map((event) => {
     return <FeatureEvent key={event.id} event={event} onGoing={true} />;
   });
-  */
+  
 
   let pastEventsDiv;
   if (pastEvents.length == 0) {
@@ -75,7 +75,7 @@ export default function EventsPage({ events }: EventsPageProps) {
       </div>
     );
 
-  /** 
+  
   let onGoingEventDiv;
   if (onGoingEvents.length != 0) {
     onGoingEventDiv = (
@@ -87,7 +87,7 @@ export default function EventsPage({ events }: EventsPageProps) {
       </section>
     );
   }
-  */
+  
 
   const ref = useRef<ReturnType<typeof setTimeout>[]>([]);
   const [items, set] = useState<string[]>([]);
@@ -116,6 +116,9 @@ export default function EventsPage({ events }: EventsPageProps) {
         />
       </Head>
       <main className="flex flex-col justify-center min-h-screen bg-ais-new-beige">
+        <section>
+        {onGoingEventDiv}
+        </section>
         <section className="py-8 px-2 mt-10">
           <div className="relative mx-auto max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-4xl 2xl:max-w-6xl py-2">
           <img
