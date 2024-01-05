@@ -21,6 +21,7 @@ export default function EventsPage({ events }: EventsPageProps) {
     const startTime = new Date(eachEvent.startDate);
     const endTime = new Date(eachEvent.endDate);
     const timeNow = new Date();
+    console.log(timeNow);
     if (endTime < timeNow) pastEvents.push(eachEvent);
     else if (timeNow < startTime) futureEvents.push(eachEvent);
     else onGoingEvents.push(eachEvent);
@@ -71,7 +72,7 @@ export default function EventsPage({ events }: EventsPageProps) {
   let upComingEventDiv;
     upComingEventDiv = (
       <div>
-        {futureEventCards[0]}
+        {<FeatureEvent key={pastEvents[0].id} event={pastEvents[0]} onGoing={true}/>}
       </div>
     );
 
@@ -118,6 +119,8 @@ export default function EventsPage({ events }: EventsPageProps) {
       <main className="flex flex-col justify-center min-h-screen bg-ais-new-beige">
         <section>
         {onGoingEventDiv}
+        {futureEventCards}
+        {onGoingEventCards}
         </section>
         <section className="py-8 px-2 mt-10">
           <div className="relative mx-auto max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-4xl 2xl:max-w-6xl py-2">
