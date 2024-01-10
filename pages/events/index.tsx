@@ -15,24 +15,25 @@ export default function EventsPage({ events }: EventsPageProps) {
   const pastEvents: Event[] = [];
   const pastEventsCols = [[], [], []];
   const [viewAllPastEvents, setViewAllPastEvents] = useState(false);
-
+  const [activeCategory, setActiveCategory] = useState<string>('All');
 
   events.forEach(function (eachEvent) {
     const startTime = new Date(eachEvent.startDate);
     const endTime = new Date(eachEvent.endDate);
     const timeNow = new Date();
-    console.log(timeNow);
     if (endTime < timeNow) pastEvents.push(eachEvent);
     else if (timeNow < startTime) futureEvents.push(eachEvent);
     else onGoingEvents.push(eachEvent);
   });
 
   const pastEventCards = pastEvents.map((event) => {
-    return (
-      <div key={event.id} className="my-4">
-        <FeatureEvent key={event.id} event={event} onGoing={false}/>
-      </div>
-    );
+    if (event.eventType === activeCategory || activeCategory == 'All') {
+      return (
+        <div key={event.id} className="my-4">
+          <FeatureEvent key={event.id} event={event} onGoing={false}/>
+        </div>
+      );
+      }
   });
 
   for (let i = 0; i < pastEventCards.length; i++) {
@@ -72,7 +73,7 @@ export default function EventsPage({ events }: EventsPageProps) {
   let upComingEventDiv;
     upComingEventDiv = (
       <div>
-        {<FeatureEvent key={pastEvents[0].id} event={pastEvents[0]} onGoing={true}/>}
+        {futureEventCards[0]}
       </div>
     );
 
@@ -88,7 +89,6 @@ export default function EventsPage({ events }: EventsPageProps) {
       </section>
     );
   }
-  
 
   const ref = useRef<ReturnType<typeof setTimeout>[]>([]);
   const [items, set] = useState<string[]>([]);
@@ -117,11 +117,6 @@ export default function EventsPage({ events }: EventsPageProps) {
         />
       </Head>
       <main className="flex flex-col justify-center min-h-screen bg-ais-new-beige">
-        <section>
-        {onGoingEventDiv}
-        {futureEventCards}
-        {onGoingEventCards}
-        </section>
         <section className="py-8 px-2 mt-10">
           <div className="relative mx-auto max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-4xl 2xl:max-w-6xl py-2">
           <img
@@ -142,10 +137,18 @@ export default function EventsPage({ events }: EventsPageProps) {
               className="mb-10"
             />
             <div className="flex my-5 ml-4">
-              <EventsButton title="View All"/>
-              <EventsButton title="Workshops"/>
-              <EventsButton title="Socials"/>
-              <EventsButton title="Others"/>
+              <div onClick={() => setActiveCategory('All')}>
+                <EventsButton title="View All"/>
+              </div>
+              <div onClick={() => setActiveCategory('Workshop')}>
+                <EventsButton title="Workshops"/>
+              </div>
+              <div onClick={() => setActiveCategory('Social')}>
+                <EventsButton title="Socials"/>
+              </div>
+              <div>
+                <EventsButton title="Others" onClick={() => setActiveCategory('Other')}/>
+              </div>
             </div>
             {pastEventsDiv}
             <div className="items-end py-4 w-full" onClick={() => (viewAllPastEvents ? setViewAllPastEvents(false) : setViewAllPastEvents(true))} >
