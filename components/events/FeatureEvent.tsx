@@ -14,7 +14,7 @@ interface EventItemProps {
  * An item that displays event details
  */
 export default function FeatureEvent({ event, onGoing }: EventItemProps) {
-  const { id, title, description, eventType, startDate, endDate, location, joinLink, rsvpLink } = event;
+  const { id, title, description, eventType, startDate, endDate, location, joinLink, rsvpLink, image} = event;
   const eventLink = `/events/${event.id}`;
   const eventTime = Moment(new Date(startDate)).format('MMM D, YYYY');
   const eventDay = Moment(new Date(startDate)).format('D');
@@ -64,7 +64,7 @@ export default function FeatureEvent({ event, onGoing }: EventItemProps) {
       
       {onGoing ? 
       <div className="flex justify-center items-center text-ais-dark-blue text-sm gap-4 font-bold relative">
-        <div className="bg-slate-300 w-8/12 h-96 rounded-2xl relative">
+        <div style={{backgroundImage: `url(${image})`}} className="w-8/12 h-96 rounded-2xl relative">
           <div className="bg-slate-100 w-3/12 h-36 rounded-tl-3xl ml-auto text-center absolute bottom-0 right-0">
           <div className="mt-11 text-4xl">{eventDay}</div>
             <div className="text-xl">{eventMonth.toUpperCase()}</div>
@@ -72,7 +72,7 @@ export default function FeatureEvent({ event, onGoing }: EventItemProps) {
         </div>
         <div className="h-auto w-1/2 px-8">
           <div className="font-bold text-black text-xs flex flex-wrap justify-between gap-2">
-            {eventType.toUpperCase()}
+            FEATURED
           </div>
           <div className="flex text-black text-4xl font-bold py-2">{title}</div>
           <div className="mb-2 font-bold text-ais-dark-blue text-xs flex flex-wrap justify-between gap-2">
@@ -134,12 +134,23 @@ export default function FeatureEvent({ event, onGoing }: EventItemProps) {
       </div>
       :
       <div>
-        <div className="bg-slate-300 w-full h-64 rounded-t-2xl mb-4 relative">
+
+        { image ? 
+        <div style={{backgroundImage: `url(${image})`}} className="bg-cover w-full h-64 rounded-t-2xl mb-4 relative">
           <div className="bg-slate-100 w-4/12 h-24 rounded-tl-3xl ml-auto text-center absolute bottom-0 right-0">
-          <div className="mt-6 text-2xl">{eventDay}</div>
+            <div className="mt-6 text-2xl">{eventDay}</div>
             <div className="text-sm">{eventMonth.toUpperCase()}</div>
           </div>
         </div>
+        :
+        <div className="bg-slate-300 w-full h-64 rounded-t-2xl mb-4 relative">
+          <div className="bg-slate-100 w-4/12 h-24 rounded-tl-3xl ml-auto text-center absolute bottom-0 right-0">
+            <div className="mt-6 text-2xl">{eventDay}</div>
+            <div className="text-sm">{eventMonth.toUpperCase()}</div>
+          </div>
+        </div>
+        }
+
         <div className="font-bold text-black text-xs flex flex-wrap justify-between gap-2">
           {eventType.toUpperCase()}
         </div>
