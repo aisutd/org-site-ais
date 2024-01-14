@@ -157,7 +157,7 @@ export default function FeatureEvent({ event, onGoing }: EventItemProps) {
         </div>
         <div className="flex text-2xl font-bold py-2">{title}</div>
         <div>
-          <div className="text-sm text-ais-dark-gray">{description}</div>
+          <div className="text-sm text-ais-dark-gray font-normal">{description}</div>
         </div>
         <div className="flex text-ais-dark-blue text-sm gap-4 font-bold pt-6">
         <Link href={eventLink}>
