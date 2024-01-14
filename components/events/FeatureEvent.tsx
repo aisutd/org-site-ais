@@ -143,8 +143,8 @@ export default function FeatureEvent({ event, onGoing }: EventItemProps) {
             <div className="text-sm">{eventMonth.toUpperCase()}</div>
           </div>
         </div>
-        :
-        <div className="bg-slate-200 w-full h-64 rounded-t-2xl mb-4 relative">
+        : 
+        <div className="bg-cover w-full h-64 rounded-t-2xl mb-4 relative bg-[url('/images/ais_logo_brain_events.png')]">
           <div className="bg-ais-white w-4/12 h-24 rounded-tl-3xl ml-auto text-center absolute bottom-0 right-0">
             <div className="mt-6 text-2xl">{eventDay}</div>
             <div className="text-sm">{eventMonth.toUpperCase()}</div>
