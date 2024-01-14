@@ -16,7 +16,8 @@ interface EventItemProps {
 export default function FeatureEvent({ event, onGoing }: EventItemProps) {
   const { id, title, description, eventType, startDate, endDate, location, joinLink, rsvpLink, image} = event;
   const eventLink = `/events/${event.id}`;
-  const eventTime = Moment(new Date(startDate)).format('MMM D, YYYY');
+  const eventTime = Moment(new Date(startDate)).format('HH:mm');
+  const eventTimeEnd = Moment(new Date(endDate)).format('HH:mm');
   const eventDay = Moment(new Date(startDate)).format('D');
   const eventMonth = Moment(new Date(startDate)).format('MMM');
 
@@ -65,23 +66,23 @@ export default function FeatureEvent({ event, onGoing }: EventItemProps) {
       {onGoing ? 
       <div className="flex justify-center items-center text-ais-dark-blue text-sm gap-4 font-bold relative">
         <div style={{backgroundImage: `url(${image})`}} className="w-8/12 h-96 rounded-2xl relative">
-          <div className="bg-slate-100 w-3/12 h-36 rounded-tl-3xl ml-auto text-center absolute bottom-0 right-0">
-          <div className="mt-11 text-4xl">{eventDay}</div>
-            <div className="text-xl">{eventMonth.toUpperCase()}</div>
+          <div className="bg-ais-white w-3/12 h-36 rounded-tl-3xl ml-auto text-center absolute bottom-0 right-0">
+          <div className="mt-11 text-4xl text-ais-black">{eventDay}</div>
+            <div className="text-xl text-ais-black">{eventMonth.toUpperCase()}</div>
           </div>
         </div>
-        <div className="h-auto w-1/2 px-8">
-          <div className="font-bold text-black text-xs flex flex-wrap justify-between gap-2">
+        <div className="h-auto w-1/2 pl-8 pr-16">
+          <div className="font-bold text-ais-black text-xs flex flex-wrap justify-between gap-2">
             FEATURED
           </div>
-          <div className="flex text-black text-4xl font-bold py-2">{title}</div>
+          <div className="flex text-ais-black text-4xl font-bold py-2">{title}</div>
           <div className="mb-2 font-bold text-ais-dark-blue text-xs flex flex-wrap justify-between gap-2">
             <div className="py-2 flex text-ais-new-dark-blue">
-              <div className="text-sm">{eventTime}</div>
+              <div className="text-sm">{eventTime} PM - {eventTimeEnd} PM @ {location}</div>
             </div>
           </div>
           <div>
-            <div className="text-lg text-ais-dark-gray">{description}</div>
+            <div className="text-lg text-ais-dark-gray font-normal">{description}</div>
           </div>
           <div className="flex py-2">
             <Link href={rsvpLink} className="ml-auto mr-2">
@@ -137,14 +138,14 @@ export default function FeatureEvent({ event, onGoing }: EventItemProps) {
 
         { image ? 
         <div style={{backgroundImage: `url(${image})`}} className="bg-cover w-full h-64 rounded-t-2xl mb-4 relative">
-          <div className="bg-slate-100 w-4/12 h-24 rounded-tl-3xl ml-auto text-center absolute bottom-0 right-0">
+          <div className="bg-ais-white w-4/12 h-24 rounded-tl-3xl ml-auto text-center absolute bottom-0 right-0">
             <div className="mt-6 text-2xl">{eventDay}</div>
             <div className="text-sm">{eventMonth.toUpperCase()}</div>
           </div>
         </div>
         :
-        <div className="bg-slate-300 w-full h-64 rounded-t-2xl mb-4 relative">
-          <div className="bg-slate-100 w-4/12 h-24 rounded-tl-3xl ml-auto text-center absolute bottom-0 right-0">
+        <div className="bg-slate-200 w-full h-64 rounded-t-2xl mb-4 relative">
+          <div className="bg-ais-white w-4/12 h-24 rounded-tl-3xl ml-auto text-center absolute bottom-0 right-0">
             <div className="mt-6 text-2xl">{eventDay}</div>
             <div className="text-sm">{eventMonth.toUpperCase()}</div>
           </div>

@@ -16,6 +16,12 @@ export default function EventsPage({ events }: EventsPageProps) {
   const pastEventsCols = [[], [], []];
   const [viewAllPastEvents, setViewAllPastEvents] = useState(false);
   const [activeCategory, setActiveCategory] = useState<string>('All');
+  const [buttonStyles, setButtonStyles] = useState({
+    ViewAll: true,
+    Workshops: false,
+    Socials: false,
+    Others: false,
+  });
 
   events.forEach(function (eachEvent) {
     const startTime = new Date(eachEvent.startDate);
@@ -27,7 +33,21 @@ export default function EventsPage({ events }: EventsPageProps) {
   });
 
   const pastEventCards = pastEvents.map((event) => {
-    if (event.eventType === activeCategory || activeCategory == 'All') {
+    if (activeCategory !== 'All') {
+      if (!viewAllPastEvents) {
+        setViewAllPastEvents(true);
+      }
+    }
+
+    if (activeCategory == "Other") {
+      if (event.eventType !== 'Workshop' && event.eventType !== 'Social') {
+        return (
+          <div key={event.id} className="my-4">
+            <FeatureEvent key={event.id} event={event} onGoing={false}/>
+          </div>
+        );
+        }
+    } else if (event.eventType === activeCategory || activeCategory == 'All') {
       return (
         <div key={event.id} className="my-4">
           <FeatureEvent key={event.id} event={event} onGoing={false}/>
@@ -36,9 +56,6 @@ export default function EventsPage({ events }: EventsPageProps) {
       }
   });
 
-  for (let i = 0; i < pastEventCards.length; i++) {
-    pastEventsCols[i % 3].push(pastEventCards[i]);
-  }
   const futureEventCards = futureEvents.map((event) => {
     return <FeatureEvent key={event.id} event={event} onGoing={true}/>;
   });
@@ -47,7 +64,10 @@ export default function EventsPage({ events }: EventsPageProps) {
   const onGoingEventCards = onGoingEvents.map((event) => {
     return <FeatureEvent key={event.id} event={event} onGoing={true} />;
   });
-  
+
+  for (let i = 0; i < pastEventCards.length; i++) {
+    pastEventsCols[i % 3].push(pastEventCards[i]);
+  }
 
   let pastEventsDiv;
   if (pastEvents.length == 0) {
@@ -90,6 +110,17 @@ export default function EventsPage({ events }: EventsPageProps) {
     );
   }
 
+  const eventTypeButtonStyles = (category: string) => {
+    setViewAllPastEvents(false);
+    setActiveCategory(category);
+    setButtonStyles({
+      ViewAll: category === 'All',
+      Workshops: category === 'Workshop',
+      Socials: category === 'Social',
+      Others: category === 'Other',
+    });
+  };
+
   const ref = useRef<ReturnType<typeof setTimeout>[]>([]);
   const [items, set] = useState<string[]>([]);
 
@@ -106,6 +137,7 @@ export default function EventsPage({ events }: EventsPageProps) {
     reset();
     return () => ref.current.forEach(clearTimeout);
   }, []);
+
   return (
     <div>
       <Head>
@@ -137,17 +169,17 @@ export default function EventsPage({ events }: EventsPageProps) {
               className="mb-10"
             />
             <div className="flex my-5 ml-4">
-              <div onClick={() => setActiveCategory('All')}>
-                <EventsButton title="View All"/>
+              <div onClick={() => eventTypeButtonStyles('All')}>
+                <EventsButton title="View All" active={buttonStyles.ViewAll} />
               </div>
-              <div onClick={() => setActiveCategory('Workshop')}>
-                <EventsButton title="Workshops"/>
+              <div onClick={() => eventTypeButtonStyles('Workshop')}>
+                <EventsButton title="Workshops" active={buttonStyles.Workshops} />
               </div>
-              <div onClick={() => setActiveCategory('Social')}>
-                <EventsButton title="Socials"/>
+              <div onClick={() => eventTypeButtonStyles('Social')}>
+                <EventsButton title="Socials" active={buttonStyles.Socials} />
               </div>
-              <div>
-                <EventsButton title="Others" onClick={() => setActiveCategory('Other')}/>
+              <div onClick={() => eventTypeButtonStyles('Other')}>
+                <EventsButton title="Others" active={buttonStyles.Others} />
               </div>
             </div>
             {pastEventsDiv}
@@ -171,11 +203,12 @@ export async function getServerSideProps() {
   };
 }
 
-function EventsButton(props)
-{
-  return(
+function EventsButton(props) {
+  return (
     <button
-      className="py-1 px-4 border-[2px] text-sm text-ais-new-dark-blue border-ais-new-dark-blue rounded-[1rem] whitespace-nowrap hover:bg-ais-new-dark-blue hover:text-ais-new-beige ml-2"
+      className={`py-1 px-4 border-[2px] text-sm text-ais-new-dark-blue border-ais-new-dark-blue rounded-[1rem] whitespace-nowrap hover:bg-ais-new-dark-blue hover:text-ais-new-beige ml-2 ${
+        props.active ? 'bg-ais-new-dark-blue text-ais-new-beige' : ''
+      }`}
     >
       {props.title}
     </button>
