@@ -27,6 +27,21 @@ export default function SiteHeader() {
   const {theme, setTheme} = useTheme();
   const open = Boolean(anchorEl);
   const router = useRouter();
+  const [buttonStyles, setButtonStyles] = useState({
+    Events: false,
+    AboutUs: false,
+    OurTeam: false,
+    JoinUs: false,
+  });
+
+  const headerButtonStyles = (category: string) => {
+    setButtonStyles({
+      Events: category === 'Events',
+      AboutUs: category === 'AboutUs',
+      OurTeam: category === 'OurTeam',
+      JoinUs: category === 'JoinUs',
+    });
+  };
 
   function toggleDarkMode() {
     setTheme(theme === "dark" ? "light":"dark")
@@ -40,9 +55,10 @@ export default function SiteHeader() {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleItemClick = (path) => {
+  const handleItemClick = (path, title) => {
     setAnchorEl(null);
     router.push(path);
+    setButtonStyles(title);
   };
 
   const handleClose = () => {
@@ -53,16 +69,24 @@ export default function SiteHeader() {
     <div className="fixed z-20 backdrop-blur-sm z-40">
       <AppbarBG transparencyThreshold="0.1" className=""/>
       <nav className="bg-none w-[100vw] h-[5rem] grid grid-cols-2 place-items-center md:grid-cols-3 2xl:grid-cols-4">
-        <div onClick={() => {handleItemClick('/')}} className="flex gap-4 items-center [cursor:pointer]">
+        <div onClick={() => {handleItemClick('/', 'Home')}} className="flex gap-4 items-center [cursor:pointer]">
           <img src="images/ais_logo_black.png" className="h-[2rem] object-cover"/>
         </div>
         <div className="hidden 2xl:block"/>
         <div className="items-center md:col-span-2 md:flex md:gap-[1rem]">
           <div className="gap-[2rem] col-span-2 justify-self-start hidden md:flex lg:col-span-1 lg:justify-self-center text-ais-new-soft-black font-robotoMed text-[0.9rem] leading-normal">
-            <NavButton handleItemClick={handleItemClick} link="/events" title="Events"/>
-            <NavButton handleItemClick={handleItemClick} link="/about" title="About Us"/>
-            <NavButton handleItemClick={handleItemClick} link="/team" title="Our Team"/>
-            <NavButton handleItemClick={handleItemClick} link="/join" title="Join Us"/>
+            <div onClick={() => headerButtonStyles('Events')}>
+              <NavButton handleItemClick={handleItemClick} link="/events" title="Events" active={buttonStyles.Events}/>
+            </div>
+            <div onClick={() => headerButtonStyles('AboutUs')}>
+              <NavButton handleItemClick={handleItemClick} link="/about" title="About Us" active={buttonStyles.AboutUs}/>
+            </div>
+            <div onClick={() => headerButtonStyles('OurTeam')}>
+              <NavButton handleItemClick={handleItemClick} link="/team" title="Our Team" active={buttonStyles.OurTeam}/>
+            </div>  
+            <div onClick={() => headerButtonStyles('JoinUs')}>
+              <NavButton handleItemClick={handleItemClick} link="/join" title="Join Us" active={buttonStyles.JoinUs}/>
+            </div> 
           </div>
           <div className="flex md:hidden">
             <Button
@@ -83,10 +107,10 @@ export default function SiteHeader() {
                 'aria-labelledby': 'basic-button'
               }}
             >
-                <MenuItem onClick={() => {handleItemClick('/events')}}>Events</MenuItem>
-                <MenuItem onClick={() => {handleItemClick('/about')}}>About Us</MenuItem>
-                <MenuItem onClick={() => {handleItemClick('/team')}}>Our Team</MenuItem>
-                <MenuItem onClick={() => {handleItemClick('/join')}}>Join Us</MenuItem>
+                <MenuItem onClick={() => {handleItemClick('/events', 'Events')}}>Events</MenuItem>
+                <MenuItem onClick={() => {handleItemClick('/about', 'AboutUs')}}>About Us</MenuItem>
+                <MenuItem onClick={() => {handleItemClick('/team', 'OurTeam')}}>Our Team</MenuItem>
+                <MenuItem onClick={() => {handleItemClick('/join', 'JoinUs')}}>Join Us</MenuItem>
             
             </Menu>
           </div>
@@ -146,9 +170,10 @@ function NavButton(props)
     <>
       <button
         onClick={() => props.handleItemClick(props.link)}
-        className="
+        className={`
           h-[2rem] w-[6.5rem] border-[2px] border-ais-new-med-blue rounded-[1rem]
-          hover:bg-ais-new-med-blue hover:text-ais-new-beige"
+          ${props.active ? 'bg-ais-new-med-blue text-ais-new-beige' : 'hover:bg-ais-new-med-blue hover:text-ais-new-beige'}
+        `}
       >
         {props.title}
       </button>
