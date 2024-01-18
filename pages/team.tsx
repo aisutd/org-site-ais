@@ -27,7 +27,6 @@ export default function TeamPage({ officers }: TeamPageProps) {
   const industryTeam: Officer[] = [];
   const marketingTeam: Officer[] = [];
   const operationsTeam: Officer[] = [];
-  const outreachTeam: Officer[] = [];
   const aimTeam: Officer[] = [];
   const execTeam: Officer[] = [];
   const hrTeam: Officer[] = [];
@@ -57,7 +56,7 @@ export default function TeamPage({ officers }: TeamPageProps) {
           content="The officers of the Artificial Intelligence Society - the people who make this all possible."
         />
       </Head>
-      <main className="min-h-screen bg-ais-new-beige">
+      <main className="min-h-screen bg-ais-new-beige text-hind subpixel-antialiased overflow-x-hidden">
         <div className="mx-auto max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-4xl 2xl:max-w-6xl py-10 md:py-20 ">
         </div>
         <section id="officers">
@@ -77,7 +76,7 @@ export default function TeamPage({ officers }: TeamPageProps) {
               className="absolute top-40 -left-20 h-60 w-60"
             />
             <TabContext value={value}>
-              <Tabs value={value} onChange={handleChange} defaultValue={"All Members"} aria-label="teams" scrollButtons={true} style={{ backgroundColor: 'orange' }} centered className="w-full">
+              <Tabs value={value} onChange={handleChange} defaultValue={"All Members"} aria-label="teams" scrollButtons={true} centered className="w-full bg-ais-new-orange">
                 <Tab value="All Members" label="All" />
                 <Tab value="Executive Members" label="Executive" />
                 <Tab value="Membership Members" label="Membership" />

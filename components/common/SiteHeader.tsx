@@ -66,15 +66,15 @@ export default function SiteHeader() {
   };
 
   return (
-    <div className="fixed z-20 backdrop-blur-sm z-40">
+    <div className="fixed backdrop-blur-sm z-40 w-[100%]">
       <AppbarBG transparencyThreshold="0.1" className=""/>
-      <nav className="bg-none w-[100vw] h-[5rem] grid grid-cols-2 place-items-center md:grid-cols-3 2xl:grid-cols-4">
+      <nav className="bg-none w-[100%] h-[5rem] grid grid-cols-2 place-items-center md:grid-cols-3 2xl:grid-cols-4">
         <div onClick={() => {handleItemClick('/', 'Home')}} className="flex gap-4 items-center [cursor:pointer]">
           <img src="images/ais_logo_black.png" className="h-[2rem] object-cover"/>
         </div>
         <div className="hidden 2xl:block"/>
-        <div className="items-center md:col-span-2 md:flex md:gap-[1rem]">
-          <div className="gap-[2rem] col-span-2 justify-self-start hidden md:flex lg:col-span-1 lg:justify-self-center text-ais-new-soft-black font-robotoMed text-[0.9rem] leading-normal">
+        <div className="items-center md:col-span-2 md:flex md:gap-[1rem] md:pr-[2rem]">
+          <div className="gap-[2rem] justify-self-start hidden md:flex lg:justify-self-center text-ais-new-soft-black font-robotoMed text-[0.9rem] leading-normal">
             <div onClick={() => headerButtonStyles('Events')}>
               <NavButton handleItemClick={handleItemClick} link="/events" title="Events" active={buttonStyles.Events}/>
             </div>
@@ -159,7 +159,8 @@ function AppbarBG(props)
     <>
       {/* <animated.div className="absolute bg-ais-new-beige w-[100vw] h-[5rem] -z-10"
       style={{ opacity: opac }}/> */}
-      <div className={`absolute bg-ais-new-beige opacity-80 -m-[1rem] w-[100vw] h-[6rem] -z-10`}/>
+      {/*<div className="absolute bg-ais-new-beige opacity-80 -m-[1rem] w-[100vw] h-[6rem] -z-10"/>*/}
+      <div className="absolute bg-ais-new-beige opacity-80 w-[100%] h-[5rem] -z-10"/>
     </>
   )
 }

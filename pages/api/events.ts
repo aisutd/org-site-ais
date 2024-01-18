@@ -43,7 +43,7 @@ export const getAllEvents = async (fields?: string[]): Promise<Event[]> => {
      * 4. Add the following entry: "CODA_API_KEY='{Your API key}'"
      */
 
-    const CodaAPI = new Coda(process.env.CODA_EVENTS_API_KEY);
+    const CodaAPI = new Coda(process.env.NEXT_PUBLIC_CODA_EVENTS_API_KEY);
     const doc = await CodaAPI.getDoc('luD4Jth4qA'); // Grab Event Tracking Doc from Coda API using the Doc ID at https://coda.io/developers/apis/v1
     const table = await doc.getTable('All Events'); // Grab the actual table from the doc
     const rows = await table.listRows({ useColumnNames: true, valueFormat: 'rich' }); // Grab all the event entries in the doc
