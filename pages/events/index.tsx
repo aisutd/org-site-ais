@@ -93,7 +93,11 @@ export default function EventsPage({ events }: EventsPageProps) {
   let upComingEventDiv;
     upComingEventDiv = (
       <div>
-        {futureEventCards[0]}
+        {futureEventCards.length > 0
+          ? 
+        futureEventCards[0]
+          :
+        <div className="text-ais-new-soft-black pl-[28%] xl:pl-[20%] 2xl:pl-[16%]">Coming soon!</div>}
       </div>
     );
 
@@ -168,7 +172,7 @@ export default function EventsPage({ events }: EventsPageProps) {
               src="decoration3.png"
               className="mb-10"
             />
-            <div className="flex my-5 ml-4">
+            <div className="my-5 ml-4 hidden sm:flex">
               <div onClick={() => eventTypeButtonStyles('All')}>
                 <EventsButton title="View All" active={buttonStyles.ViewAll} />
               </div>
@@ -184,7 +188,7 @@ export default function EventsPage({ events }: EventsPageProps) {
             </div>
             {pastEventsDiv}
             <div className="items-end py-4 w-full" onClick={() => (viewAllPastEvents ? setViewAllPastEvents(false) : setViewAllPastEvents(true))} >
-              <img src="viewall-btn.png" className='ml-auto'></img>
+              <img src="viewall-btn.png" className='ml-auto [cursor:pointer]'></img>
             </div>
           </div>
         </section>
