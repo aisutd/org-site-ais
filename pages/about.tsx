@@ -10,7 +10,7 @@ const spacing = 0;
 
 export const AboutPage = () => {
   return (
-    <div className="w-[100%] flex flex-col gap-[4rem] bg-ais-new-beige pt-[7rem] font-placard px-[20px] pb-[5rem]">
+    <div className="w-[100%] flex flex-col gap-[4rem] bg-ais-new-beige pt-[7rem] font-placard pb-[5rem] px-[20px]">
       <div className="relative w-[100%] pt-[4rem] z-0">
         <div className="w-[100%] [text-shadow:0px_4px_4px_#00000040] text-[#361cff] font-bold text-[96px] text-center">
           WHO WE ARE
@@ -34,9 +34,9 @@ export const AboutPage = () => {
             src="/images/firstlogo.png"
           /> 
       </div>
-      <div className="flex items-center justify-between w-full gap-[20px] xl:px-[5rem]">
+      <div className="flex items-center justify-between w-full gap-[20px] lg:px-[5%] 2xl:px-[10%]">
         <div className="flex flex-col items-start gap-[20px]">
-          <div className="relative font-bold text-[#3e6eff] text-[48px] self-center sm:self-start">
+          <div className="relative font-bold text-[#3e6eff] text-[48px] text-center self-center sm:text-left sm:self-start">
             OUR MISSION
           </div>
           <p className="font-text-1 text-[#293039]">
@@ -45,7 +45,7 @@ export const AboutPage = () => {
         </div>
         <img className="w-[258px] min-w-[258px] h-[265.2px] object-cover rounded-[10px] opacity-0 hidden sm:block" alt="Placeholder image" src="/images/placeholder.png" />
       </div>
-      <div className="flex items-center justify-between relative w-full gap-[20px] xl:gap-[5rem] xl:px-[5rem]">
+      <div className="flex items-center justify-between relative w-full gap-[20px] xl:gap-[5rem] lg:px-[5%] 2xl:px-[10%]">
         <div className="text-center text-lg w-[258px] min-w-[258px] hidden sm:block">
           <img
             className="w-[258px] h-[265.97px] object-cover rounded-[10px]"
@@ -56,7 +56,7 @@ export const AboutPage = () => {
           <p className="text-[#777777]">Founder (SE {'\''}18)</p>
         </div>
         <div className="flex flex-col items-end gap-[20px]">
-          <div className="text-[#3e6eff] text-[48px] text-right font-bold self-center sm:self-end">
+          <div className="text-[#3e6eff] text-[48px] font-bold self-center text-center sm:text-right sm:self-end">
             HOW WE STARTED
           </div>
           <p className="text-justify">

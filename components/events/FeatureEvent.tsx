@@ -4,6 +4,7 @@ import Moment from "moment";
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import { google, outlook, ics } from 'calendar-link';
 import { Menu } from '@headlessui/react';
+import { useMediaQuery } from "@mui/material";
 
 interface EventItemProps {
   event: Event;
@@ -20,6 +21,7 @@ export default function FeatureEvent({ event, onGoing }: EventItemProps) {
   const eventTimeEnd = Moment(new Date(endDate)).format('HH:mm');
   const eventDay = Moment(new Date(startDate)).format('D');
   const eventMonth = Moment(new Date(startDate)).format('MMM');
+  const mobile = useMediaQuery('(max-width:1023px)');
 
   const calEvent = {
     title: title,
@@ -62,7 +64,7 @@ export default function FeatureEvent({ event, onGoing }: EventItemProps) {
         'font-bold mx-4 h-full p-4 rounded-3xl border-r-8 border-b-8 border-t-2 border-l-2 border-ais-new-light-blue'
       }
     >
-      {onGoing && false ? 
+      {onGoing && !mobile ? 
       <div className="flex justify-center items-center text-ais-dark-blue text-sm gap-4 font-bold relative">
         <div style={ image ? {backgroundImage: `url(${image})`} : {backgroundImage: "url('/images/ais_logo_brain_events.png')"} }
           className="w-8/12 h-96 rounded-2xl relative bg-cover z-10"
@@ -79,7 +81,7 @@ export default function FeatureEvent({ event, onGoing }: EventItemProps) {
           <div className="flex text-ais-black text-4xl font-bold py-2">{title}</div>
           <div className="mb-2 font-bold text-ais-dark-blue text-xs flex flex-wrap justify-between gap-2">
             <div className="py-2 flex text-ais-new-dark-blue">
-              <div className="text-sm">{eventTime} PM - {eventTimeEnd} PM @ {location}</div>
+              <div className="text-sm">{eventTime} - {eventTimeEnd} @ {location}</div>
             </div>
           </div>
           <div>

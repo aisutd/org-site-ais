@@ -29,7 +29,7 @@ export default function EventsPage({ events }: EventsPageProps) {
     const timeNow = new Date();
     if (endTime < timeNow) pastEvents.push(eachEvent);
     else if (timeNow < startTime) futureEvents.push(eachEvent);
-    else onGoingEvents.push(eachEvent);
+    else futureEvents.push(eachEvent); {/*this could be "onGoingEvents" also in a future, more developed version of this page*/}
   });
 
   const pastEventCards = pastEvents.map((event) => {
@@ -94,20 +94,22 @@ export default function EventsPage({ events }: EventsPageProps) {
       <div>
         {futureEventCards.length > 0
           ? 
-        futureEventCards[0]
+        <>
+          <div className="text-ais-new-soft-black py-[1rem] pl-[3rem] sm:pl-[2rem]">Stay up to date with our upcoming events here and on our socials!</div>
+          {futureEventCards[0]}
+        </>
           :
-        <div className="text-ais-new-soft-black pl-[28%] xl:pl-[20%] 2xl:pl-[16%]">Coming soon!</div>}
+        <div className="text-ais-new-soft-black py-[1rem] pl-[3rem] sm:pl-[2rem]">Coming soon!</div>}
       </div>
     );
 
-  
-  let onGoingEventDiv;
-  if (onGoingEvents.length != 0) {
+  let onGoingEventDiv; //currently not used
+  if (onGoingEvents.length > 0) {
     onGoingEventDiv = (
       <section className="bg-ais-light-gray py-8">
         <div className="mx-auto max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-4xl 2xl:max-w-6xl py-2">
           <div className="text-3xl font-bold mb-4">Ongoing Events</div>
-          {onGoingEventCards}
+          {onGoingEventCards[0]}
         </div>
       </section>
     );
@@ -156,12 +158,12 @@ export default function EventsPage({ events }: EventsPageProps) {
           <div className="relative mx-auto max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-4xl 2xl:max-w-6xl py-2">
           <img
               src="decoration2.png"
-              className="mb-10"
+              className="max-w-[min(30rem,100%)]"
             />
             {upComingEventDiv}
             <img
               src="decoration1.png"
-              className="absolute right-0 w-30 translate-x-20 -translate-y-20 opacity-80 invisible lg:visible"
+              className="absolute right-0 w-30 translate-x-20 -translate-y-20 hidden lg:block"
             />
           </div>
         </section>
@@ -169,8 +171,9 @@ export default function EventsPage({ events }: EventsPageProps) {
           <div className="mx-auto max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-4xl 2xl:max-w-6xl py-2">
             <img
               src="decoration3.png"
-              className="mb-10"
+              className="max-w-[min(30rem,100%)] sm:-translate-x-[2rem]"
             />
+            <div className="text-ais-new-soft-black py-[1rem] pr-[2rem] pl-[3rem] sm:pl-[2rem]">Explore our past events and learn about their impact.</div>
             <div className="my-5 ml-4 hidden sm:flex">
               <div onClick={() => eventTypeButtonStyles('All')}>
                 <EventsButton title="View All" active={buttonStyles.ViewAll} />
@@ -186,8 +189,8 @@ export default function EventsPage({ events }: EventsPageProps) {
               </div>
             </div>
             {pastEventsDiv}
-            <div className="items-end py-4 w-full" onClick={() => (viewAllPastEvents ? setViewAllPastEvents(false) : setViewAllPastEvents(true))} >
-              <img src="viewall-btn.png" className='ml-auto [cursor:pointer]'></img>
+            <div className="py-4 w-full flex justify-center md:justify-end" onClick={() => (viewAllPastEvents ? setViewAllPastEvents(false) : setViewAllPastEvents(true))} >
+              <img src="viewall-btn.png" className='[cursor:pointer]'></img>
             </div>
           </div>
         </section>
