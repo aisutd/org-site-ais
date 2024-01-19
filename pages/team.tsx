@@ -76,7 +76,7 @@ export default function TeamPage({ officers }: TeamPageProps) {
               className="absolute top-40 -left-20 h-60 w-60"
             />
             <TabContext value={value}>
-              <Tabs value={value} onChange={handleChange} defaultValue={"All Members"} aria-label="teams" variant="scrollable" scrollButtons allowScrollButtonsMobile centered className="w-full bg-ais-new-orange h-[3rem]">
+              <Tabs value={value} onChange={handleChange} defaultValue={"All Members"} aria-label="teams" variant="scrollable" scrollButtons allowScrollButtonsMobile centered className="w-full bg-ais-new-orange h-[3rem] lg:pl-[calc(50%-551px)]">
                 <Tab value="All Members" label="All" />
                 <Tab value="Executive Members" label="Executive" />
                 <Tab value="Membership Members" label="Membership" />
