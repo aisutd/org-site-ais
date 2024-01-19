@@ -16,7 +16,7 @@ export const JoinPage = () => {
 
   return (
     <div className="inline-flex flex-col items-start relative bg-beige w-[100%]">
-      <div className="flex bg-[#fff8f3] items-center justify-center gap-[5%] pt-[10rem] pb-[6rem] relative w-[100%]">
+      <div className="flex bg-[#fff8f3] items-center justify-center gap-[5%] pt-[10rem] pb-[6rem] relative w-[100%] z-0">
         <div className="flex-col items-center gap-[24px] flex relative w-[80%] md:w-[45%]">
           <p className="font-bold text-5xl text-center md:text-start">
             UNLOCK THE BENEFITS OF JOINING AIS
@@ -55,7 +55,7 @@ export const JoinPage = () => {
         </div>
         <div className="
           mb-10 max-h-[40rem] h-[calc(0.71*40vw)] w-[40%]
-          bg-[url('/pills.png')] bg-no-repeat bg-contain bg-center
+          bg-[url('/Pills.png')] bg-no-repeat bg-contain bg-center z-10
           hidden md:block
         "/>
       </div>
