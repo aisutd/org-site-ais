@@ -51,9 +51,9 @@ function JoinUs()
           alt="stay connected"
         />
         <div className="z-10 flex bg-ais-new-beige w-full rounded-l-xl">
-          <img src="post1.png" onClick={() => {window.open('https://www.instagram.com/p/Cz9uuuZvYQp/?img_index=1', '_blank')}} className="ml-20 w-96 h-96 mx-10 my-auto rounded-2xl cursor-pointer"/>
-          <img src="post3.png" onClick={() => {window.open('https://www.instagram.com/p/CzmUWVDuDmp/', '_blank')}} className="w-96 h-96 mx-10 my-auto rounded-2xl cursor-pointer"/>
-          <img src="post4.png" onClick={() => {window.open('https://www.instagram.com/p/CzUnM2ULIKf/', '_blank')}} className="w-96 h-96 mx-10 my-auto rounded-2xl cursor-pointer"/>
+          <img src="/images/post1.png" onClick={() => {window.open('https://www.instagram.com/p/Cz9uuuZvYQp/?img_index=1', '_blank')}} className="ml-20 w-96 h-96 mx-10 my-auto rounded-2xl cursor-pointer"/>
+          <img src="/images/post3.png" onClick={() => {window.open('https://www.instagram.com/p/CzmUWVDuDmp/', '_blank')}} className="w-96 h-96 mx-10 my-auto rounded-2xl cursor-pointer"/>
+          <img src="/images/post4.png" onClick={() => {window.open('https://www.instagram.com/p/CzUnM2ULIKf/', '_blank')}} className="w-96 h-96 mx-10 my-auto rounded-2xl cursor-pointer"/>
         </div>
       </div>
       <img className="md:py-8 md:float-right md:-translate-x-32 md:-translate-y-32 hidden md:block" src="/star2.png" alt="star2" width="190"/>
