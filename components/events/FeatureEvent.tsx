@@ -62,10 +62,11 @@ export default function FeatureEvent({ event, onGoing }: EventItemProps) {
         'font-bold mx-4 h-full p-4 rounded-3xl border-r-8 border-b-8 border-t-2 border-l-2 border-ais-new-light-blue'
       }
     >
-      
-      {onGoing ? 
+      {onGoing && false ? 
       <div className="flex justify-center items-center text-ais-dark-blue text-sm gap-4 font-bold relative">
-        <div style={{backgroundImage: `url(${image})`}} className="w-8/12 h-96 rounded-2xl relative">
+        <div style={ image ? {backgroundImage: `url(${image})`} : {backgroundImage: "url('/images/ais_logo_brain_events.png')"} }
+          className="w-8/12 h-96 rounded-2xl relative bg-cover z-10"
+        >
           <div className="bg-ais-white w-3/12 h-36 rounded-tl-3xl ml-auto text-center absolute bottom-0 right-0">
           <div className="mt-11 text-4xl text-ais-black">{eventDay}</div>
             <div className="text-xl text-ais-black">{eventMonth.toUpperCase()}</div>
@@ -159,7 +160,7 @@ export default function FeatureEvent({ event, onGoing }: EventItemProps) {
         <div>
           <div className="text-sm text-ais-dark-gray font-normal">{description}</div>
         </div>
-        <div className="flex text-ais-dark-blue text-sm gap-4 font-bold pt-6">
+        <div className="flex text-ais-dark-blue text-sm gap-4 font-bold pt-6 hidden">
         <Link href={eventLink}>
           <button
             className="h-[2rem] w-28 border-[2px] text-xs text-ais-new-dark-blue border-ais-new-dark-blue rounded-[1rem] whitespace-nowrap px-[1rem] hover:bg-ais-new-dark-blue hover:text-ais-new-beige"

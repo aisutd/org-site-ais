@@ -2,14 +2,14 @@ module.exports = {
   async redirects() {
     return [
         {
-          source: '/rsvp/startup',
-          destination: 'https://coda.io/form/AIS-Startup-Panel-RSVP-Form_dn01eqoJGES',
+          source: '/member/attendance',
+          destination: 'https://coda.io/form/AIS-Event-Attendance-Form_dYfH_vMZ_U8',
           basePath: false,
           permanent: true,
         },
         {
-          source: '/member/attendance',
-          destination: 'https://coda.io/form/AIS-Event-Attendance-Form_dVQqccTC16L',
+          source: '/member/apply',
+          destination: 'https://coda.io/form/AIS-Membership-Interest-Form-Spring-2024_dOD_caSLbak',
           basePath: false,
           permanent: true,
         },
@@ -21,21 +21,8 @@ module.exports = {
           permanent: true,
         },
         {
-          source: '/member/apply',
-          destination: 'https://coda.io/form/AIS-Membership-Interest-Form-F23_dxNMATYGki2',
-          basePath: false,
-          permanent: true,
-        },
-        {
-          source: '/officer/info',
-          destination:
-            'https://docs.google.com/document/d/1egahyPLReSmIsMC_tyNEo_X77T0a3oXlUC90xZ-ylrE/edit',
-          basePath: false,
-          permanent: true,
-        },
-        {
-          source: '/officer/apply',
-          destination: 'https://coda.io/form/AIS-Officer-Application-F23_d208KkPg2wm',
+          source: '/aim/apply',
+          destination: '/join',
           basePath: false,
           permanent: true,
         },
@@ -52,8 +39,8 @@ module.exports = {
           permanent: true,
         },
         {
-          source: '/aim/apply',
-          destination: 'https://docs.google.com/forms/d/e/1FAIpQLSd0YBWRzrll4ICjBtev0n7zF_EgnJ_TaQljoEvgIcBGsy5u5A/viewform',
+          source: '/aim/mentor/apply',
+          destination: 'https://coda.io/form/AIM-Mentor-App-S24_d_bf3ew0yIT',
           basePath: false,
           permanent: true,
         },
@@ -64,8 +51,15 @@ module.exports = {
           permanent: true,
         },
         {
-          source: '/aim/mentor/apply',
-          destination: 'https://docs.google.com/forms/d/e/1FAIpQLScR6YrTT1xPIKTvlQUqBPrMPuctEuxHVcIlmhYYcsGIwEiMBA/viewform',
+          source: '/officer/apply',
+          destination: 'https://coda.io/form/AIS-Officer-Application-F23_d208KkPg2wm',
+          basePath: false,
+          permanent: true,
+        },
+        {
+          source: '/officer/info',
+          destination:
+            'https://docs.google.com/document/d/1egahyPLReSmIsMC_tyNEo_X77T0a3oXlUC90xZ-ylrE/edit',
           basePath: false,
           permanent: true,
         },
