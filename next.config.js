@@ -22,7 +22,7 @@ module.exports = {
         },
         {
           source: '/aim/apply',
-          destination: '/join',
+          destination: 'https://coda.io/form/AIM-Mentee-S24_d4EVwsguYoK',
           basePath: false,
           permanent: true,
         },
