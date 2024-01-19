@@ -53,16 +53,16 @@ export const AboutPage = () => {
             src="/images/founder.jpeg"
           />
           <p className="font-bold pt-[5px]">Brian Hoang</p>
-          <p className="text-[#777777]">Founder (SE '18)</p>
+          <p className="text-[#777777]">Founder (SE {'\''}18)</p>
         </div>
         <div className="flex flex-col items-end gap-[20px]">
           <div className="text-[#3e6eff] text-[48px] text-right font-bold self-center sm:self-end">
             HOW WE STARTED
           </div>
           <p className="text-justify">
-          Jeff Bezos, the founder of Amazon, stated in May of 2016 that society is on the cusp of entering the golden age of artificial intelligence and over the next two decades, human society and AI will become intertwined in a way that would seem like science fiction today. That the modern applications of AI, such as self-driving cars, Midjourney, and GhatGPT, only scratch the surface of what's possible.
+          Jeff Bezos, the founder of Amazon, stated in May of 2016 that society is on the cusp of entering the golden age of artificial intelligence and over the next two decades, human society and AI will become intertwined in a way that would seem like science fiction today. That the modern applications of AI, such as self-driving cars, Midjourney, and GhatGPT, only scratch the surface of what{'\''}s possible.
           <br/><br/>
-          A month after Bezos' statement, the Artificial Intelligence Society (AIS) was born. Our organization began under the general fascination of the impact that AI has already made on the world. Whether that be through Netflix's movie recommendations or Meta’s facial recognition software, it is incredible how ubiquitous AI has become in our daily lives. But as of today, many of the fascinating aspects of AI are largely unknown to the general public.
+          A month after Bezos{'\''} statement, the Artificial Intelligence Society (AIS) was born. Our organization began under the general fascination of the impact that AI has already made on the world. Whether that be through Netflix{'\''}s movie recommendations or Meta{'\''}s facial recognition software, it is incredible how ubiquitous AI has become in our daily lives. But as of today, many of the fascinating aspects of AI are largely unknown to the general public.
           <br/><br/>
           <b>We want to change that.</b>
           </p>

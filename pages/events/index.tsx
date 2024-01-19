@@ -90,8 +90,7 @@ export default function EventsPage({ events }: EventsPageProps) {
     );
   }
 
-  let upComingEventDiv;
-    upComingEventDiv = (
+  const upComingEventDiv = (
       <div>
         {futureEventCards.length > 0
           ? 
