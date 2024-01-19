@@ -55,7 +55,7 @@ export const JoinPage = () => {
         </div>
         <div className="
           mb-10 max-h-[40rem] h-[calc(0.71*40vw)] w-[40%]
-          bg-[url('/pills.png')] bg-no-repeat bg-contain bg-center z-10
+          bg-[url('/Pills.png')] bg-no-repeat bg-contain bg-center z-10
           hidden md:block
         "/>
       </div>
