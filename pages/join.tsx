@@ -9,9 +9,9 @@ export const JoinPage = () => {
   {/*for the appbar*/}
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
-  const handleItemClick = (secName) => {
+  const handleSignUpClick = () => {
     setAnchorEl(null);
-    document.getElementById(secName).scrollIntoView()
+    document.getElementById('apps').scrollIntoView()
   };
 
   return (
@@ -44,7 +44,7 @@ export const JoinPage = () => {
             </div>
           </div>
           <div className="relative w-[162px] h-[48px] bg-[#3E6EFF] rounded-[57px] mb-10 [cursor:pointer]"
-            onClick={() => {handleItemClick('apps')}}
+            onClick={() => {handleSignUpClick}}
           >
             <div className="bg-[#3E6EFF] text-[white] relative w-[154px] h-[38px] top-[5px] left-[4px] rounded-[45px] border-[3px] border-solid border-[color:var(--variable-collection-bg-duplicate)] flex flex-col place-content-center">
               <div className="top-[3px] font-bold text-[16px] leading-none text-center">
@@ -59,26 +59,32 @@ export const JoinPage = () => {
           hidden md:block
         "/>
       </div>
-      <div id="apps" className="pt-[5rem] bg-[#fff8f3] flex flex-col items-center justify-center gap-[10px] px-[120px] pb-[12rem] relative self-stretch w-full flex-[0_0_auto]">
+      <div id="apps" className="pt-[5rem] bg-[#fff8f3] flex flex-col items-center justify-center gap-[10px] pb-[12rem] relative self-stretch w-full flex-[0_0_auto]">
         <div className=" flex flex-col items-center justify-center gap-[56px] relative self-stretch w-full flex-[0_0_auto]">
           <div className=" inline-flex items-center gap-[5px] relative flex-[0_0_auto]">
-            <img className=" relative w-[50px] h-[50px]" alt="Application" src="/images/applications.svg" />
-            <div className=" relative w-fit mt-[-1.00px] [font-family:'Proxima_Nova-Bold',Helvetica] font-bold text-variable-collection-black text-[48px] text-center tracking-[0] leading-[57.6px] whitespace-nowrap">
+            <img className="relative w-[50px] h-[50px]" alt="Application" src="/images/applications.svg" />
+            <div className="relative w-fit mt-[-1.00px] [font-family:'Proxima_Nova-Bold',Helvetica] font-bold text-variable-collection-black text-4xl text-center">
               APPLICATIONS
             </div>
           </div>
-          <div className="flex w-[1200px] items-start gap-[32px] relative flex-[0_0_auto]">
-            <img className="relative w-[388.67px] h-[387px] mb-[-10.00px]" alt="aim" src="/images/aim.png" />
-            <img
-              className="relative w-[388.67px] h-[387px] mb-[-10.00px]"
-              alt="Card application 1"
-              src="/images/membership.png"
-            />
-            <img
-              className="relative w-[388.67px] h-[387px] mb-[-10.00px] mr-[-10.00px]"
-              alt="Card application 2"
-              src="/images/officer.png"
-            />
+          <div className="w-full justify-items-center grid grid-cols-1 gap-[2rem] px-[calc(50%-10rem)]
+            md:px-[calc(30%-12rem)] md:grid-rows-2 md:grid-cols-2 xl:grid-rows-1 xl:grid-cols-4 xl:px-[calc(25%-12rem)]">
+            <AppBox title="AIS Member"
+            desc="Apply to our membership program to gain access to exclusive perks and a member-only community of fellow AI enthusiasts."
+            appLink="https://www.aisutd.org/member/apply"
+            learnLink="https://www.aisutd.org/member/info"/>
+            <AppBox title="AI Mentee"
+            desc="Apply as a mentee and get a chance to learn foundational concepts in ML and work on AI projects of your interest, guided by experienced mentors."
+            appLink="https://www.aisutd.org/aim/apply"
+            learnLink="https://www.aisutd.org/aim/info"/>
+            <AppBox title="AI Mentor"
+            desc="Apply as a mentor and get a chance to guide a team through a semester-long project in foundational AI and ML concepts."
+            appLink="https://www.aisutd.org/aim/mentor/apply"
+            learnLink="https://www.aisutd.org/aim/mentor/info"/>
+            <AppBox title="AIS Officer"
+            desc="Apply to the team and get an opportunity to organize events, be a part of our officer community, and more."
+            appLink="https://www.aisutd.org/officer/apply"
+            learnLink="https://www.aisutd.org/officer/info"/>
           </div>
         </div>
       </div>
@@ -122,3 +128,33 @@ export const JoinPage = () => {
   );
 };
 export default JoinPage;
+
+function AppBox( { title, desc, appLink, learnLink } )
+{
+  return(
+    <div className="relative font-bold p-[1rem] rounded-3xl border-r-8 border-b-8 border-t-2 border-l-2 border-ais-new-light-blue flex flex-col gap-[20px] h-[100%] w-[100%] md:w-[100%]">
+      <h2 className="text-center font-bold text-xl">{title}</h2>
+      <p className="font-normal text-ais-dark-gray text-md md:pb-[5rem] xl:pb-[8rem]">{desc}</p>
+      <div className="w-full gap-[10px] justify-center flex
+        xl:flex-col xl:items-center md:absolute md:bottom-[2rem] md:-ml-[1rem]"
+      >
+        <button onClick={() => {window.open(`${appLink}`, "_blank")}}
+          className="relative w-[8rem] h-[2.5rem] bg-[#3E6EFF] rounded-[20px] [cursor:pointer]"
+        >
+          <div className="bg-[#3E6EFF] text-[white] relative w-[7.5rem] h-[2rem] left-[0.25rem] rounded-[16px] border-[3px] border-solid border-[color:var(--variable-collection-bg-duplicate)] flex flex-col place-content-center">
+            <div className="top-[3px] font-bold text-sm text-center">
+              Apply
+            </div>
+          </div>
+        </button>
+        <button onClick={() => {window.open(`${learnLink}`, "_blank")}}
+          className="w-[8rem] h-[2.5rem] border-[2px] border-[#3E6EFF] rounded-[20px] [cursor:pointer]"
+        >
+          <div className="font-bold text-sm text-center text-[#3E6EFF]">
+            Learn More
+          </div>
+        </button>
+      </div>
+    </div>
+  );
+}

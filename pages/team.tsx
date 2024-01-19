@@ -76,7 +76,7 @@ export default function TeamPage({ officers }: TeamPageProps) {
               className="absolute top-40 -left-20 h-60 w-60"
             />
             <TabContext value={value}>
-              <Tabs value={value} onChange={handleChange} defaultValue={"All Members"} aria-label="teams" scrollButtons={true} centered className="w-full bg-ais-new-orange">
+              <Tabs value={value} onChange={handleChange} defaultValue={"All Members"} aria-label="teams" scrollButtons={true} centered className="w-full bg-ais-new-orange h-[3rem] hidden lg:block">
                 <Tab value="All Members" label="All" />
                 <Tab value="Executive Members" label="Executive" />
                 <Tab value="Membership Members" label="Membership" />
@@ -87,6 +87,7 @@ export default function TeamPage({ officers }: TeamPageProps) {
                 <Tab value="Industry Members" label="Industry" />
                 <Tab value="AIM Members" label="AIM" />
               </Tabs>
+              <div className="w-full bg-ais-new-orange h-[3rem] block lg:hidden"/>
               <TabPanel value="All Members">
                 <div className="team-header text-center text-2xl font-bold text-ais-dark-blue">Executive Team</div>
                 <TeamItem officers={execTeam} team={'Executive'} />
