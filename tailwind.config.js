@@ -63,6 +63,10 @@ module.exports = {
         300: '3',
         400: '4',
       },
+      backgroundSize: {
+        fill:'100% 100%',
+        'extra-fill':'150% 150%'
+      },
       margin: {
         73: '18.75rem',
       },
@@ -74,6 +78,12 @@ module.exports = {
         xsmall: 'var(--xsmall)',
         xxlarge: 'var(--xxlarge)',
         xxsmall: 'var(--xxsmall)',
+      },
+      keyframes:{
+        infinislide:{
+          '0%': { transform: 'translateX(1000px)' },
+          '100%': { transform: 'translateX(2000px)' },
+        }
       },
     },
   },

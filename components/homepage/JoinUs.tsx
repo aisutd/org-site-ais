@@ -18,8 +18,13 @@ function JoinUs()
     <section className="w-full flex flex-col items-center">
       <img
         src="joinus-banner.png"
-        className="mb-24 w-full"
+        className="mb-24 w-full hidden"
       />
+      <div className="w-[6000px] translate-x-[0px] self-end animate-[infinislide_3s_linear_infinite]">
+        <img src="joinais-long.png"
+          className="mb-24 w-[6000px] object-contain"
+        />
+      </div>
       <div className="mb-10 max-h-[20rem] h-[calc(3*90vw)] w-[calc(100%-2rem)]
         bg-[url('/joinus-steps.png')] bg-no-repeat bg-contain bg-center
       "/>

@@ -8,11 +8,11 @@ function PastEvent() {
     ">
       <div className="w-full flex flex-col justify-center">
         <h2 className="
-          text-4xl font-bold text-hai-navy text-center font-placard tracking-widest
+          text-4xl font-bold text-hai-navy text-center font-placard
         ">
           HACK AI 2023
         </h2>
-          <p className="hidden sm:block text-base text-hai-gray text-justify pt-10 font-roboto">
+          <p className="hidden sm:block text-base text-hai-gray text-justify pt-10">
             Last April, HackAI’s fourth iteration featured various guest speakers, workshops, and activities to engage students throughout the weekend.
             <br/><br/>
             Participants had the option of competing in four different tracks: athletes, brainiacs, saints, and creatives, each with their own tailored prompts.
