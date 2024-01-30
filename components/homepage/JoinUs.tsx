@@ -20,7 +20,7 @@ function JoinUs()
         src="joinus-banner.png"
         className="mb-24 w-full hidden"
       />
-      <div className="w-[6000px] translate-x-[0px] self-end animate-[infinislide_3s_linear_infinite]">
+      <div className="w-[6000px] translate-x-[0px] self-end animate-[infinislide_16s_linear_infinite]">
         <img src="joinais-long.png"
           className="mb-24 w-[6000px] object-contain"
         />

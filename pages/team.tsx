@@ -35,6 +35,58 @@ export default function TeamPage({ officers }: TeamPageProps) {
     setValue(newValue);
   };
 
+  //this sorting logic sorts the whole list of officers, but imagine it is only for a specific team when you are tracing it/thinking about it
+  officers.sort((a,b) => {
+    //sorting just for the executives
+    if(a.team === "Executive Board")
+    {
+      if(a.title === "President")
+      {
+        return -1;
+      }
+      else if(a.title === "Secretary")
+      {
+        return 1;
+      }
+      else if(b.title === "President") //if 'a' is VP
+      {
+        return 1;
+      }
+      return -1; //if 'a' is VP and 'b' is secretary
+    }
+    //outside of the executive team, it puts the director as first and the rest of the team in alphabetical order by name
+    else if(a.title.includes("Director"))
+    {
+      if(b.title.includes("Director")) //both are directors
+      {
+        if(a.name < b.name)
+          return -1;
+        else if(a.name > b.name)
+          return 1;
+      }
+      else
+      {
+        return -1;
+      }
+    }
+    else
+    {
+      if(b.title.includes("Director"))
+      {
+        return 1;
+      }
+      else //neither are directors
+      {
+        if(a.name < b.name)
+          return -1;
+        else if(a.name > b.name)
+          return 1;
+      }
+    }
+    
+    return 0;
+  });
+
   for (const off of officers) {
     if (off['team'] == 'Executive Board') execTeam.push(off);
     else if (off['team'] == 'Industry') industryTeam.push(off);
@@ -44,6 +96,7 @@ export default function TeamPage({ officers }: TeamPageProps) {
     else if (off['team'] == 'Membership') hrTeam.push(off);
     else if (off['team'] == 'Technology') techTeam.push(off);
     else if (off['team'] == 'AIM') aimTeam.push(off);
+    console.log(off.name);
   };
 
   return (

@@ -96,7 +96,7 @@ export default function EventsPage({ events }: EventsPageProps) {
           ? 
         <>
           <div className="text-ais-new-soft-black py-[1rem] pl-[3rem] sm:pl-[2rem]">Stay up to date with our upcoming events here and on our socials!</div>
-          {futureEventCards[0]}
+          {futureEventCards[futureEventCards.length-1]}
         </>
           :
         <div className="text-ais-new-soft-black py-[1rem] pl-[3rem] sm:pl-[2rem]">Coming soon!</div>}
