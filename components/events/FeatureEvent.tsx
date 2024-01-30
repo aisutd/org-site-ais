@@ -67,7 +67,7 @@ export default function FeatureEvent({ event, onGoing }: EventItemProps) {
       {onGoing && !mobile ? 
       <div className="flex justify-center items-center text-ais-dark-blue text-sm gap-4 font-bold relative">
         <div style={ image ? {backgroundImage: `url(${image})`} : {backgroundImage: "url('/images/ais_logo_brain_events.png')"} }
-          className="w-8/12 h-96 rounded-2xl relative bg-cover z-10"
+          className="w-8/12 h-96 bg-contain bg-center bg-no-repeat rounded-2xl relative z-10 [cursor:pointer]" onClick={() => {window.open(image, "_blank")}}
         >
           <div className="bg-ais-white w-3/12 h-36 rounded-tl-3xl ml-auto text-center absolute bottom-0 right-0">
           <div className="mt-11 text-4xl text-ais-black">{eventDay}</div>
@@ -140,14 +140,18 @@ export default function FeatureEvent({ event, onGoing }: EventItemProps) {
       <div>
 
         { image ? 
-        <div style={{backgroundImage: `url(${image})`}} className="bg-cover w-full h-64 rounded-t-2xl mb-4 relative">
+        <div style={{backgroundImage: `url(${image})`}}  onClick={() => {window.open(image, "_blank")}}
+          className="bg-contain bg-center bg-no-repeat w-full h-64 rounded-t-2xl mb-4 relative [cursor:pointer]"
+        >
           <div className="bg-ais-white w-4/12 h-24 rounded-tl-3xl ml-auto text-center absolute bottom-0 right-0">
             <div className="mt-6 text-2xl">{eventDay}</div>
             <div className="text-sm">{eventMonth.toUpperCase()}</div>
           </div>
         </div>
         : 
-        <div className="bg-cover w-full h-64 rounded-t-2xl mb-4 relative bg-[url('/images/ais_logo_brain_events.png')]">
+        <div className="bg-contain bg-center bg-no-repeat w-full h-64 rounded-t-2xl mb-4 relative bg-[url('/images/ais_logo_brain_events.png')] [cursor:pointer]"
+          onClick={() => {window.open("/images/ais_logo_brain_events.png", "_blank")}}
+        >
           <div className="bg-ais-white w-4/12 h-24 rounded-tl-3xl ml-auto text-center absolute bottom-0 right-0">
             <div className="mt-6 text-2xl">{eventDay}</div>
             <div className="text-sm">{eventMonth.toUpperCase()}</div>
