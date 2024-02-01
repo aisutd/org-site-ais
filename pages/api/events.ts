@@ -48,7 +48,7 @@ export const getAllEvents = async (fields?: string[]): Promise<Event[]> => {
     const table = await doc.getTable('All Events'); // Grab the actual table from the doc
     const rows = await table.listRows({ useColumnNames: true, valueFormat: 'rich' }); // Grab all the event entries in the doc
 
-    // For each event in the table
+    // For each event in the table, get tehe variables
     for (let i = 0; i < rows.length; i++) {
       const eventPresenters: { name: string; link: string }[] = [];
       for (const presenterName of rows[i].values['Presenter(s)']

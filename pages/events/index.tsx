@@ -75,17 +75,17 @@ export default function EventsPage({ events }: EventsPageProps) {
   } else if (!viewAllPastEvents){
     pastEventsDiv = (
       <div className="flex flex-row flex-wrap">
-        <div className="flex flex-col w-1/3 min-w-full xl:min-w-0">{pastEventsCols[0][0]}</div>
-        <div className="flex flex-col w-1/3 min-w-full xl:min-w-0">{pastEventsCols[1][0]}</div>
-        <div className="flex flex-col w-1/3 min-w-full xl:min-w-0">{pastEventsCols[2][0]}</div>
+        <div className="flex flex-col sm:w-1/2 lg:w-1/3 min-w-full sm:min-w-0">{pastEventsCols[0][0]}</div>
+        <div className="flex flex-col sm:w-1/2 lg:w-1/3 min-w-full sm:min-w-0">{pastEventsCols[1][0]}</div>
+        <div className="flex flex-col sm:w-1/2 lg:w-1/3 min-w-full sm:min-w-0">{pastEventsCols[2][0]}</div>
       </div>
     );
   } else {
     pastEventsDiv = (
       <div className="flex flex-row flex-wrap">
-        <div className="flex flex-col w-1/3 min-w-full xl:min-w-0">{pastEventsCols[0]}</div>
-        <div className="flex flex-col w-1/3 min-w-full xl:min-w-0">{pastEventsCols[1]}</div>
-        <div className="flex flex-col w-1/3 min-w-full xl:min-w-0">{pastEventsCols[2]}</div>
+        <div className="flex flex-col sm:w-1/2 lg:w-1/3 min-w-full xl:min-w-0">{pastEventsCols[0]}</div>
+        <div className="flex flex-col sm:w-1/2 lg:w-1/3 min-w-full xl:min-w-0">{pastEventsCols[1]}</div>
+        <div className="flex flex-col sm:w-1/2 lg:w-1/3 min-w-full xl:min-w-0">{pastEventsCols[2]}</div>
       </div>
     );
   }
