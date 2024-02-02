@@ -15,6 +15,7 @@ interface EventItemProps {
  * An item that displays event details
  */
 export default function FeatureEvent({ event, onGoing }: EventItemProps) {
+  //event variables
   const { id, title, description, eventType, startDate, endDate, location, joinLink, rsvpLink, image} = event;
   const eventLink = `/events/${event.id}`;
   const eventTime = Moment(new Date(startDate)).format('HH:mm');
@@ -23,6 +24,7 @@ export default function FeatureEvent({ event, onGoing }: EventItemProps) {
   const eventMonth = Moment(new Date(startDate)).format('MMM');
   const mobile = useMediaQuery('(max-width:1023px)');
 
+  //calendar variables
   const calEvent = {
     title: title,
     description: description,
@@ -31,31 +33,6 @@ export default function FeatureEvent({ event, onGoing }: EventItemProps) {
     location: location === 'In-person' ? joinLink : null
   };
 
-  let pulsingDiv;
-  let pulsingBG = '';
-  if (onGoing) {
-    pulsingBG = 'animate-pulse ';
-    pulsingDiv = (
-      <div className="absolute top-0 right-0 -my-2 -mx-2">
-        <span className="flex h-6 w-6">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-6 w-6 bg-blue-500"></span>
-        </span>
-      </div>
-    );
-  }
-
-  /**
-  let tagDiv;
-  if (tags.length != 0) {
-    tagDiv = (
-      <div className="py-2">
-        <div className="py-2 text-sm font-semibold">TAGS</div>
-        <div className="flex flex-wrap gap-2">{tagElements}</div>
-      </div>
-    );
-  }
-   */
 
   return (
     <div
@@ -166,15 +143,15 @@ export default function FeatureEvent({ event, onGoing }: EventItemProps) {
         <div>
           <div className="text-sm text-ais-dark-gray font-normal">{description}</div>
         </div>
-        <div className="flex text-ais-dark-blue text-sm gap-4 font-bold pt-6 hidden">
-        <Link href={eventLink}>
-          <button
-            className="h-[2rem] w-28 border-[2px] text-xs text-ais-new-dark-blue border-ais-new-dark-blue rounded-[1rem] whitespace-nowrap px-[1rem] hover:bg-ais-new-dark-blue hover:text-ais-new-beige"
-          >
-            Learn more
-          </button>
-        </Link>
-      </div>
+        <div className="flex text-ais-dark-blue text-sm gap-4 font-bold pt-6">
+          <Link href={eventLink}>
+            <button
+              className="h-[2rem] w-28 border-[2px] text-xs text-ais-new-dark-blue border-ais-new-dark-blue rounded-[1rem] whitespace-nowrap px-[1rem] hover:bg-ais-new-dark-blue hover:text-ais-new-beige"
+            >
+              Learn more
+            </button>
+          </Link>
+        </div>
       </div>
     }
     </div>

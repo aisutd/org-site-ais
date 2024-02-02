@@ -63,7 +63,7 @@ export const JoinPage = () => {
             </div>
           </div>
           <div className="w-full justify-items-center grid grid-cols-1 gap-[2rem] px-[calc(50%-10rem)]
-            md:px-[calc(30%-12rem)] md:grid-rows-2 md:grid-cols-2 xl:grid-rows-1 xl:grid-cols-4 xl:px-[calc(25%-12rem)]">
+            md:px-[calc(30%-12rem)] md:grid-rows-2 md:grid-cols-2 xl:grid-rows-1 xl:grid-cols-4 xl:px-[calc(25%-12rem)] text-center">
             <AppBox title="AIS Member"
             desc="Apply to our membership program to gain access to exclusive perks and a member-only community of fellow AI enthusiasts."
             appLink="https://www.aisutd.org/member/apply"
