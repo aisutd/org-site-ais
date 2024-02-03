@@ -139,7 +139,7 @@ export default function FeatureEvent({ event, onGoing }: EventItemProps) {
           onClick={() => {window.open("/images/ais_logo_brain_events.png", "_blank")}}
         >
           <div className="bg-ais-white w-4/12 h-24 rounded-tl-3xl ml-auto text-center absolute bottom-0 right-0">
-            <div className="mt-6 text-2xl">{eventDay}</div>
+            <div className="mt-4 text-2xl">{eventDay}</div>
             <div className="text-sm">{eventMonth.toUpperCase()}</div>
             <div className="text-xl text-ais-white hover:text-ais-black">{eventYear}</div>
           </div>
