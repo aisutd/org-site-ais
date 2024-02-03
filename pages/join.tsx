@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import Subscribe from '../components/join/Subscribe';
 import DescriptionIcon from '@mui/icons-material/Description';
 import * as React from 'react';
 import SiteFooter from '../components/common/SiteFooter';
