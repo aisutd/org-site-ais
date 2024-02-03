@@ -1,6 +1,5 @@
 import SiteFooter from './SiteFooter';
 import SiteHeader from './SiteHeader';
-import SiteFooterAlt from './SiteFooterAlt';
 import { Outlet } from 'react-router-dom'
 
 /**
@@ -11,7 +10,7 @@ export default function SiteLayout({ children }: React.PropsWithChildren<unknown
     <>
       <SiteHeader/>
         {children}
-      <SiteFooterAlt/>
+      <SiteFooter/>
     </>
   );
 }

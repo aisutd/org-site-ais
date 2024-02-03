@@ -18,10 +18,11 @@ export default function FeatureEvent({ event, onGoing }: EventItemProps) {
   //event variables
   const { id, title, description, eventType, startDate, endDate, location, joinLink, rsvpLink, image} = event;
   const eventLink = `/events/${event.id}`;
-  const eventTime = Moment(new Date(startDate)).format('HH:mm');
-  const eventTimeEnd = Moment(new Date(endDate)).format('HH:mm');
+  const eventTime = Moment(new Date(startDate)).format('hh:mma');
+  const eventTimeEnd = Moment(new Date(endDate)).format('hh:mma');
   const eventDay = Moment(new Date(startDate)).format('D');
   const eventMonth = Moment(new Date(startDate)).format('MMM');
+  const eventYear = Moment(new Date(startDate)).format('YYYY');
   const mobile = useMediaQuery('(max-width:1023px)');
 
   //calendar variables
@@ -47,8 +48,9 @@ export default function FeatureEvent({ event, onGoing }: EventItemProps) {
           className="w-8/12 h-96 bg-contain bg-center bg-no-repeat rounded-2xl relative z-10 [cursor:pointer]" onClick={() => {window.open(image, "_blank")}}
         >
           <div className="bg-ais-white w-3/12 h-36 rounded-tl-3xl ml-auto text-center absolute bottom-0 right-0">
-          <div className="mt-11 text-4xl text-ais-black">{eventDay}</div>
+            <div className="mt-10 text-4xl text-ais-black">{eventDay}</div>
             <div className="text-xl text-ais-black">{eventMonth.toUpperCase()}</div>
+            <div className="text-xl text-ais-white hover:text-ais-black">{eventYear}</div>
           </div>
         </div>
         <div className="h-auto w-1/2 pl-8 pr-16">
@@ -65,13 +67,19 @@ export default function FeatureEvent({ event, onGoing }: EventItemProps) {
             <div className="text-lg text-ais-dark-gray font-normal">{description}</div>
           </div>
           <div className="flex py-2">
-            <Link href={rsvpLink} className="ml-auto mr-2">
-              <button
-                className="h-[2rem] w-20 border-[2px] text-xs text-ais-new-dark-blue border-ais-new-dark-blue rounded-[1rem] whitespace-nowrap px-[1rem] hover:bg-ais-new-dark-blue hover:text-ais-new-beige"
-              >
-                RSVP
-              </button>
-            </Link>
+            {
+              rsvpLink ? (
+              <Link href={rsvpLink} className="ml-auto mr-2">
+                <button
+                  className="h-[2rem] w-20 border-[2px] text-xs text-ais-new-dark-blue border-ais-new-dark-blue rounded-[1rem] whitespace-nowrap px-[1rem] hover:bg-ais-new-dark-blue hover:text-ais-new-beige"
+                >
+                  RSVP
+                </button>
+              </Link>
+              ) : (
+                <div className="h-[2rem] ml-auto"/>
+              )
+            }
             <Menu as="div" className="relative">
               <Menu.Button className="font-bold"><img src="rsvp-icon.png" className="mt-1" width="24"></img></Menu.Button>
               <Menu.Items className="origin-top-left absolute left-0 rounded-md w-28 bg-ais-white shadow-xl z-10 text-black">
@@ -121,8 +129,9 @@ export default function FeatureEvent({ event, onGoing }: EventItemProps) {
           className="bg-contain bg-center bg-no-repeat w-full h-64 rounded-t-2xl mb-4 relative [cursor:pointer]"
         >
           <div className="bg-ais-white w-4/12 h-24 rounded-tl-3xl ml-auto text-center absolute bottom-0 right-0">
-            <div className="mt-6 text-2xl">{eventDay}</div>
+            <div className="mt-4 text-2xl">{eventDay}</div>
             <div className="text-sm">{eventMonth.toUpperCase()}</div>
+            <div className="text-xl text-ais-white hover:text-ais-black">{eventYear}</div>
           </div>
         </div>
         : 
@@ -132,6 +141,7 @@ export default function FeatureEvent({ event, onGoing }: EventItemProps) {
           <div className="bg-ais-white w-4/12 h-24 rounded-tl-3xl ml-auto text-center absolute bottom-0 right-0">
             <div className="mt-6 text-2xl">{eventDay}</div>
             <div className="text-sm">{eventMonth.toUpperCase()}</div>
+            <div className="text-xl text-ais-white hover:text-ais-black">{eventYear}</div>
           </div>
         </div>
         }
@@ -143,7 +153,7 @@ export default function FeatureEvent({ event, onGoing }: EventItemProps) {
         <div>
           <div className="text-sm text-ais-dark-gray font-normal">{description}</div>
         </div>
-        <div className="flex text-ais-dark-blue text-sm gap-4 font-bold pt-6">
+        <div className="flex text-ais-dark-blue text-sm gap-4 font-bold pt-6 hidden">
           <Link href={eventLink}>
             <button
               className="h-[2rem] w-28 border-[2px] text-xs text-ais-new-dark-blue border-ais-new-dark-blue rounded-[1rem] whitespace-nowrap px-[1rem] hover:bg-ais-new-dark-blue hover:text-ais-new-beige"

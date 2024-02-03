@@ -31,7 +31,7 @@ function JoinUs()
       <div className="relative w-[162px] h-[48px] bg-[#3E6EFF] rounded-[57px] mb-10 [cursor:pointer]"
         onClick={() => handleItemClick('/join')}
       >
-        <div className="bg-[#3E6EFF] text-[white] relative w-[154px] h-[38px] top-[5px] left-[4px] rounded-[45px] border-[3px] border-solid border-[color:var(--variable-collection-bg-duplicate)] flex flex-col place-content-center">
+        <div className="bg-[#3E6EFF] text-[white] relative w-[154px] h-[38px] top-[5px] left-[4px] rounded-[45px] border-[3px] border-solid border-white flex flex-col place-content-center">
           <div className="top-[3px] font-bold text-[16px] leading-none text-center">
             Learn More
           </div>
