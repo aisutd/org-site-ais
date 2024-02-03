@@ -6,7 +6,7 @@ function Summary() {
   return (
     <div className="flex flex-col items-center justify-center px-[2rem] py-40 bg-ais-new-soft-black">
       {/* title */}
-      <h2 className="text-3xl font-bold text-ais-new-white mb-12 text-center">
+      <h2 className="font-placard font-bold tracking-wider text-ais-new-white mb-12 text-center text-4xl sm:text-5xl">
         UNLOCKING THE POWER OF{' '}
         <span className="inline-block bg-ais-new-orange text-ais-new-soft-black rounded-full px-8 py-2">ARTIFICIAL INTELLIGENCE</span>
       </h2>

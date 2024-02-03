@@ -109,11 +109,11 @@ export default function TeamPage({ officers }: TeamPageProps) {
           content="The officers of the Artificial Intelligence Society - the people who make this all possible."
         />
       </Head>
-      <main className="min-h-screen bg-ais-new-beige text-hind subpixel-antialiased overflow-x-hidden">
+      <main className="min-h-screen bg-ais-new-beige font-roboto subpixel-antialiased overflow-x-hidden">
         <div className="mx-auto max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-4xl 2xl:max-w-6xl py-10 md:py-20 ">
         </div>
         <section id="officers">
-          <div className="text-7xl font-bold text-ais-new-med-blue mb-4 p-4 text-center">
+          <div className="text-7xl font-placard-bold tracking-wide text-ais-new-med-blue mb-4 p-4 text-center">
             MEET THE TEAM
           </div>
           <div className="flex flex-grow flex-wrap -mt-10 pt-10 pb-8 gap-8 justify-around relative">
@@ -141,28 +141,28 @@ export default function TeamPage({ officers }: TeamPageProps) {
                 <Tab value="AIM Members" label="AIM" />
               </Tabs>
               <TabPanel value="All Members">
-                <div className="team-header text-center text-2xl font-bold text-ais-dark-blue">Executive Team</div>
+                <div className="text-center text-2xl font-roboto-bold text-ais-new-med-blue">Executive Team</div>
                 <TeamItem officers={execTeam} team={'Executive'} />
 
-                <div className="team-header text-center text-2xl font-bold text-ais-dark-blue mt-40">Membership Team</div>
+                <div className="text-center text-2xl font-roboto-bold text-ais-new-med-blue mt-40">Membership Team</div>
                 <TeamItem officers={hrTeam} team={'Membership'} />
 
-                <div className="team-header text-center text-2xl font-bold text-ais-dark-blue mt-40">Operations Team</div>
+                <div className="text-center text-2xl font-roboto-bold text-ais-new-med-blue mt-40">Operations Team</div>
                 <TeamItem officers={operationsTeam} team={'Operations'} />
 
-                <div className="team-header text-center text-2xl font-bold text-ais-dark-blue mt-40">Finance Team</div>
+                <div className="text-center text-2xl font-roboto-bold text-ais-new-med-blue mt-40">Finance Team</div>
                 <TeamItem officers={financeTeam} team={'Finance'} />
 
-                <div className="team-header text-center text-2xl font-bold text-ais-dark-blue mt-40">Technology Team</div>
+                <div className="text-center text-2xl font-roboto-bold text-ais-new-med-blue mt-40">Technology Team</div>
                 <TeamItem officers={techTeam} team={'Technology'} />
 
-                <div className="team-header text-center text-2xl font-bold text-ais-dark-blue mt-40">Marketing Team</div>
+                <div className="text-center text-2xl font-roboto-bold text-ais-new-med-blue mt-40">Marketing Team</div>
                 <TeamItem officers={marketingTeam} team={'Marketing'} />
 
-                <div className="team-header text-center text-2xl font-bold text-ais-dark-blue mt-40">Industry Team</div>
+                <div className="text-center text-2xl font-roboto-bold text-ais-new-med-blue mt-40">Industry Team</div>
                 <TeamItem officers={industryTeam} team={'Industry'} />
 
-                <div className="team-header text-center text-2xl font-bold text-ais-dark-blue mt-40">AIM Team</div>
+                <div className="text-center text-2xl font-roboto-bold text-ais-new-med-blue mt-40">AIM Team</div>
                 <TeamItem officers={aimTeam} team={'AIM'} />
               </TabPanel>
               <TabPanel value="Executive Members">

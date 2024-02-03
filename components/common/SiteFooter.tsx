@@ -1,47 +1,58 @@
 import Link from 'next/link';
+import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import YouTubeIcon from '@mui/icons-material/YouTube';
+import IconButton from '@mui/material/IconButton';
 
 export default function SiteFooter() {
   return (
-    <footer className="bg-ais-new-beige text-white">
-      <div className="mx-auto max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-4xl 2xl:max-w-6xl flex justify-around gap-4 p-4 ">
-        <div>
-          <div className="text-lg font-bold">Sitemap</div>
-          <div>
-            <div className="block">
-              <Link href="/">Home</Link>
-            </div>
-            <div className="block">
-              <Link href="/events">Events</Link>
-            </div>
-            <div className="block">
-              <Link href="/team">Team</Link>
-            </div>
-            <div className="block">
-              <Link href="/about">About</Link>
-            </div>
-            <div className="block">
-              <Link href="/join">Join</Link>
-            </div>
+    <footer className="bg-ais-new-darker-blue text-ais-white pt-6 px-[20px] pb-[2rem]">
+      <div className="border-white border-b-2 mx-auto max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-4xl 2xl:max-w-6xl flex justify-between py-4">
+        <div className="grid grid-col-1 grid-flow-row py-2">
+          <div className="flex gap-4 [cursor:pointer]">
+            <img src="images/ais_logo_white.png" className="h-[4rem] object-cover"/>
           </div>
         </div>
         <div>
-          <div className="text-lg font-bold">Socials</div>
+          <img src="images/demystify-ai.png" className="mb-4 h-[1.8rem] object-cover ml-auto"/>
           <ul>
-            <div>
-              <div className="">
-                <Link href="/dc">Discord</Link>
+            <div className='flex'>
+              <div>
+                <IconButton
+                  onClick={() => {
+                    window.open('/insta', '_blank');
+                  }}
+                >
+                  <InstagramIcon className="h-6 text-ais-white" />
+                </IconButton>
               </div>
-              <div className="">
-                <Link href="/fb">Facebook</Link>
+              <div>
+                <IconButton
+                  onClick={() => {
+                    window.open('/linkedin', '_blank');
+                  }}
+                >
+                  <LinkedInIcon className="h-6 text-ais-white" />
+                </IconButton>
               </div>
-              <div className="">
-                <Link href="/ig">Instagram</Link>
+              <div>
+                <IconButton
+                  onClick={() => {
+                    window.open('/yt', '_blank');
+                  }}
+                >
+                  <YouTubeIcon className="h-6 text-ais-white" />
+                </IconButton>
               </div>
-              <div className="">
-                <Link href="/linkedin">LinkedIn</Link>
-              </div>
-              <div className="">
-                <Link href="/yt">Youtube</Link>
+              <div>
+                <IconButton
+                  onClick={() => {
+                    window.open('/dc', '_blank');
+                  }}
+                >
+                  <img src="/discord-mark-white.svg" className="h-5 fill-white" />
+                </IconButton>
               </div>
             </div>
           </ul>

@@ -4,6 +4,7 @@ import { Event } from '../../lib/types';
 import { useTransition, animated } from '@react-spring/web';
 import FeatureEvent from '../../components/events/FeatureEvent';
 import { getAllEvents } from '../api/events';
+import { useMediaQuery } from '@mui/material';
 
 interface EventsPageProps {
   events: Event[];
@@ -13,7 +14,7 @@ export default function EventsPage({ events }: EventsPageProps) {
   const futureEvents: Event[] = [];
   const onGoingEvents: Event[] = [];
   const pastEvents: Event[] = [];
-  const pastEventsCols = [[], [], []];
+  const pastEventsCols = [[], [], [], [], [], []];
   const [viewAllPastEvents, setViewAllPastEvents] = useState(false);
   const [activeCategory, setActiveCategory] = useState<string>('All');
   const [buttonStyles, setButtonStyles] = useState({
@@ -22,6 +23,9 @@ export default function EventsPage({ events }: EventsPageProps) {
     Socials: false,
     Others: false,
   });
+  const notNarrow = useMediaQuery('(min-width:768px)');
+  const notWide = useMediaQuery('(max-width:1279px)');
+  const tablet = notNarrow && notWide;
 
   events.forEach(function (eachEvent) {
     const startTime = new Date(eachEvent.startDate);
@@ -66,7 +70,7 @@ export default function EventsPage({ events }: EventsPageProps) {
   });
 
   for (let i = 0; i < pastEventCards.length; i++) {
-    pastEventsCols[i % 3].push(pastEventCards[i]);
+    pastEventsCols[i % 6].push(pastEventCards[i]);
   }
 
   let pastEventsDiv;
@@ -75,19 +79,28 @@ export default function EventsPage({ events }: EventsPageProps) {
   } else if (!viewAllPastEvents){
     pastEventsDiv = (
       <div className="flex flex-row flex-wrap">
-        <div className="flex flex-col sm:w-1/2 lg:w-1/3 min-w-full sm:min-w-0">{pastEventsCols[0][0]}</div>
-        <div className="flex flex-col sm:w-1/2 lg:w-1/3 min-w-full sm:min-w-0">{pastEventsCols[1][0]}</div>
-        <div className="flex flex-col sm:w-1/2 lg:w-1/3 min-w-full sm:min-w-0">{pastEventsCols[2][0]}</div>
+        <div className="flex flex-col md:w-1/2 xl:w-1/3 min-w-full md:min-w-0">{pastEventsCols[0][0]}</div>
+        <div className="flex flex-col md:w-1/2 xl:w-1/3 min-w-full md:min-w-0">{pastEventsCols[1][0]}</div>
+        <div className="flex flex-col md:w-1/2 xl:w-1/3 min-w-full md:min-w-0">{pastEventsCols[2][0]}</div>
       </div>
     );
   } else {
-    pastEventsDiv = (
-      <div className="flex flex-row flex-wrap">
-        <div className="flex flex-col sm:w-1/2 lg:w-1/3 min-w-full xl:min-w-0">{pastEventsCols[0]}</div>
-        <div className="flex flex-col sm:w-1/2 lg:w-1/3 min-w-full xl:min-w-0">{pastEventsCols[1]}</div>
-        <div className="flex flex-col sm:w-1/2 lg:w-1/3 min-w-full xl:min-w-0">{pastEventsCols[2]}</div>
-      </div>
-    );
+    if(!tablet) {
+      pastEventsDiv = (
+        <div className="flex flex-row flex-wrap">
+          <div className="flex flex-col md:w-1/2 xl:w-1/3 min-w-full md:min-w-0">{pastEventsCols[0]}{pastEventsCols[3]}</div>
+          <div className="flex flex-col md:w-1/2 xl:w-1/3 min-w-full md:min-w-0">{pastEventsCols[1]}{pastEventsCols[4]}</div>
+          <div className="flex flex-col md:w-1/2 xl:w-1/3 min-w-full md:min-w-0">{pastEventsCols[2]}{pastEventsCols[5]}</div>
+        </div>
+      );
+    } else {
+      pastEventsDiv = (
+        <div className="flex flex-row flex-wrap">
+          <div className="flex flex-col md:w-1/2 xl:w-1/3 min-w-full md:min-w-0">{pastEventsCols[0]}{pastEventsCols[2]}{pastEventsCols[4]}</div>
+          <div className="flex flex-col md:w-1/2 xl:w-1/3 min-w-full md:min-w-0">{pastEventsCols[1]}{pastEventsCols[3]}{pastEventsCols[5]}</div>
+        </div>
+      );
+    }
   }
 
   const upComingEventDiv = (
@@ -126,7 +139,7 @@ export default function EventsPage({ events }: EventsPageProps) {
     });
   };
 
-  const ref = useRef<ReturnType<typeof setTimeout>[]>([]);
+  /*const ref = useRef<ReturnType<typeof setTimeout>[]>([]);
   const [items, set] = useState<string[]>([]);
 
   const reset = useCallback(() => {
@@ -141,7 +154,7 @@ export default function EventsPage({ events }: EventsPageProps) {
   useEffect(() => {
     reset();
     return () => ref.current.forEach(clearTimeout);
-  }, []);
+  }, []);*/
 
   return (
     <div>
@@ -153,9 +166,9 @@ export default function EventsPage({ events }: EventsPageProps) {
           content="An overview of all our AI/ML projects, including explanations and interactive demos."
         />
       </Head>
-      <main className="flex flex-col justify-center min-h-screen bg-ais-new-beige">
-        <section className="py-8 px-2 mt-10">
-          <div className="relative mx-auto max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-4xl 2xl:max-w-6xl py-2">
+      <main className="flex flex-col items-center justify-center min-h-screen bg-ais-new-beige">
+        <section className="py-8 px-2 mt-10 max-w-[1400px] mx-[10%]">
+          <div className="relative py-2">
           <img
               src="decoration2.png"
               className="max-w-[min(30rem,100%)]"
@@ -167,8 +180,8 @@ export default function EventsPage({ events }: EventsPageProps) {
             />
           </div>
         </section>
-        <section className="py-8 px-2">
-          <div className="mx-auto max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-4xl 2xl:max-w-6xl py-2">
+        <section className="py-8 px-2 max-w-[1400px] mx-[10%]">
+          <div className="py-2">
             <img
               src="decoration3.png"
               className="max-w-[min(30rem,100%)] sm:-translate-x-[2rem]"
