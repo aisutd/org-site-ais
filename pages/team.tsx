@@ -96,7 +96,6 @@ export default function TeamPage({ officers }: TeamPageProps) {
     else if (off['team'] == 'Membership') hrTeam.push(off);
     else if (off['team'] == 'Technology') techTeam.push(off);
     else if (off['team'] == 'AIM') aimTeam.push(off);
-    console.log(off.name);
   };
 
   return (
