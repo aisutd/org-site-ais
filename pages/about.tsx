@@ -10,6 +10,15 @@ const spacing = 0;
 
 export const AboutPage = () => {
   return (
+    <div>
+        <Head>
+          <title>About &ndash; AIS</title>
+          <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+          <meta
+            name="description"
+            content="Who we are and what we do"
+          />
+        </Head>
     <div className="w-[100%] flex flex-col gap-[4rem] bg-ais-new-beige pt-[7rem] font-roboto pb-[5rem] px-[20px]">
       <div className="relative w-[100%] pt-[4rem] z-0">
         <div className="w-[100%] [text-shadow:0px_4px_4px_#00000040] text-[#361cff] font-placard-bold tracking-wide text-[96px] text-center">
@@ -121,6 +130,7 @@ export const AboutPage = () => {
           src="/images/bluearrow.png"
         />
       </div>
+    </div>
     </div>
   );
 };

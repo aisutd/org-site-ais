@@ -116,12 +116,13 @@ export default function TeamPage({ officers }: TeamPageProps) {
             MEET THE TEAM
           </div>
           <div className="flex flex-grow flex-wrap -mt-10 pt-10 pb-8 gap-8 justify-around relative">
-            {/* absolutes */}
-            <img
+              {/* absolutes */}
+              <img
               src="/team_blue_star.png"
-              alt="Blue star"
-              className="absolute bottom-10 -right-20 h-80 w-80"
-            />
+               alt="Blue star"
+             className="absolute bottom-5 -right-16 h-60 w-40"
+                   />
+
             <img
               src="/team_yellow_star.png"
               alt="Yellow star"
