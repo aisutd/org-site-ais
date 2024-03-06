@@ -12,7 +12,7 @@ const spacing = 0;
 export const AboutPage = () => {
   return (
     <div className =  "bg-ais-new-beige font-placard">
-<div className="w-[100%] flex flex-col gap-[4rem] pt-[7rem] pb-[5rem] max-w-[1400px] px-[4rem] 2xl:px-[0px] mx-auto">
+    <div className="w-[100%] flex flex-col gap-[4rem] pt-[7rem] pb-[5rem] max-w-[1400px] px-[4rem] 2xl:px-[0px] mx-auto">
       <div className="relative w-[100%] pt-[4rem] z-0">
         <div className="w-[100%] [text-shadow:0px_4px_4px_#00000040] text-[#361cff] font-bold text-[96px] text-center ">
           WHO WE ARE
@@ -38,7 +38,7 @@ export const AboutPage = () => {
       </div>
       <div className="flex items-center justify-between w-full gap-[20px]">
         <div className="flex flex-col items-start gap-[20px]">
-          <div className="relative font-bold text-[#3e6eff] text-[48px] text-center self-center sm:text-left sm:self-start">
+          <div className="relative font-placard-bold tracking-wide text-[#3e6eff] text-[48px] text-center self-center sm:text-left sm:self-start">
             OUR MISSION
           </div>
           <p className="font-text-1 text-[#293039]">
@@ -58,7 +58,7 @@ export const AboutPage = () => {
           <p className="text-[#777777]">Founder (SE {'\''}18)</p>
         </div>
         <div className="flex flex-col items-end gap-[20px]">
-          <div className="text-[#3e6eff] text-[48px] font-bold self-center text-center sm:text-right sm:self-end">
+          <div className="text-[#3e6eff] text-[48px] font-placard-bold tracking-wide self-center text-center sm:text-right sm:self-end">
             HOW WE STARTED
           </div>
           <p className="text-justify">
@@ -70,8 +70,8 @@ export const AboutPage = () => {
           </p>
         </div>
       </div>
-      <div className="text-[#361cff] text-black text-center font-bold uppercase text-5xl sm:text-8xl">
-        Our Programs
+      <div className="[text-shadow:0px_4px_4px_#00000040] text-[#361cff] text-center font-placard-bold tracking-wide uppercase text-5xl sm:text-8xl">
+        What We Do
       </div>
       <div className="w-full flex flex-col sm:flex-row justify-between gap-x-4 items-start bg-ais-new-beige pt-7 font-placard pb-5 px-4 max-w-[1400px] mx-auto">
         <div className="w-full sm:w-1/2 text-center">

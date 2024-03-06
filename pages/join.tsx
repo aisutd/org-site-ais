@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import Subscribe from '../components/join/Subscribe';
 import DescriptionIcon from '@mui/icons-material/Description';
 import * as React from 'react';
 import SiteFooter from '../components/common/SiteFooter';
@@ -13,10 +12,10 @@ export const JoinPage = () => {
   };
 
   return (
-    <main className="inline-flex flex-col items-start relative bg-beige w-[100%]">
+    <main className="inline-flex flex-col items-start relative bg-beige w-[100%] font-roboto">
       <div className="flex bg-[#fff8f3] items-center justify-center gap-[5%] pt-[10rem] pb-[6rem] relative w-[100%] z-0">
         <div className="flex-col items-center gap-[24px] flex relative w-[80%] md:w-[45%]">
-          <p className="font-bold text-5xl text-center md:text-start">
+          <p className="font-placard-bold tracking-wide text-5xl text-center md:text-start">
             UNLOCK THE BENEFITS OF JOINING AIS
           </p>
           <p className="relative self-stretch font-text-2 font-[number:var(--text-2-font-weight)] text-[#4f4f4f] text-[length:var(--text-2-font-size)] tracking-[var(--text-2-letter-spacing)] leading-[var(--text-2-line-height)] [font-style:var(--text-2-font-style)]">
@@ -43,13 +42,13 @@ export const JoinPage = () => {
           <div className="relative w-[162px] h-[48px] bg-[#3E6EFF] rounded-[57px] mb-10 [cursor:pointer]"
             onClick={() => {handleSignUpClick('apps')}}
           >
-            <div className="bg-[#3E6EFF] text-[white] relative w-[154px] h-[38px] top-[5px] left-[4px] rounded-[45px] border-[3px] border-solid border-[color:var(--variable-collection-bg-duplicate)] flex justify-center items-center font-bold text-[16px]">
+            <div className="bg-[#3E6EFF] text-[white] relative w-[154px] h-[38px] top-[5px] left-[4px] rounded-[45px] border-[3px] border-solid border-white flex justify-center items-center font-bold text-[16px]">
               Sign Up
             </div>
           </div>
         </div>
         <div className="
-          mb-10 max-h-[40rem] h-[calc(0.71*40vw)] w-[40%]
+          mb-10 max-h-[40rem] h-[29vw] w-[40%]
           bg-[url('/Pills.png')] bg-no-repeat bg-contain bg-center z-10
           hidden md:block
         "/>
@@ -58,7 +57,7 @@ export const JoinPage = () => {
         <div className=" flex flex-col items-center justify-center gap-[56px] relative self-stretch w-full flex-[0_0_auto]">
           <div className=" inline-flex items-center gap-[5px] relative flex-[0_0_auto]">
             <img className="relative w-[50px] h-[50px]" alt="Application" src="/images/applications.svg" />
-            <div className="relative w-fit mt-[-1.00px] [font-family:'Proxima_Nova-Bold',Helvetica] font-bold text-variable-collection-black text-4xl text-center">
+            <div className="relative w-fit mt-[-1.00px] font-placard-bold tracking-wide text-4xl text-center">
               APPLICATIONS
             </div>
           </div>
@@ -89,20 +88,20 @@ export const JoinPage = () => {
             <img className="ml-[-4.00px] relative flex-[0_0_auto]" alt="Button" src="/images/leftbutton.png" />
             <div className="flex-col w-[768px] gap-[32px] flex items-center relative">
               <div className="inline-flex items-center gap-[10px] p-[30px] relative flex-[0_0_auto]">
-                <div className="relative w-fit mt-[-0.50px] font-label font-[number:var(--label-font-weight)] text-variable-collection-dark-blue1 text-[length:var(--label-font-size)] text-center tracking-[var(--label-letter-spacing)] leading-[var(--label-line-height)] whitespace-nowrap [font-style:var(--label-font-style)]">
+                <div className="relative w-fit mt-[-0.50px] text-center whitespace-nowrap">
                 </div>
               </div>
-              <p className="relative self-stretch font-h3 font-[number:var(--h3-font-weight)] text-variable-collection-dark-blue1 text-[length:var(--h3-font-size)] text-center tracking-[var(--h3-letter-spacing)] leading-[var(--h3-line-height)] [font-style:var(--h3-font-style)]">
+              <p className="relative self-stretch text-center">
                 Joining AIS has been an incredible journey for me. The organization provides a supportive community and
                 valuable opportunities to learn and grow in the field of artificial intelligence.
               </p>
               <div className="flex flex-col w-[300px] items-center gap-[16px] relative flex-[0_0_auto]">
                 <img className="relative w-[56px] h-[56px] object-cover" alt="Avatar image" src="/images/avatarimage.png" />
                 <div className="flex flex-col items-start relative self-stretch w-full flex-[0_0_auto]">
-                  <div className="mt-[-1.00px] [font-family:'Roboto-SemiBold',Helvetica] font-semibold relative self-stretch text-variable-collection-dark-blue1 text-[16px] text-center tracking-[0] leading-[24px]">
+                  <div className="mt-[-1.00px] font-semibold relative self-stretch text-[16px] text-center">
                     First Last
                   </div>
-                  <div className="font-text font-[number:var(--text-font-weight)] relative self-stretch text-variable-collection-dark-blue1 text-[length:var(--text-font-size)] text-center tracking-[var(--text-letter-spacing)] leading-[var(--text-line-height)] [font-style:var(--text-font-style)]">
+                  <div className="font-text relative self-stretch text-center">
                     AI Engineer, Date
                   </div>
                 </div>
@@ -111,7 +110,7 @@ export const JoinPage = () => {
             <img className="mr-[-4.00px] relative flex-[0_0_auto]" alt="Button" src="/images/rightbutton.png" />
           </div>
           <div className="inline-flex items-start gap-[9px] p-[10px] relative flex-[0_0_auto]">
-            <div className="relative w-[8px] h-[8px] bg-[color:var(--variable-collection-blue3-duplicate)] rounded-[4px]" />
+            <div className="relative w-[8px] h-[8px] rounded-[4px]" />
             <div className="relative w-[8px] h-[8px] bg-[#d9d9d9] rounded-[4px]" />
             <div className="relative w-[8px] h-[8px] bg-[#d9d9d9] rounded-[4px]" />
             <div className="relative w-[8px] h-[8px] bg-[#d9d9d9] rounded-[4px]" />
@@ -136,7 +135,7 @@ function AppBox( { title, desc, appLink, learnLink } )
         <div onClick={() => {window.open(`${appLink}`, "_blank")}}
           className="relative w-[8rem] h-[2.5rem] bg-[#3E6EFF] rounded-[20px] flex justify-center items-center [cursor:pointer]"
         >
-          <div className="bg-[#3E6EFF] text-[white] relative w-[7.5rem] h-[2rem] rounded-[16px] border-[3px] border-solid border-[color:var(--variable-collection-bg-duplicate)] flex justify-center items-center">
+          <div className="bg-[#3E6EFF] text-[white] relative w-[7.5rem] h-[2rem] rounded-[16px] border-[3px] border-solid border-white flex justify-center items-center">
             <div className="top-[3px] font-bold text-sm">
               Apply
             </div>
