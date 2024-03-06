@@ -11,8 +11,16 @@ const spacing = 0;
 
 export const AboutPage = () => {
   return (
-    <div className =  "bg-ais-new-beige font-placard">
-    <div className="w-[100%] flex flex-col gap-[4rem] pt-[7rem] pb-[5rem] max-w-[1400px] px-[4rem] 2xl:px-[0px] mx-auto">
+    <div>
+        <Head>
+          <title>About &ndash; AIS</title>
+          <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+          <meta
+            name="description"
+            content="Who we are and what we do"
+          />
+        </Head>
+    <div className="w-[100%] flex flex-col gap-[4rem] bg-ais-new-beige pt-[7rem] font-roboto pb-[5rem] px-[20px]">
       <div className="relative w-[100%] pt-[4rem] z-0">
         <div className="w-[100%] [text-shadow:0px_4px_4px_#00000040] text-[#361cff] font-bold text-[96px] text-center ">
           WHO WE ARE
@@ -104,7 +112,7 @@ export const AboutPage = () => {
         </div>
       </div>
     </div>
-</div>
+    </div>
   );
 };
 

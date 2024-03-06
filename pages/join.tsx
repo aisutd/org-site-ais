@@ -2,16 +2,54 @@ import Head from 'next/head';
 import Link from 'next/link';
 import DescriptionIcon from '@mui/icons-material/Description';
 import * as React from 'react';
-import SiteFooter from '../components/common/SiteFooter';
+import { useState } from 'react';
 
 export const JoinPage = () => {
-  {/*for the appbar*/}
+  const [currentTestimony, setCurrentTestimony] = useState(0);
+  
+  const testimonies = [
+    {
+      text: "Joining AIS has been an incredible journey for me. The organization provides a supportive community and valuable opportunities to learn and grow in the field of artificial intelligence. (1)",
+      author: "First Last",
+      position: "AI Engineer, Date",
+      image: "/images/avatarimage.png"
+    },
+    {
+      text: "Joining AIS has been an incredible journey for me. The organization provides a supportive community and valuable opportunities to learn and grow in the field of artificial intelligence. (2)",
+      author: "First Last",
+      position: "AI Engineer, Date",
+      image: "/images/avatarimage.png"
+    },
+    {
+      text: "Joining AIS has been an incredible journey for me. The organization provides a supportive community and valuable opportunities to learn and grow in the field of artificial intelligence. (3)",
+      author: "First Last",
+      position: "AI Engineer, Date",
+      image: "/images/avatarimage.png"
+    },
+  ];
+
+  const handleNextTestimony = () => {
+    setCurrentTestimony((prevIndex) => (prevIndex + 1) % testimonies.length);
+  };
+
+  const handlePrevTestimony = () => {
+    setCurrentTestimony((prevIndex) => (prevIndex - 1 + testimonies.length) % testimonies.length);
+  };
 
   const handleSignUpClick = (secName) => {
-    document.getElementById(secName).scrollIntoView()
+    document.getElementById(secName).scrollIntoView();
   };
 
   return (
+      <div>
+        <Head>
+          <title>Join &ndash; AIS</title>
+          <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+          <meta
+            name="description"
+            content="How you can be involved!"
+          />
+        </Head>
     <main className="inline-flex flex-col items-start relative bg-beige w-[100%] font-roboto">
       <div className="flex bg-[#fff8f3] items-center justify-center gap-[5%] pt-[10rem] pb-[6rem] relative w-[100%] z-0">
         <div className="flex-col items-center gap-[24px] flex relative w-[80%] md:w-[45%]">
@@ -37,13 +75,6 @@ export const JoinPage = () => {
               <p className="relative self-stretch font-text-2 font-[number:var(--text-2-font-weight)] text-[#4f4f4f] text-[length:var(--text-2-font-size)] tracking-[var(--text-2-letter-spacing)] leading-[var(--text-2-line-height)] [font-style:var(--text-2-font-style)]">
                 Get guidance and support from experienced AI professionals through our mentorship program.
               </p>
-            </div>
-          </div>
-          <div className="relative w-[162px] h-[48px] bg-[#3E6EFF] rounded-[57px] mb-10 [cursor:pointer]"
-            onClick={() => {handleSignUpClick('apps')}}
-          >
-            <div className="bg-[#3E6EFF] text-[white] relative w-[154px] h-[38px] top-[5px] left-[4px] rounded-[45px] border-[3px] border-solid border-white flex justify-center items-center font-bold text-[16px]">
-              Sign Up
             </div>
           </div>
         </div>
@@ -82,46 +113,68 @@ export const JoinPage = () => {
           </div>
         </div>
       </div>
-      <div className="bg-[#fff8f3] flex flex-col w-[1440px] items-center gap-[80px] px-[120px] py-[112px] relative hidden">
+                                                
+
+
+
+
+    <div>
+      <main className="bg-[#fff8f3] flex flex-col w-[1440px] items-center gap-[80px] px-[120px] py-[112px]">
         <div className="flex flex-col items-center gap-[48px] relative self-stretch w-full flex-[0_0_auto]">
           <div className="justify-between self-stretch w-full flex-[0_0_auto] flex items-center relative">
-            <img className="ml-[-4.00px] relative flex-[0_0_auto]" alt="Button" src="/images/leftbutton.png" />
+            <img onClick={handlePrevTestimony} className="ml-[-4.00px] relative flex-[0_0_auto]" alt="Button" src="/images/leftbutton.png" />
             <div className="flex-col w-[768px] gap-[32px] flex items-center relative">
               <div className="inline-flex items-center gap-[10px] p-[30px] relative flex-[0_0_auto]">
                 <div className="relative w-fit mt-[-0.50px] text-center whitespace-nowrap">
                 </div>
               </div>
               <p className="relative self-stretch text-center">
-                Joining AIS has been an incredible journey for me. The organization provides a supportive community and
-                valuable opportunities to learn and grow in the field of artificial intelligence.
+                {testimonies[currentTestimony].text}
               </p>
               <div className="flex flex-col w-[300px] items-center gap-[16px] relative flex-[0_0_auto]">
-                <img className="relative w-[56px] h-[56px] object-cover" alt="Avatar image" src="/images/avatarimage.png" />
+                <img className="relative w-[56px] h-[56px] object-cover" alt="Avatar image" src={testimonies[currentTestimony].image} />
                 <div className="flex flex-col items-start relative self-stretch w-full flex-[0_0_auto]">
                   <div className="mt-[-1.00px] font-semibold relative self-stretch text-[16px] text-center">
-                    First Last
+                    {testimonies[currentTestimony].author}
                   </div>
                   <div className="font-text relative self-stretch text-center">
-                    AI Engineer, Date
+                    {testimonies[currentTestimony].position}
                   </div>
                 </div>
               </div>
             </div>
-            <img className="mr-[-4.00px] relative flex-[0_0_auto]" alt="Button" src="/images/rightbutton.png" />
+            <img onClick={handleNextTestimony} className="mr-[-4.00px] relative flex-[0_0_auto]" alt="Button" src="/images/rightbutton.png" />
           </div>
           <div className="inline-flex items-start gap-[9px] p-[10px] relative flex-[0_0_auto]">
-            <div className="relative w-[8px] h-[8px] rounded-[4px]" />
+            <div className="relative w-[8px]flex items-center h-[8px] rounded-[4px]" />
             <div className="relative w-[8px] h-[8px] bg-[#d9d9d9] rounded-[4px]" />
             <div className="relative w-[8px] h-[8px] bg-[#d9d9d9] rounded-[4px]" />
             <div className="relative w-[8px] h-[8px] bg-[#d9d9d9] rounded-[4px]" />
             <div className="relative w-[8px] h-[8px] bg-[#d9d9d9] rounded-[4px]" />
           </div>
         </div>
+      </main>
       </div>
     </main>
+    </div>
   );
 };
+
 export default JoinPage;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function AppBox( { title, desc, appLink, learnLink } )
 {
@@ -150,5 +203,6 @@ function AppBox( { title, desc, appLink, learnLink } )
         </div>
       </div>
     </div>
+
   );
 }
