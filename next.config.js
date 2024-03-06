@@ -2,12 +2,6 @@ module.exports = {
   async redirects() {
     return [
       {
-        source: '/valentine/signup',
-        destination: 'https://docs.google.com/forms/d/e/1FAIpQLSdapU6bb91yOpHAiNFKrOF6Ofjw0_6K31bQb_l8yitk4eUPeA/viewform',
-        basePath: false,
-        permanent: true,
-      },
-      {
         source: '/member/attendance',
         destination: 'https://coda.io/form/AIS-Event-Attendance-Form_dYfH_vMZ_U8',
         basePath: false,
@@ -41,6 +35,12 @@ module.exports = {
       {
         source: '/aim',
         destination: '/aim/info',
+        basePath: false,
+        permanent: true,
+      },
+      {
+        source: '/aim/discord',
+        destination: 'https://discord.gg/6rVUmAy54Z',
         basePath: false,
         permanent: true,
       },
