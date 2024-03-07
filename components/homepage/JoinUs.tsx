@@ -1,8 +1,7 @@
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
-function JoinUs()
-{
+function JoinUs() {
   const [auth, setAuth] = useState(true);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);

@@ -3,7 +3,7 @@ import React from 'react';
 function PastEvent() {
   return (
     <div className="
-      relative py-20 px-[10vw] gap-[10vw] items-center justify-items-center
+      relative py-20 gap-[10vw] items-center justify-items-center max-w-[1400px] sm:px-[4rem] 2xl:px-[0px] mx-auto 
       flex flex-col sm:grid sm:grid-cols-2
     ">
       <div className="w-full flex flex-col justify-center">

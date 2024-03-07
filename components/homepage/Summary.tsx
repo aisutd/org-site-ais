@@ -4,7 +4,7 @@ import React from 'react';
 
 function Summary() {
   return (
-    <div className="flex flex-col items-center justify-center px-[2rem] py-40 bg-ais-new-soft-black">
+    <div className="flex flex-col items-center justify-center py-40 bg-ais-new-soft-black">
       {/* title */}
       <h2 className="font-placard font-bold tracking-wider text-ais-new-white mb-12 text-center text-4xl sm:text-5xl">
         UNLOCKING THE POWER OF{' '}
@@ -12,7 +12,7 @@ function Summary() {
       </h2>
 
       {/* icons */}
-      <div className="gap-[2rem] justify-center flex flex-col md:flex-row">
+      <div className="gap-[1rem] justify-center flex flex-col md:flex-row max-w-[1400px] sm:px-[4rem] 2xl:px-[0px] mx-auto">
         <div className="text-center">
           <img src="/images/Photos/laptop-stock-image.png" alt="Icon 1" className="w-16 h-16 mb-4 mx-auto" />
           <h4 className="text-xl font-bold text-ais-new-white mb-4">AI Literacy</h4>
