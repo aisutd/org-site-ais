@@ -70,7 +70,7 @@ export default function SiteHeader() {
       <AppbarBG transparencyThreshold="0.1" className=""/>
       <nav className="bg-none w-[100%] h-[5rem] grid grid-cols-2 place-items-center md:grid-cols-3 2xl:grid-cols-4">
         <div onClick={() => {handleItemClick('/', 'Home')}} className="flex gap-4 items-center [cursor:pointer]">
-          <img src="images/ais_logo_black.png" className="h-[2rem] object-cover"/>
+          <img src="images/Logos/ais_logo_black.png" className="h-[2rem] object-cover"/>
         </div>
         <div className="hidden 2xl:block"/>
         <div className="items-center md:col-span-2 md:flex md:gap-[1rem] md:pr-[2rem]">
@@ -96,7 +96,7 @@ export default function SiteHeader() {
               aria-expanded={open ? 'true' : undefined}
               onClick={handleMenu}
             >
-              <img src="images/hamburger-icon.svg" className="h-[1.5rem] object-contain"/>
+              <img src="images/icons/hamburger-icon.svg" className="h-[1.5rem] object-contain"/>
             </Button>
             <Menu
               id="basic-menu"
@@ -119,8 +119,8 @@ export default function SiteHeader() {
               <IconButton onClick={() => {window.open("/insta", "_blank")}}>
                 <InstagramIcon className='h-6 text-ais-new-med-blue'/>
               </IconButton>
-              <IconButton onClick={() => {window.open("/dc", "_blank")}}>
-                <img src="/discord.svg" className="h-5" />
+              <IconButton onClick={() => {window.open("/discord", "_blank")}}>
+                <img src="/images/Logos/bluediscord.png" className="h-5" />
               </IconButton>
               <IconButton onClick={() => {window.open("/linkedin", "_blank")}}>
                 <LinkedInIcon className='h-6 text-ais-new-med-blue'/>

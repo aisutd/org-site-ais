@@ -28,19 +28,19 @@ export const AboutPage = () => {
             className="absolute w-[134px] h-[136px] top-[54px] right-[3%] object-cover
             hidden lg:block"
             alt="img 1"
-            src="/images/uplogo.png"
+            src="/images/Logos/uplogo.png"
           />
           <img
             className="absolute w-[86px] h-[87px] top-[180px] right-[13%] object-cover
             hidden lg:block"
             alt="img 2"
-            src="/images/firstlogo.png"
+            src="/images/Logos/firstlogo.png"
           />
           <img
             className="absolute w-[232px] h-[237px] top-0 xl:left-[3%] object-cover -z-10
             hidden lg:block"
             alt="first LOGO"
-            src="/images/firstlogo.png"
+            src="/images/Logos/firstlogo.png"
           /> 
       </div>
       <div className="flex items-center justify-between w-full gap-[20px] lg:px-[5%] 2xl:px-[10%]">
@@ -52,14 +52,14 @@ export const AboutPage = () => {
             Make artificial intelligence understandable and accessible to everyone. We want to demystify AI for all.
           </p>
         </div>
-        <img className="w-[258px] min-w-[258px] h-[265.2px] object-cover rounded-[10px] opacity-0 hidden sm:block" alt="Placeholder image" src="/images/placeholder.png" />
+        <img className="w-[258px] min-w-[258px] h-[265.2px] object-cover rounded-[10px] opacity-0 hidden sm:block" alt="Placeholder image" src="/images/Backgrounds/placeholder.png" />
       </div>
       <div className="flex items-center justify-between relative w-full gap-[20px] xl:gap-[5rem] lg:px-[5%] 2xl:px-[10%]">
         <div className="text-center text-lg w-[258px] min-w-[258px] hidden sm:block">
           <img
             className="w-[258px] h-[265.97px] object-cover rounded-[10px]"
             alt="Placeholder image9"
-            src="/images/founder.jpeg"
+            src="/images/Photos/founder.jpeg"
           />
           <p className="font-bold pt-[5px]">Brian Hoang</p>
           <p className="text-[#777777]">Founder (SE {'\''}18)</p>
@@ -93,17 +93,17 @@ export const AboutPage = () => {
         <img
           className="w-[29px] h-[37px] top-[11px] left-[380px] hidden"
           alt="Ep arrow down bold"
-          src="/images/bluearrow.png"
+          src="/images/Shapes/bluearrow.png"
         />
         <img
           className="top-[115px] left-[380px] w-[29px] h-[37px] hidden"
           alt="Ep arrow down bold"
-          src="/images/bluearrow.png"
+          src="/images/Shapes/bluearrow.png"
         />
         <img
           className="top-[11px] left-[330px] w-[29px] h-[37px] hidden"
           alt="Ep arrow down bold"
-          src="/images/bluearrow.png"
+          src="/images/Shapes/bluearrow.png"
         />
         <h2 className="">
           Workshops
@@ -117,17 +117,17 @@ export const AboutPage = () => {
         <img
           className="top-[14px] left-[460px] w-[29px] h-[37px] hidden"
           alt="Ep arrow down bold"
-          src="/images/bluearrow.png"
+          src="/images/Shapes/bluearrow.png"
         />
         <img
           className="top-[119px] left-[460px] w-[29px] h-[37px] hidden"
           alt="Ep arrow down bold"
-          src="/images/bluearrow.png"
+          src="/images/Shapes/bluearrow.png"
         />
         <img
           className="top-[224px] left-[460px] w-[29px] h-[37px] hidden"
           alt="Ep arrow down bold"
-          src="/images/bluearrow.png"
+          src="/images/Shapes/bluearrow.png"
         />
       </div>
     </div>

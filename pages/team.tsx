@@ -118,13 +118,13 @@ export default function TeamPage({ officers }: TeamPageProps) {
           <div className="flex flex-grow flex-wrap -mt-10 pt-10 pb-8 gap-8 justify-around relative">
               {/* absolutes */}
               <img
-              src="/team_blue_star.png"
+              src="/images/Shapes/team_blue_star.png"
                alt="Blue star"
              className="absolute bottom-5 -right-16 h-60 w-40"
                    />
 
             <img
-              src="/team_yellow_star.png"
+              src="/images/Shapes/team_yellow_star.png"
               alt="Yellow star"
               className="absolute top-40 -left-20 h-60 w-60"
             />

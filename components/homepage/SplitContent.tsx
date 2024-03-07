@@ -19,13 +19,13 @@ const SplitContent: React.FC<SplitContentProps> = ({
     <div className="flex flex-col items-center justify-center bg-ais-off-white relative pb-20 px-[4rem] lg:px-[10rem]">
       {/* absolutes */}
       <img
-        src="/home_square_star.png"
+        src="/images/Shapes/home_square_star.png"
         alt="Image 1"
         className="absolute bottom-10 right-5 h-64 w-64 z-0 hidden sm:block"
       />
 
       <img
-        src="/team_yellow_star.png"
+        src="/images/Shapes/team_yellow_star.png"
         alt="Image 1"
         className="absolute top-0 left-0 h-40 w-40 z-50 hidden md:block"
       />

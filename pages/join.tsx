@@ -12,19 +12,19 @@ export const JoinPage = () => {
       text: "Joining AIS has been an incredible journey for me. The organization provides a supportive community and valuable opportunities to learn and grow in the field of artificial intelligence. (1)",
       author: "First Last",
       position: "AI Engineer, Date",
-      image: "/images/avatarimage.png"
+      image: "/images/icons/avatarimage.png"
     },
     {
       text: "Joining AIS has been an incredible journey for me. The organization provides a supportive community and valuable opportunities to learn and grow in the field of artificial intelligence. (2)",
       author: "First Last",
       position: "AI Engineer, Date",
-      image: "/images/avatarimage.png"
+      image: "/images/icons/avatarimage.png"
     },
     {
       text: "Joining AIS has been an incredible journey for me. The organization provides a supportive community and valuable opportunities to learn and grow in the field of artificial intelligence. (3)",
       author: "First Last",
       position: "AI Engineer, Date",
-      image: "/images/avatarimage.png"
+      image: "/images/icons/avatarimage.png"
     },
   ];
 
@@ -80,14 +80,14 @@ export const JoinPage = () => {
         </div>
         <div className="
           mb-10 max-h-[40rem] h-[29vw] w-[40%]
-          bg-[url('/Pills.png')] bg-no-repeat bg-contain bg-center z-10
+          bg-[url('/images/Join/Pills.png')] bg-no-repeat bg-contain bg-center z-10
           hidden md:block
         "/>
       </div>
       <div id="apps" className="pt-[5rem] bg-[#fff8f3] flex flex-col items-center justify-center gap-[10px] pb-[12rem] relative self-stretch w-full flex-[0_0_auto]">
         <div className=" flex flex-col items-center justify-center gap-[56px] relative self-stretch w-full flex-[0_0_auto]">
           <div className=" inline-flex items-center gap-[5px] relative flex-[0_0_auto]">
-            <img className="relative w-[50px] h-[50px]" alt="Application" src="/images/applications.svg" />
+            <img className="relative w-[50px] h-[50px]" alt="Application" src="/images/icons/applications.svg" />
             <div className="relative w-fit mt-[-1.00px] font-placard-bold tracking-wide text-4xl text-center">
               APPLICATIONS
             </div>
@@ -122,7 +122,7 @@ export const JoinPage = () => {
       <main className="bg-[#fff8f3] flex flex-col w-[1440px] items-center gap-[80px] px-[120px] py-[112px]">
         <div className="flex flex-col items-center gap-[48px] relative self-stretch w-full flex-[0_0_auto]">
           <div className="justify-between self-stretch w-full flex-[0_0_auto] flex items-center relative">
-            <img onClick={handlePrevTestimony} className="ml-[-4.00px] relative flex-[0_0_auto]" alt="Button" src="/images/leftbutton.png" />
+            <img onClick={handlePrevTestimony} className="ml-[-4.00px] relative flex-[0_0_auto]" alt="Button" src="/images/shapes/leftbutton.png" />
             <div className="flex-col w-[768px] gap-[32px] flex items-center relative">
               <div className="inline-flex items-center gap-[10px] p-[30px] relative flex-[0_0_auto]">
                 <div className="relative w-fit mt-[-0.50px] text-center whitespace-nowrap">
@@ -143,7 +143,7 @@ export const JoinPage = () => {
                 </div>
               </div>
             </div>
-            <img onClick={handleNextTestimony} className="mr-[-4.00px] relative flex-[0_0_auto]" alt="Button" src="/images/rightbutton.png" />
+            <img onClick={handleNextTestimony} className="mr-[-4.00px] relative flex-[0_0_auto]" alt="Button" src="/images/shapes/rightbutton.png" />
           </div>
           <div className="inline-flex items-start gap-[9px] p-[10px] relative flex-[0_0_auto]">
             <div className="relative w-[8px]flex items-center h-[8px] rounded-[4px]" />

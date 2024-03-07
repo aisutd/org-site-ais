@@ -60,10 +60,25 @@ function emailLink(officer: Officer) {
 
 function githubLink(officer: Officer) {
   if (officer.github) {
+    let githubUsername = officer.github;
+    
+    // Check if the input is a complete GitHub URL
+    if (githubUsername.includes('github.com/')) {
+      // Extract username from the URL
+      const parts = githubUsername.split('github.com/');
+      githubUsername = parts[parts.length - 1]; // Take the last part after 'github.com/'
+      
+      // Remove any trailing slashes or other characters
+      githubUsername = githubUsername.replace(/^\//, '').replace(/\/.*$/, '').replace(/[^\w-]/g, '');
+    }
+    
+    // Construct GitHub URL
+    const githubUrl = `https://github.com/${githubUsername}`;
+
     return (
       <div className="px-2">
         <button className="transition duration-200 ease-in-out transform hover:-translate-y-1 hover:scale-110">
-          <a target="_blank" href={'https://github.com/' + officer.github} rel="noreferrer">
+          <a target="_blank" href={githubUrl} rel="noreferrer">
             <GitHub color="primary" fontSize="small" />
           </a>
         </button>
@@ -74,10 +89,13 @@ function githubLink(officer: Officer) {
 
 function linkedInLink(officer: Officer) {
   if (officer.linkedInUrl) {
+    // Trim LinkedIn URL
+    const trimmedUrl = officer.linkedInUrl.trim();
+
     return (
       <div className="px-2">
         <button className="transition duration-200 ease-in-out transform hover:-translate-y-1 hover:scale-110">
-          <a target="_blank" href={officer.linkedInUrl} rel="noreferrer">
+          <a target="_blank" href={trimmedUrl} rel="noreferrer">
             <LinkedIn color="primary" />
           </a>
         </button>
@@ -85,6 +103,7 @@ function linkedInLink(officer: Officer) {
     );
   }
 }
+
 
 function personalLink(officer: Officer) {
   if (officer.personalWeb) {

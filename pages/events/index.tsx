@@ -170,12 +170,12 @@ export default function EventsPage({ events }: EventsPageProps) {
         <section className="py-8 px-2 mt-10 max-w-[1400px] mx-[10%]">
           <div className="relative py-2">
           <img
-              src="decoration2.png"
+              src="/images/Events/decoration2.png"
               className="max-w-[min(30rem,100%)]"
             />
             {upComingEventDiv}
             <img
-              src="decoration1.png"
+              src="/images/Shapes/decoration1.png"
               className="absolute right-0 w-30 translate-x-20 -translate-y-20 hidden lg:block"
             />
           </div>
@@ -183,7 +183,7 @@ export default function EventsPage({ events }: EventsPageProps) {
         <section className="py-8 px-2 max-w-[1400px] mx-[10%]">
           <div className="py-2">
             <img
-              src="decoration3.png"
+              src="/images/Events/decoration3.png"
               className="max-w-[min(30rem,100%)] sm:-translate-x-[2rem]"
             />
             <div className="text-ais-new-soft-black py-[1rem] pr-[2rem] pl-[3rem] sm:pl-[2rem]">Explore our past events and learn about their impact.</div>
@@ -203,7 +203,7 @@ export default function EventsPage({ events }: EventsPageProps) {
             </div>
             {pastEventsDiv}
             <div className="py-4 w-full flex justify-center md:justify-end" onClick={() => (viewAllPastEvents ? setViewAllPastEvents(false) : setViewAllPastEvents(true))} >
-              <img src="viewall-btn.png" className='[cursor:pointer]'></img>
+              <img src="/images/Events/viewall-btn.png" className='[cursor:pointer]'></img>
             </div>
           </div>
         </section>
