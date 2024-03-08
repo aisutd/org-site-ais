@@ -31,13 +31,13 @@ export default function HomePage() {
         <section id="intro" className="bg-ais-new-beige w-full mb-10 lg:mb-10 relative pt-[9rem] pb-[4rem]">
           <div className="flex flex-col h-full justify-center text-center md:items-start">
             <img
-              src="/home_string.png"
+              src="/images/Shapes/home_string.png"
               alt="Home string"
               className="absolute hidden md:block h-[40vw] w-[40vw] top-[calc(26rem-10vw)] lg:h-[calc(30vw)] lg:w-[calc(30vw)] lg:top-[calc(28rem-25vw)] xl:top-[calc(26rem-20vw)]"
             />
             <div className="flex font-placard-bold text-ais-blue mb-8 justify-center text-5xl sm:text-8xl md:pl-[calc(15%-5rem)] lg:text-[7rem] lg:pl-[calc(50%-20rem)] lg:justify-start xl:text-9xl">
                 STEP INTO
-              <img src='/home_arrow.png' alt="Step into arrow" className="mx-2 h-8 w-8" />
+              <img src='/images/Shapes/home_arrow.png' alt="Step into arrow" className="mx-2 h-8 w-8" />
             </div>
             <div className="font-placard-bold text-ais-blue mb-8 text-5xl sm:text-8xl md:pl-[calc(38%-9rem)] lg:text-[7rem] lg:pl-[calc(50%-14rem)] xl:text-9xl">
               THE WORLD OF
@@ -46,7 +46,7 @@ export default function HomePage() {
               <span className="bg-gradient-to-r from-[#361CFF] from-50% to-[#FFBC85] text-transparent bg-clip-text">
                 ARTIFICIAL
               </span>
-              <img src="/AIstar.png" alt="AI Star" className="h-16 w-16 hidden lg:block"/>
+              <img src="/images/Shapes/AIstar.png" alt="AI Star" className="h-16 w-16 hidden lg:block"/>
               <span className="bg-gradient-to-r from-[#361CFF] to-[#FFBC85] text-transparent bg-clip-text">
                 INTELLIGENCE
               </span>
@@ -66,9 +66,9 @@ export default function HomePage() {
         </section>
         <section id="split content" className="relative">
           <SplitContent
-            topImageSrc="/images/ml-mon.png"
+            topImageSrc="/images/Photos/ml-mon.png"
             topBodyText="AIS usually hosts an ML Mondays workshop series about once a year where students have the opportunity to learn the basics of machine learning. Any student can attend these events absolutely free!"
-            bottomImageSrc="/images/aim-presentation.png"
+            bottomImageSrc="/images/Photos/aim-presentation.png"
             bottomTitle="AI MENTORSHIP"
             bottomBodyText="Our AIM program is designed to give students a hands-on experience to learn and create their first AI project in the scope of a single semester. Students can apply for either mentor or mentee roles depending on experience level."
           />

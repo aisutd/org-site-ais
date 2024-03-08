@@ -31,11 +31,11 @@ export default function NoPage({ demos }: DemoPageProps) {
             Coming Soon
           </p>
           <img
-            src="images/RoundCube-Blue-Glossy.png"
+            src="images/Shapes/RoundCube-Blue-Glossy.png"
             className="w-30 float-right translate-x-20 translate-y-20 opacity-80 invisible lg:visible"
           />
           <img
-            src="images/SuperToroid-2.png"
+            src="images/Shapes/SuperToroid-2.png"
             className="w-30 float-left -translate-x-3/4 -translate-y-12 opacity-90 invisible lg:visible"
           />
 

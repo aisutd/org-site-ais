@@ -30,7 +30,7 @@ function NewSiteFooter()
               onClick={() => window.open("https://www.aisutd.org", "_blank")}
               className="h-[1.5rem] w-[1.5rem]"
             >
-              <img src="ai_brain.svg" className="object-contain"/>
+              <img src="/images/Logos/ai_brain.svg" className="object-contain"/>
             </button>
             <button
               onClick={() => window.open("https://www.instagram.com/utdais", "_blank")}
@@ -40,9 +40,9 @@ function NewSiteFooter()
             </button>
             <button
               onClick={() => window.open("https://www.aisutd.org/discord", "_blank")}
-              className="h-[1.5rem] w-[1.5rem]"
+             className="h-[1.5rem] w-[1.5rem]"
             >
-              <img src="discord.svg" className="object-contain"/>
+            <img src="/images/Logos/bluediscord.png" className="object-contain"/>
             </button>
             <button
               onClick={() => window.open("https://www.linkedin.com/company/ais-utd", "_blank")}

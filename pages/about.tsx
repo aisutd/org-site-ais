@@ -28,21 +28,21 @@ export const AboutPage = () => {
         <img
           className="absolute w-[134px] h-[136px] top-[54px] right-[3%] object-cover
             hidden lg:block"
-          alt="img 1"
-          src="/images/uplogo.png"
-        />
-        <img
-          className="absolute w-[86px] h-[87px] top-[180px] right-[13%] object-cover
+            alt="img 1"
+            src="/images/Logos/uplogo.png"
+          />
+          <img
+            className="absolute w-[86px] h-[87px] top-[180px] right-[13%] object-cover
             hidden lg:block"
-          alt="img 2"
-          src="/images/firstlogo.png"
-        />
-        <img
-          className="absolute w-[232px] h-[237px] top-0 xl:left-[3%] object-cover -z-10
+            alt="img 2"
+            src="/images/Logos/firstlogo.png"
+          />
+          <img
+            className="absolute w-[232px] h-[237px] top-0 xl:left-[3%] object-cover -z-10
             hidden lg:block"
-          alt="first LOGO"
-          src="/images/firstlogo.png"
-        />
+            alt="first LOGO"
+            src="/images/Logos/firstlogo.png"
+          /> 
       </div>
       <div className="flex items-center justify-between w-full gap-[20px]">
         <div className="flex flex-col items-start gap-[20px]">
@@ -53,14 +53,14 @@ export const AboutPage = () => {
             Make artificial intelligence understandable and accessible to everyone. We want to demystify AI for all.
           </p>
         </div>
-        <img className="w-[258px] min-w-[258px] h-[265.2px] object-cover rounded-[10px] opacity-0 hidden sm:block" alt="Placeholder image" src="/images/placeholder.png" />
+        <img className="w-[258px] min-w-[258px] h-[265.2px] object-cover rounded-[10px] opacity-0 hidden sm:block" alt="Placeholder image" src="/images/Backgrounds/placeholder.png" />
       </div>
       <div className="flex items-center justify-between relative w-full gap-[20px] xl:gap-[5rem] ">
         <div className="text-center text-lg w-[258px] min-w-[258px] hidden sm:block">
           <img
             className="w-[258px] h-[265.97px] object-cover rounded-[10px]"
             alt="Placeholder image9"
-            src="/images/founder.jpeg"
+            src="/images/Photos/founder.jpeg"
           />
           <p className="font-bold pt-[5px]">Brian Hoang</p>
           <p className="text-[#777777]">Founder (SE {'\''}18)</p>
@@ -81,35 +81,55 @@ export const AboutPage = () => {
       <div className="[text-shadow:0px_4px_4px_#00000040] text-[#361cff] text-center font-placard-bold tracking-wide uppercase text-5xl sm:text-8xl">
         What We Do
       </div>
-      <div className="w-full flex flex-col sm:flex-row justify-between gap-x-4 items-start bg-ais-new-beige pt-7 font-placard pb-5 px-4 max-w-[1400px] mx-auto">
-        <div className="w-full sm:w-1/2 text-center">
-          <CollapsibleItem
-            title="AI Mentorship"
-            sampleText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-          />
-          <CollapsibleItem
-            title="Socials"
-            sampleText="Sample text for Socials."
-          />
-          <CollapsibleItem
-            title="AI51"
-            sampleText="Sample text for AI51."
-          />
-        </div>
-        <div className="w-full sm:w-1/2 text-center">
-          <CollapsibleItem
-            title="HackAI"
-            sampleText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-          />
-          <CollapsibleItem
-            title="Workshops"
-            sampleText="Sample text for Workshops."
-          />
-          <CollapsibleItem
-            title="Industry Events"
-            sampleText="Sample text for Industry Events."
-          />
-        </div>
+      <div className="font-placard-bold tracking-wide text-[#3e6eff] justify-items-center text-center gap-[20px] text-3xl sm:text-5xl grid grid-rows-6 sm:grid-cols-2 sm:grid-rows-3">
+        <h2 className="">
+          AI Mentorship
+        </h2>
+        <h2 className="">
+          HackAI
+        </h2>
+        <h2 className="">
+          Socials
+        </h2>
+        <img
+          className="w-[29px] h-[37px] top-[11px] left-[380px] hidden"
+          alt="Ep arrow down bold"
+          src="/images/Shapes/bluearrow.png"
+        />
+        <img
+          className="top-[115px] left-[380px] w-[29px] h-[37px] hidden"
+          alt="Ep arrow down bold"
+          src="/images/Shapes/bluearrow.png"
+        />
+        <img
+          className="top-[11px] left-[330px] w-[29px] h-[37px] hidden"
+          alt="Ep arrow down bold"
+          src="/images/Shapes/bluearrow.png"
+        />
+        <h2 className="">
+          Workshops
+        </h2>
+        <h2 className="">
+          AI51
+        </h2>
+        <h2 className="">
+          Industry Events
+        </h2>
+        <img
+          className="top-[14px] left-[460px] w-[29px] h-[37px] hidden"
+          alt="Ep arrow down bold"
+          src="/images/Shapes/bluearrow.png"
+        />
+        <img
+          className="top-[119px] left-[460px] w-[29px] h-[37px] hidden"
+          alt="Ep arrow down bold"
+          src="/images/Shapes/bluearrow.png"
+        />
+        <img
+          className="top-[224px] left-[460px] w-[29px] h-[37px] hidden"
+          alt="Ep arrow down bold"
+          src="/images/Shapes/bluearrow.png"
+        />
       </div>
     </div>
     </div>
