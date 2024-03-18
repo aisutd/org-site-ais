@@ -89,13 +89,25 @@ function githubLink(officer: Officer) {
 
 function linkedInLink(officer: Officer) {
   if (officer.linkedInUrl) {
-    // Trim LinkedIn URL
-    const trimmedUrl = officer.linkedInUrl.trim();
+    let linkedInUsername = officer.linkedInUrl;
+    
+    // Check if the input is a complete LinkedIn URL
+    if (linkedInUsername.includes('linkedin.com/in/')) {
+      // Extract username from the URL
+      const parts = linkedInUsername.split('linkedin.com/in/');
+      linkedInUsername = parts[parts.length - 1]; // Take the last part after 'linkedin.com/in/'
+      
+      // Remove any trailing slashes or other characters
+      linkedInUsername = linkedInUsername.replace(/^\//, '').replace(/\/.*$/, '').replace(/[^\w-]/g, '');
+    }
+    
+    // Construct LinkedIn URL
+    const linkedInUrl = `https://www.linkedin.com/in/${linkedInUsername}`;
 
     return (
       <div className="px-2">
         <button className="transition duration-200 ease-in-out transform hover:-translate-y-1 hover:scale-110">
-          <a target="_blank" href={trimmedUrl} rel="noreferrer">
+          <a target="_blank" href={linkedInUrl} rel="noreferrer">
             <LinkedIn color="primary" />
           </a>
         </button>
@@ -104,13 +116,27 @@ function linkedInLink(officer: Officer) {
   }
 }
 
-
 function personalLink(officer: Officer) {
   if (officer.personalWeb) {
+    let personalUrl = officer.personalWeb;
+    
+    // Check if the input is a complete URL
+    if (personalUrl.includes('https://')) {
+      // Extract username from the URL
+      const parts = personalUrl.split('https://');
+      personalUrl = parts[parts.length - 1]; // Take the last part after 'https://'
+      
+      // Remove any trailing slashes or other characters
+      personalUrl = personalUrl.replace(/^\//, '').replace(/[^.\w-]/g, '');
+    }
+
+    // Construct URL
+    const finalUrl = `https://${personalUrl}`;
+
     return (
       <div className="px-2">
         <button className="transition duration-200 ease-in-out transform hover:-translate-y-1 hover:scale-110">
-          <a target="_blank" href={officer.personalWeb} rel="noreferrer">
+          <a target="_blank" href={finalUrl} rel="noreferrer">
             <Language color="primary" />
           </a>
         </button>

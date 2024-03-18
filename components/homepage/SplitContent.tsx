@@ -16,12 +16,12 @@ const SplitContent: React.FC<SplitContentProps> = ({
   bottomBodyText,
 }) => {
   return (
-    <div className="flex flex-col items-center justify-center bg-ais-off-white relative pb-20 max-w-[1400px] sm:px-[4rem] 2xl:px-[0px] mx-auto">
+    <div className="flex flex-col items-center justify-center bg-ais-off-white relative pb-20 max-w-[1400px] px-[4rem] 2xl:px-[0px] mx-auto">
       {/* absolutes */}
       <img
         src="/images/Shapes/home_square_star.png"
         alt="Image 1"
-        className="absolute bottom-10 right-5 h-64 w-64 z-0 hidden sm:block"
+        className="absolute bottom-6 right-5 h-64 w-64 z-0 hidden sm:block"
       />
 
       <img
