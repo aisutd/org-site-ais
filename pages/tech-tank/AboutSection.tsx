@@ -75,7 +75,7 @@ function AboutSection()
               <div className="hidden text-lg font-roboto">
                 While a one-day hackathon is far from a complete zero-to-master learning experience, it is a great first step for students of all backgrounds. HackAI is our largest event of the year, and it never fails to build communities as students make new friends, share memories with fellow hackers, and enjoy a truly light and welcoming atmosphere.
                 <br/><br/>
-                We like to market how HackAI is the largest AI hackathon in Texas, but for us, it isn't about the numbers. Our driven officer team at AIS works tirelessly throughout the year to ensure we provide the best quality experience for our hackers so that HackAI will be a day you never forget.
+                We like to market how HackAI is the largest AI hackathon in Texas, but for us, it isn&apos;t about the numbers. Our driven officer team at AIS works tirelessly throughout the year to ensure we provide the best quality experience for our hackers so that HackAI will be a day you never forget.
               </div>
             </div>
           </div> 

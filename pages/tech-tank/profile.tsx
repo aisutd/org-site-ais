@@ -70,7 +70,7 @@ export default function Profile() {
         //check whether username and password are valid
         //note for future years: this code is not secure since it stores the rows in the browser, so please change it
         if (rows && rows.length > 0) {
-          for (var i = 0; i < rows.length; i++) {
+          for (let i = 0; i < rows.length; i++) {
             if (rows[i].values['Net ID'].replace(/```/gi, '') === inputtedUsername) {
               if (rows[i].values['First Name'].replace(/```/gi, '') === inputtedPassword) {
                 setAuth(true);

@@ -62,14 +62,14 @@ export default function HomePage() {
 
 function Snow()
 {
-  return (
-    <Snowfall
-      color="#FFFFFF"
-      radius={[0.5,3.0]}
-      snowflakeCount={150}
-      speed={[0.5,1.5]}
-      wind={[-0.3,0.7]}
-      rotationSpeed={[0,0]}
-    />
+  return (<></>
+    // <Snowfall
+    //   color="#FFFFFF"
+    //   radius={[0.5,3.0]}
+    //   snowflakeCount={150}
+    //   speed={[0.5,1.5]}
+    //   wind={[-0.3,0.7]}
+    //   rotationSpeed={[0,0]}
+    // />
   );
 }

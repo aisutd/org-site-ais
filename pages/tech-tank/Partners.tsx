@@ -28,7 +28,7 @@ function displaySponsors() {
   return (
     sponsorPaths.map((row, rowIndex) => {
       return (
-        <Box sx={ mobile ? {
+        <Box key={rowIndex} sx={ mobile ? {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -40,6 +40,7 @@ function displaySponsors() {
         }}>
           {row.map( (imgPath, colIndex) => 
             <img
+              key={colIndex}
               src={imgPath}
               onClick={() => window.open(sponsorLinks[rowIndex*3 + colIndex], "_blank")}
               className="object-contain [cursor:pointer] h-[15vh] w-[80%] sm:w-[80%] lg:w-[30%] p-[5px]"

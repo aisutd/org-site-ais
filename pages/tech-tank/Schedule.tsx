@@ -11,6 +11,7 @@ function Schedule() {
           <p className="text-lg font-roboto underline tracking-wide pb-[1rem]">
             <a
               target="_blank"
+              rel="noreferrer"
               href="https://aisutd.notion.site/aisutd/HackAI-Hacker-Guide-1a42a12a713341dd9e9c7200054fee47"
               className="hidden"
             >
