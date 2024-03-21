@@ -1,10 +1,11 @@
-import { Switch } from '@mui/material';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
+import { usePathname } from 'next/navigation';
 import React from 'react';
 import 'tailwindcss/tailwind.css';
 import localFont from "@next/font/local";
-import SiteLayout from '../components/common/SiteLayout';
+import SiteFooter from '../components/common/SiteFooter';
+import SiteHeader from '../components/common/SiteHeader';
 
 const placard = localFont({
   src: [
@@ -38,18 +39,61 @@ const robotoBold = localFont({
   ]
 });
 
+const lucidity = localFont({
+  src: [
+    {
+      path: "../public/tech-tank/fonts/Lucidity-Condensed.ttf",
+    }
+  ]
+});
+
+const cooper = localFont({
+  src: [
+    {
+      path: "../public/tech-tank/fonts/CooperHewitt-Semibold.otf",
+    }
+  ]
+});
+
+const campground = localFont({
+  src: [
+    {
+      path: "../public/tech-tank/fonts/Campground.otf",
+    }
+  ]
+});
+
+const fredoka = localFont({
+  src: [
+    {
+      path: "../public/tech-tank/fonts/fredoka-one/FredokaOne-Regular.otf",
+    }
+  ]
+});
+
+const primer = localFont({
+  src: [
+    {
+      path: "../public/tech-tank/fonts/primer/primer print bold.otf",
+    }
+  ]
+});
+
 /**
  * A wrapper for the root website component.
  */
 export default function MyApp({ Component, pageProps }: AppProps) {
+  const path = usePathname()
+
   return (
     <>
       <Head>
-          <title>Home &ndash; AIS</title>
+        <title>Home &ndash; AIS</title>
+        {path == "/tech-tank" || path == "/tech-tank/profile" ? 
+          <link rel="icon" href="/tech-tank/tech-tank-logo.png" type="image/png" sizes="any"/>
+        :
           <link rel="icon" href="/images/Logos/square-logo-dark.jpg" type="image/jpg" sizes="any"/>
-          {/*<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-          <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
-          <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>*/}
+        }
       </Head>
       <style>{`
         :root {
@@ -58,11 +102,25 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           --placard-bold: ${placardBold.style.fontFamily};
           --roboto: ${roboto.style.fontFamily};
           --roboto-bold: ${robotoBold.style.fontFamily};
+
+          --lucidity: ${lucidity.style.fontFamily};
+          --cooper: ${cooper.style.fontFamily};
+          --campground: ${campground.style.fontFamily};
+          --fredoka: ${fredoka.style.fontFamily};
+          --primer: ${primer.style.fontFamily};
         }
       `}</style>
-      <SiteLayout>
-        <Component {...pageProps} />
-      </SiteLayout>
+
+      {path == "/tech-tank" || path == "/tech-tank/profile" ? 
+        <Component {...pageProps}/>
+      :
+        <>
+          
+          <SiteHeader/>
+          <Component {...pageProps} />
+          <SiteFooter/>
+        </>
+      }
     </>
   );
 }

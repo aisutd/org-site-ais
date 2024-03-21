@@ -30,21 +30,41 @@ module.exports = {
           white: '#FFFFFF',
           beige: '#FFF8F3',
         },
+        hai: {
+          orange:'#FE6B52',
+          'dark-blue':'#3E69B9',
+          'light-blue':'#458EEC',
+          navy:'#293039',
+          gray:'#4F4F4F',
+          beige:'#FFF9F5',
+          cloud:'#DCE7ED',
+          white: '#fafafa',
+        },
       },
       fontFamily: {
         sans: ['IBM Plex Sans', 'sans-serif'],
         cairo: ['Cairo', 'sans-serif'],
         hind: ['Hind Siliguri'],
+
         roboto: ['var(--roboto)'],
         'roboto-bold': ['var(--roboto-bold)'],
-        lucidity: ['var(--lucidity)'],
         placard: ['var(--placard)'],
         'placard-bold': ['var(--placard-bold)'],
+
+        fredoka: ['var(--fredoka)'],
+        primer: ['var(--primer)'],
+        lucidity: ['var(--lucidity)'],
+        campground: ['var(--campground)'],
+        cooper: ['var(--cooper)'],
       },
       scale: {
         85: '0.85',
         300: '3',
         400: '4',
+      },
+      screens: {
+        xs:'430px',
+        med: '832px',
       },
       backgroundSize: {
         fill:'100% 100%',

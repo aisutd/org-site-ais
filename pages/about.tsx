@@ -77,29 +77,29 @@ export const AboutPage = () => {
         <div className="w-full sm:w-1/2 text-center">
           <CollapsibleItem
             title="AI Mentorship"
-            sampleText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+            sampleText="Every semester, students with zero experience have the opportunity to participate in the AIM program to build a semester-long AI project with a team of fellow peers and guidance from an experienced mentor. If you are interested in diving head-first into the field of AI through a structured, fast-paced, hands-on learning program, then AIM is the place for you!"
           />
           <CollapsibleItem
             title="Socials"
-            sampleText="Sample text for Socials."
+            sampleText="We host various social events for UTD students to get together and connect throughout the year."
           />
           <CollapsibleItem
             title="AI51"
-            sampleText="Sample text for AI51."
+            sampleText="AI51 is our official program where experienced students involved with AIS can work on club-sponsored projects as a next step for refining their technical expertise in the field."
           />
         </div>
         <div className="w-full sm:w-1/2 text-center">
           <CollapsibleItem
             title="HackAI"
-            sampleText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+            sampleText="AIS hosts a 24-hour hackathon in which students can come together as a community of AI enthusiasts, network with industry professionals, utilize modern AI tools to create powerful and impressive projects to showcase. HackAI comes with food, swag, prizes and fun!"
           />
           <CollapsibleItem
             title="Workshops"
-            sampleText="Sample text for Workshops."
+            sampleText="Learn about AI through engaging workshops hosted by the AI team at AIS."
           />
           <CollapsibleItem
             title="Industry Events"
-            sampleText="Sample text for Industry Events."
+            sampleText="Learn about the role of AI in the real world straight from the companies leveraging it to innovate and push the boundaries of what's possible. Listen and network with company representatives and tap into rich industry insights."
           />
         </div>
       </div>
