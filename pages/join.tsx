@@ -87,7 +87,7 @@ export const JoinPage = () => {
         <div id="apps" className="bg-[#fff8f3] flex flex-col items-center justify-center gap-[10px] pb-[12rem] relative self-stretch w-full flex-[0_0_auto]">
           <div className=" flex flex-col items-center justify-center gap-[56px] relative self-stretch w-full flex-[0_0_auto]">
             <div className=" inline-flex items-center gap-[5px] relative flex-[0_0_auto]">
-              <img className="relative w-[50px] h-[50px]" alt="Application" src="/images/icons/applications.svg" />
+              <img className="relative w-[50px] h-[50px]" alt="Application" src="/images/Icons/applications.svg" />
               <div className="relative w-fit mt-[-1.00px] font-placard-bold tracking-wide text-4xl text-center">
                 APPLICATIONS
               </div>
