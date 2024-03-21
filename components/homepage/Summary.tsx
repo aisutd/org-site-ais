@@ -5,26 +5,30 @@ import React from 'react';
 function Summary() {
   return (
     <div className="flex flex-col items-center justify-center py-40 bg-ais-new-soft-black">
-      {/* title */}
+      {/* Title */}
       <h2 className="font-placard font-bold tracking-wider text-ais-new-white mb-12 text-center text-4xl sm:text-5xl">
         UNLOCKING THE POWER OF{' '}
+        {/* Colored background*/}
         <span className="inline-block bg-ais-new-orange text-ais-new-soft-black rounded-full px-8 py-2">ARTIFICIAL INTELLIGENCE</span>
       </h2>
 
-      {/* icons */}
+      {/* Icons and descriptions */}
       <div className="gap-[1rem] justify-center flex flex-col md:flex-row max-w-[1400px] sm:px-[4rem] 2xl:px-[0px] mx-auto">
+        {/* First icon and description */}
         <div className="text-center">
           <img src="/images/Photos/laptop-stock-image.png" alt="Icon 1" className="w-16 h-16 mb-4 mx-auto" />
           <h4 className="text-xl font-bold text-ais-new-white mb-4">AI Literacy</h4>
           <p className='text-ais-white'>Simplifying AI concepts through workshops and seminars, making AI more accessible to everyone</p>
         </div>
 
+        {/* Second icon and description */}
         <div className="text-center">
           <img src="/images/Photos/networking-stock-image.png" alt="Icon 2" className="w-16 h-16 mb-4 mx-auto" />
           <h4 className="text-xl font-bold text-ais-new-white mb-4">Networking</h4>
           <p className='text-ais-white'>Connecting with industry leaders and other professionals to expand the horizons of artificial intelligence</p>
         </div>
 
+        {/* Third icon and description */}
         <div className="text-center">
           <img src="/images/Photos/collab-stock-image.png" alt="Icon 3" className="w-16 h-16 mb-4 mx-auto" />
           <h4 className="text-xl font-bold text-ais-new-white mb-4">Collaborative Projects</h4>
