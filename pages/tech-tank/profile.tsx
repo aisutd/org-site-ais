@@ -72,7 +72,7 @@ export default function Profile() {
         if (rows && rows.length > 0) {
           for (let i = 0; i < rows.length; i++) {
             if (rows[i].values['Net ID'].replace(/```/gi, '') === inputtedUsername) {
-              if (rows[i].values['First Name'].replace(/```/gi, '') === inputtedPassword) {
+              if (rows[i].values['PW'].replace(/```/gi, '') === inputtedPassword) {
                 setAuth(true);
                 getUserInfo(i, rows);
               } else {
@@ -118,7 +118,7 @@ export default function Profile() {
           <input
             className='text-black'
             type="text"
-            placeholder="Username"
+            placeholder="Net ID"
             onChange={(e) => setUsername(e.target.value)}
           />
           <br/>
