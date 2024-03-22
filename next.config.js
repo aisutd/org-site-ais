@@ -2,8 +2,8 @@ module.exports = {
   async redirects() {
     return [
       {
-        source: '/valentine/signup',
-        destination: 'https://docs.google.com/forms/d/e/1FAIpQLSdapU6bb91yOpHAiNFKrOF6Ofjw0_6K31bQb_l8yitk4eUPeA/viewform',
+        source: '/tech-tank/apply',
+        destination: 'https://coda.io/form/Tech-Tank-Application_dQjHEJqhY-P',
         basePath: false,
         permanent: true,
       },

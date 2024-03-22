@@ -4,7 +4,7 @@ import React from 'react';
 function PastEvent() {
   return (
     <div className="
-      relative py-20 gap-[10vw] items-center justify-items-center max-w-[1400px] sm:px-[4rem] 2xl:px-[0px] mx-auto 
+      relative py-20 gap-[10vw] items-center justify-items-center max-w-[1400px] px-[4rem] 2xl:px-[0px] mx-auto 
       flex flex-col sm:grid sm:grid-cols-2
     ">
       {/* Left side content */}
@@ -13,7 +13,7 @@ function PastEvent() {
         <h2 className="
           text-4xl text-hai-navy text-center font-placard-bold tracking-wide
         ">
-          HACK AI 2023
+          HACK AI
         </h2>
         {/* Event description */}
         <p className="hidden sm:block text-base text-hai-gray text-justify pt-10">
@@ -33,9 +33,7 @@ function PastEvent() {
           <img className="text-center w-full md:w-9/12 z-0" src="/images/HackAI/stats.png" alt="about hackai chips"/>
         </div>
       </div>
-      {/* Image for right side */}
-      <img src="/images/Photos/hackers-photo.png" alt="Image" className="object-contain"/>
-      {/* Image for mobile layout */}
+      <img src="/images/HackAI/past_event_pic.png" alt="Image" className="object-contain"/>
       <div className="relative z-0 flex justify-center sm:hidden">
         <img className="text-center w-full md:w-9/12 z-0" src="/images/HackAI/stats.png" alt="about hackai chips" />
       </div>

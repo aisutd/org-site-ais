@@ -58,7 +58,7 @@ export default function HomePage() {
             </div>
           </div>
         </section>
-        <section id="summary" className="relative">
+        <section id="summary" className="relative w-full bg-ais-new-soft-black">
           <Summary />
         </section>
         <section id="past event" className="relative">
