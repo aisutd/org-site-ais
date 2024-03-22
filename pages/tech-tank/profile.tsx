@@ -209,11 +209,11 @@ export default function Profile() {
   return (
     <>
       <Head>
-        <title>HackAI</title>
-        <link rel="icon" type="image/svg+xml" href="/hai-logo.svg" />
+        <title>Tech Tank</title>
+        <link rel="icon" type="image/png" href="/tech-tank-logo.png" />
         <meta
           name="description"
-          content="Welcome to HackAI: the biggest AI hackathon in North Texas!"
+          content="Welcome to Tech Tank!"
         />
       </Head>
       <main className="min-h-screen bg-hai-beige font-oriya text-ais-white subpixel-antialiased overflow-x-hidden">
