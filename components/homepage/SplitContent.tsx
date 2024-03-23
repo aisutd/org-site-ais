@@ -31,10 +31,10 @@ const SplitContent: React.FC<SplitContentProps> = ({
       />
 
       {/* title */}
-      <div className="flex items-center mb-8">
-        <span className="text-2xl font-bold mr-10 text-ais-new-med-blue">&#8595;</span> {/* First down arrow */}
-        <h1 className="text-2xl font-bold text-ais-new-med-blue text-center">Learn ML and AI from Zero to Hero</h1> {/* Title text */}
-        <span className="text-2xl font-bold ml-10 text-ais-new-med-blue">&#8595;</span> {/* Second down arrow */}
+      <div className="flex items-center mb-8 font-placard-bold tracking-wide">
+        <span className="text-3xl font-bold mr-10 text-ais-new-med-blue">&#8595;</span> {/* First down arrow */}
+        <h1 className="text-3xl text-ais-new-med-blue text-center">Learn ML and AI from Zero to Hero</h1> {/* Title text */}
+        <span className="text-3xl font-bold ml-10 text-ais-new-med-blue">&#8595;</span> {/* Second down arrow */}
       </div>
 
       {/* top region */}
@@ -44,7 +44,7 @@ const SplitContent: React.FC<SplitContentProps> = ({
           <div className="absolute top-0 right-0 h-full w-1/3 bg-gradient-to-r from-transparent to-ais-new-beige"></div>
         </div>
         <div className="text-left relative z-10 md:w-1/3">
-          <h2 className="text-3xl font-bold text-ais-new-med-blue mb-2 text-center md:-ml-8 md:text-start">
+          <h2 className="text-3xl font-placard-bold tracking-widest text-ais-new-med-blue mb-2 text-center md:-ml-8 md:text-start">
             MACHINE <br className="hidden md:block"/>LEARNING <br className="hidden md:block"/>MONDAYS
           </h2>
           <div className="md:pt-16 ml-4 text-ais-new-med-blue">
@@ -56,7 +56,7 @@ const SplitContent: React.FC<SplitContentProps> = ({
       {/* bottom region */}
       <div className="flex items-center">
         <div className="text-left text-ais-new-med-blue">
-          <h2 className="text-3xl font-bold md:mb-16 text-center sm:text-start">{bottomTitle}</h2>
+          <h2 className="text-3xl font-placard-bold tracking-widest md:mb-16 text-center sm:text-start">{bottomTitle}</h2>
           <p>{bottomBodyText}</p>
         </div>
         <img src={bottomImageSrc} alt="Bottom Image" className="w-1/3 h-auto ml-8 z-10 hidden sm:block sm:opacity-0 md:w-2/3 md:opacity-100" />

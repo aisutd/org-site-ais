@@ -5,8 +5,6 @@ import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 
 import PastEvent from '../components/homepage/PastEvent';
-import Subscribe from '../components/join/Subscribe';
-import Partners from '../components/homepage/Sponsors';
 import JoinUs from '../components/homepage/JoinUs';
 import Summary from '../components/homepage/Summary';
 import SplitContent from '../components/homepage/SplitContent';
@@ -29,22 +27,22 @@ export default function HomePage() {
           content="Welcome to the Artificial Intelligence Society at UTD. We make AI understandable and accessible to everyone"
         />
       </Head>
-      <main className="min-h-screen bg-ais-new-beige text-hind subpixel-antialiased overflow-x-hidden">
+      <main className="min-h-screen bg-ais-new-beige font-roboto subpixel-antialiased overflow-x-hidden">
         <section id="intro" className="bg-ais-new-beige w-full mb-10 lg:mb-10 relative pt-[9rem] pb-[4rem]">
           <div className="flex flex-col h-full justify-center text-center md:items-start">
             <img
               src="/home_string.png"
               alt="Home string"
-              className="absolute top-28 h-80 w-80 hidden lg:block left-[calc(45vw-30rem)]"
+              className="absolute hidden md:block h-[40vw] w-[40vw] top-[calc(26rem-10vw)] lg:h-[calc(30vw)] lg:w-[calc(30vw)] lg:top-[calc(28rem-25vw)] xl:top-[calc(26rem-20vw)]"
             />
-            <div className="flex text-ais-blue font-semibold mb-8 justify-center text-5xl sm:text-7xl md:pl-[calc(15vw-5rem)] lg:pl-[calc(50vw-20rem)] lg:justify-start">
+            <div className="flex font-placard-bold text-ais-blue mb-8 justify-center text-5xl sm:text-8xl md:pl-[calc(15%-5rem)] lg:text-[7rem] lg:pl-[calc(50%-20rem)] lg:justify-start xl:text-9xl">
                 STEP INTO
               <img src='/home_arrow.png' alt="Step into arrow" className="mx-2 h-8 w-8" />
             </div>
-            <div className="text-ais-blue font-semibold mb-8 text-5xl sm:text-7xl md:pl-[calc(30vw-9rem)] lg:pl-[calc(50vw-14rem)]">
+            <div className="font-placard-bold text-ais-blue mb-8 text-5xl sm:text-8xl md:pl-[calc(38%-9rem)] lg:text-[7rem] lg:pl-[calc(50%-14rem)] xl:text-9xl">
               THE WORLD OF
             </div>
-            <div className="flex items-center font-semibold text-5xl sm:text-7xl md:pl-[calc(70vw-22rem)] md:items-end lg:pl-[calc(50vw-31.5rem)] flex-col lg:flex-row">
+            <div className="flex font-placard-bold text-5xl items-center flex-col sm:text-8xl md:pl-[calc(60%-10rem)] md:items-end lg:text-[7rem] lg:pl-[calc(50%-31rem)] lg:flex-row lg:items-center xl:text-9xl">
               <span className="bg-gradient-to-r from-[#361CFF] from-50% to-[#FFBC85] text-transparent bg-clip-text">
                 ARTIFICIAL
               </span>
@@ -54,7 +52,7 @@ export default function HomePage() {
               </span>
             </div>
             <div className="absolute hidden">
-              <button className="border border-ais-blue text-ais-blue bg-white px-12 py-1.5 rounded-xl text-lg font-semibold">
+              <button className="border border-ais-blue text-ais-blue bg-white px-12 py-1.5 rounded-xl text-lg">
                 Join Us
               </button>
             </div>
