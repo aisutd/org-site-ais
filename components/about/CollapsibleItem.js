@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 
 const CollapsibleItem = ({ title, sampleText }) => {
@@ -14,7 +13,7 @@ const CollapsibleItem = ({ title, sampleText }) => {
         className="cursor-pointer flex justify-center text-3xl font-bold text-[#3e6eff] hover:text-[#361cff]"
         onClick={toggleCollapse}
       >
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center font-placard tracking-wide">
           <div>
             {title}
           </div>
@@ -28,9 +27,9 @@ const CollapsibleItem = ({ title, sampleText }) => {
         </div>
       </div>
       {isExpanded && (
-        <div className="text-xl text-[#293039]">
+        <p className="font-roboto text-[#293039]">
           {sampleText}
-        </div>
+        </p>
       )}
     </div>
   );

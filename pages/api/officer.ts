@@ -61,10 +61,14 @@ export const getAllOfficers = async (fields?: string[]): Promise<Officer[]> => {
         ofgit = ofgit.length != 0 ? ofgit.replace(/```/gi, '') : null;
       else ofgit = ofgit['url'];
 
-      if (typeof linkedIn == 'string')
-        linkedIn = linkedIn.length != 0 ? linkedIn.replace(/```/gi, '') : null;
-      else linkedIn = linkedIn['url'];
-
+      if (typeof linkedIn === 'string') {
+        // If linkedIn is a string, assume it's a valid LinkedIn URL and use it directly
+        linkedIn = linkedIn.trim(); // Trim any leading or trailing whitespace
+      } else {
+        // If linkedIn is not a string, set it to null
+        linkedIn = null;
+      }
+      
       if (typeof personal == 'string')
         personal = personal.length != 0 ? personal.replace(/```/gi, '') : null;
       else personal = personal['url'];
