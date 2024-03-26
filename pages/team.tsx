@@ -100,36 +100,45 @@ export default function TeamPage({ officers }: TeamPageProps) {
 
   return (
     <div>
+      {/* Head section for defining page metadata */}
       <Head>
-        <title>Team &ndash; AIS</title>
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <title>Team &ndash; AIS</title> {/* Page title */}
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> {/* Favicon */}
         <meta
           name="description"
           content="The officers of the Artificial Intelligence Society - the people who make this all possible."
-        />
+        /> 
       </Head>
+      {/* Main content section */}
       <main className="min-h-screen bg-ais-new-beige font-roboto subpixel-antialiased overflow-x-hidden">
+        {/* Container for content */}
         <div className="mx-auto max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-4xl 2xl:max-w-6xl py-10 md:py-20 ">
         </div>
+        {/* Section for displaying team officers */}
         <section id="officers">
+          {/* Title */}
           <div className="text-7xl font-placard-bold tracking-wide text-ais-new-med-blue mb-4 p-4 text-center">
             MEET THE TEAM
           </div>
+          {/* Container for displaying team members */}
           <div className="flex flex-grow flex-wrap -mt-10 pt-10 pb-8 gap-8 justify-around relative">
-            {/* absolutes */}
+            {/* Absolute positioned images */}
+            {/* Blue star positioned at the bottom right */}
             <img
-              src="/team_blue_star.png"
+              src="/images/Shapes/team_blue_star.png"
               alt="Blue star"
-              className="absolute bottom-10 -right-20 h-80 w-80"
+              className="absolute bottom-5 -right-16 h-60 w-40"
             />
+            {/* Yellow star positioned at the top left */}
             <img
-              src="/team_yellow_star.png"
+              src="/images/Shapes/team_yellow_star.png"
               alt="Yellow star"
               className="absolute top-40 -left-20 h-60 w-60"
             />
+
             <TabContext value={value}>
               <Tabs value={value} onChange={handleChange} defaultValue={"All Members"} aria-label="teams" variant="scrollable" scrollButtons allowScrollButtonsMobile centered className="w-full bg-ais-new-orange h-[3rem] lg:pl-[calc(50%-551px)]">
-                <Tab value="All Members" label="All" />
+                <Tab value="All Members" label="All" /> {/*State for managing currently selected tab*/}
                 <Tab value="Executive Members" label="Executive" />
                 <Tab value="Membership Members" label="Membership" />
                 <Tab value="Operation Members" label="Operations" />
@@ -140,29 +149,40 @@ export default function TeamPage({ officers }: TeamPageProps) {
                 <Tab value="AIM Members" label="AIM" />
               </Tabs>
               <TabPanel value="All Members">
+                 {/* Display members of Executive Team */}
                 <div className="text-center text-2xl font-roboto-bold text-ais-new-med-blue">Executive Team</div>
                 <TeamItem officers={execTeam} team={'Executive'} />
 
+                  {/* Display members of Membership Team */}
                 <div className="text-center text-2xl font-roboto-bold text-ais-new-med-blue mt-40">Membership Team</div>
                 <TeamItem officers={hrTeam} team={'Membership'} />
 
+                 {/* Display members of Operations Team */}
                 <div className="text-center text-2xl font-roboto-bold text-ais-new-med-blue mt-40">Operations Team</div>
                 <TeamItem officers={operationsTeam} team={'Operations'} />
 
+                   {/* Display members of Finance Team */}
                 <div className="text-center text-2xl font-roboto-bold text-ais-new-med-blue mt-40">Finance Team</div>
                 <TeamItem officers={financeTeam} team={'Finance'} />
 
+                   {/* Display members of a Super Cool Hot Sexy Smart Team */}
                 <div className="text-center text-2xl font-roboto-bold text-ais-new-med-blue mt-40">Technology Team</div>
                 <TeamItem officers={techTeam} team={'Technology'} />
 
+                   {/* Display members of Marketing Team */}
                 <div className="text-center text-2xl font-roboto-bold text-ais-new-med-blue mt-40">Marketing Team</div>
                 <TeamItem officers={marketingTeam} team={'Marketing'} />
 
+                  {/* Display members of Industry Team */}
                 <div className="text-center text-2xl font-roboto-bold text-ais-new-med-blue mt-40">Industry Team</div>
                 <TeamItem officers={industryTeam} team={'Industry'} />
 
+                           {/* Display members of AIM Team */}
                 <div className="text-center text-2xl font-roboto-bold text-ais-new-med-blue mt-40">AIM Team</div>
                 <TeamItem officers={aimTeam} team={'AIM'} />
+
+                {/* TabPanels for each specific team */}
+               {/* Each TabPanel displays members of the corresponding team */}
               </TabPanel>
               <TabPanel value="Executive Members">
                 <TeamItem officers={execTeam} team={'Executive'} />

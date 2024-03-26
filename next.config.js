@@ -2,6 +2,12 @@ module.exports = {
   async redirects() {
     return [
       {
+        source: '/tech-tank/apply',
+        destination: 'https://coda.io/form/Tech-Tank-Application_dQjHEJqhY-P',
+        basePath: false,
+        permanent: true,
+      },
+      {
         source: '/member/attendance',
         destination: 'https://coda.io/form/AIS-Event-Attendance-Form_dYfH_vMZ_U8',
         basePath: false,
