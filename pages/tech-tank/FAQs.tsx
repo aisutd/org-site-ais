@@ -57,9 +57,9 @@ function FAQs() {
   return (
   <>
     <div className="pt-[5rem] pb-[3rem] flex flex-col items-center">
-      <Typography className="font-placard font-bold text-hai-white text-5xl tracking-wider mb-[6px]">
+      <div className="font-placard font-bold text-hai-white text-5xl tracking-wider mb-[6px]">
         FAQS
-      </Typography>
+      </div>
       <Typography className="font-roboto text-center text-hai-white text-lg tracking-wide px-[1rem] mb-[2rem]">
         Please reach out to us on Discord if you have any additional questions!
       </Typography>
