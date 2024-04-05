@@ -8,7 +8,7 @@ function Schedule() {
           <p className="mb-[4px] font-bold font-placard tracking-wider text-5xl">
             SCHEDULE
           </p>
-          <p className="text-lg font-roboto underline tracking-wide pb-[1rem]">
+          <p className="text-lg font-roboto under_line tracking-wide pb-[1rem]">
             <a
               target="_blank"
               rel="noreferrer"
