@@ -14,7 +14,7 @@ const questions = [
   {
     icon: "/tech-tank/faq-icons/person.svg",
     heading: "Who can attend?",
-    body: <>You must be at least <b>18 years</b> of age. Non-STEM majors, beginner coders, and even those with <b>zero AI experience</b> are welcomed and encouraged to join us! This event is meant to introduce AI to everyone. All you need is a drive and passion to learn!</>
+    body: <>You must be a <b>UTD student</b> at least <b>18 years</b> of age. However, non-STEM majors, beginner coders, and even those with <b>zero AI experience</b> are welcomed and encouraged to join us! This event is meant to introduce AI to everyone. All you need is a drive and passion to learn!</>
   },
   {
     icon: "/tech-tank/faq-icons/wallet.svg",

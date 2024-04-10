@@ -30,7 +30,8 @@ function Schedule() {
             <div className="pt-[10px]">10:00am:<pre className="inline">{'\t'}</pre>Attendee Check In<br /></div>
             <div className="pt-[10px]">10:30am:<pre className="inline">{'\t'}</pre>Opening Ceremony<br /></div>
             <div className="pt-[10px]">11:15am:<pre className="inline">{'\t'}</pre>Workshop Session 1<br /></div>
-            <div className="pt-[10px]">12:00pm:<pre className="inline">{'\t'}</pre>Workshop Session 2<br /></div>
+            <div className="pt-[10px]">11:50pm:<pre className="inline">{'\t'}</pre>Workshop Session 2<br /></div>
+            <div className="pt-[10px]">12:25pm:<pre className="inline">{'\t'}</pre>Workshop Session 3<br /></div>
             <div className="pt-[10px]">1:00pm:<pre className="inline">{'\t\t'}</pre>Lunch<br /></div>
             <div className="pt-[10px]">2:00pm:<pre className="inline">{'\t\t'}</pre>Prompt Announcement/Build + Pitch Working Hours<br /></div>
             <div className="pt-[10px]">3:30pm:<pre className="inline">{'\t\t'}</pre>Judging<br /></div>
