@@ -70,7 +70,7 @@ export default function SiteHeader() {
       <AppbarBG transparencyThreshold="0.1" className=""/>
       <nav className="bg-none w-[100%] h-[5rem] grid grid-cols-2 place-items-center md:grid-cols-3 2xl:grid-cols-4">
         <div onClick={() => {handleItemClick('/', 'Home')}} className="flex gap-4 items-center [cursor:pointer]">
-          <img src="images/Logos/ais_logo_black.png" className="h-[2rem] object-cover"/>
+          <img src="/images/Logos/ais_logo_black.png" className="h-[2rem] object-cover"/>
         </div>
         <div className="hidden 2xl:block"/>
         <div className="items-center md:col-span-2 md:flex md:gap-[1rem] md:pr-[2rem]">

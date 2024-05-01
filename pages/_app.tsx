@@ -120,7 +120,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         }
       `}</style>
 
-      {path == "/tech-tank" || path == "/tech-tank/profile" ? 
+      {path == "/tech-tank" ? 
         <Component {...pageProps}/>
       :
         <>
