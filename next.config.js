@@ -2,12 +2,6 @@ module.exports = {
   async redirects() {
     return [
       {
-        source: '/tech-tank/apply',
-        destination: 'https://coda.io/form/Tech-Tank-Application_dQjHEJqhY-P',
-        basePath: false,
-        permanent: true,
-      },
-      {
         source: '/member/attendance',
         destination: 'https://coda.io/form/AIS-Event-Attendance-Form_dYfH_vMZ_U8',
         basePath: false,
@@ -64,14 +58,14 @@ module.exports = {
       },
       {
         source: '/officer/apply',
-        destination: 'https://coda.io/form/AIS-Officer-Application-F23_d208KkPg2wm',
+        destination: 'https://coda.io/form/AIS-Officer-Application-F24_dY_jh9snDTK',
         basePath: false,
         permanent: true,
       },
       {
         source: '/officer/info',
         destination:
-          'https://docs.google.com/document/d/1egahyPLReSmIsMC_tyNEo_X77T0a3oXlUC90xZ-ylrE/edit',
+          'https://docs.google.com/document/d/1RfBhTp4NdrubXxo6IX7Vm4KDjKXXlCeXMCLsFaSm7M4/edit',
         basePath: false,
         permanent: true,
       },
