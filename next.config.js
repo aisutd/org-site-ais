@@ -22,7 +22,7 @@ module.exports = {
       },
       {
         source: '/aim/apply',
-        destination: 'https://coda.io/form/AIM-Mentee-S24_d4EVwsguYoK',
+        destination: 'https://coda.io/form/AIM-Mentee-Application-F24_d8Nf9j0sinV',
         basePath: false,
         permanent: true,
       },
@@ -46,7 +46,7 @@ module.exports = {
       },
       {
         source: '/aim/mentor/apply',
-        destination: 'https://coda.io/form/AIM-Mentor-App-S24_d_bf3ew0yIT',
+        destination: 'https://coda.io/form/AIM-Mentor-Applications-F24_dTOVFZ-M_2c',
         basePath: false,
         permanent: true,
       },
