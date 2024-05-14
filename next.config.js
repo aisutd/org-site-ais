@@ -20,12 +20,14 @@ module.exports = {
         basePath: false,
         permanent: true,
       },
+      //updated to F24
       {
         source: '/aim/apply',
         destination: 'https://coda.io/form/AIM-Mentee-Application-F24_d8Nf9j0sinV',
         basePath: false,
         permanent: true,
       },
+      //updated to S23
       {
         source: '/aim/info',
         destination: 'https://docs.google.com/document/d/17CkhWdFdWq9dXzcr89jm_9y9HYVp4IauxA-LOzOUox4/edit',
@@ -38,30 +40,35 @@ module.exports = {
         basePath: false,
         permanent: true,
       },
+      //updated to S23
       {
         source: '/aim/discord',
         destination: 'https://discord.gg/6rVUmAy54Z',
         basePath: false,
         permanent: true,
       },
+      //updated to F24
       {
         source: '/aim/mentor/apply',
         destination: 'https://coda.io/form/AIM-Mentor-Applications-F24_dTOVFZ-M_2c',
         basePath: false,
         permanent: true,
       },
+      //updated to F24
       {
         source: '/aim/mentor/info',
-        destination: 'https://docs.google.com/document/d/1py105xfpWlvjWc5c7175m5qDaCIeusuwCle2xnyI8Fo/edit',
+        destination: 'https://docs.google.com/document/d/1j0CbR1hqVepiN3KsbtuYUfrF3JUPv5KUCjaybusRoGo/edit',
         basePath: false,
         permanent: true,
       },
+      //updated to F24
       {
         source: '/officer/apply',
         destination: 'https://coda.io/form/AIS-Officer-Application-F24_dY_jh9snDTK',
         basePath: false,
         permanent: true,
       },
+      //updated to F24
       {
         source: '/officer/info',
         destination:
