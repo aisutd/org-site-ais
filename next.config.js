@@ -27,7 +27,7 @@ module.exports = {
         basePath: false,
         permanent: true,
       },
-      //updated to S23
+      //updated to S24
       {
         source: '/aim/info',
         destination: 'https://docs.google.com/document/d/17CkhWdFdWq9dXzcr89jm_9y9HYVp4IauxA-LOzOUox4/edit',
@@ -40,7 +40,7 @@ module.exports = {
         basePath: false,
         permanent: true,
       },
-      //updated to S23
+      //updated to S24
       {
         source: '/aim/discord',
         destination: 'https://discord.gg/6rVUmAy54Z',
