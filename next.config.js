@@ -9,14 +9,13 @@ module.exports = {
       },
       {
         source: '/member/apply',
-        destination: 'https://coda.io/form/AIS-Membership-Interest-Form-Spring-2024_dOD_caSLbak',
+        destination: 'https://coda.io/form/AIS-Membership-Interest-Form-F24_dOX652ni1B_',
         basePath: false,
         permanent: true,
       },
       {
         source: '/member/info',
-        destination:
-          'https://docs.google.com/document/d/10DimpEjMir8sgyJb6dKGGHHj5cIoNZP4KcQWdLKfrtM/edit',
+        destination: 'https://docs.google.com/document/d/1DSYd55eOhPmkpzakcn_laEVkMcYZOZ0xZjX4HNhbuvo/edit',
         basePath: false,
         permanent: true,
       },
