@@ -29,7 +29,7 @@ export default function TeamPage({ officers }: TeamPageProps) {
   const operationsTeam: Officer[] = [];
   const aimTeam: Officer[] = [];
   const execTeam: Officer[] = [];
-  const hrTeam: Officer[] = [];
+ // const hrTeam: Officer[] = [];
   const [value, setValue] = React.useState('All Members');
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
@@ -93,7 +93,7 @@ export default function TeamPage({ officers }: TeamPageProps) {
     else if (off['team'] == 'Marketing') marketingTeam.push(off);
     else if (off['team'] == 'Operations') operationsTeam.push(off);
     else if (off['team'] == 'Finance') financeTeam.push(off);
-    else if (off['team'] == 'Membership') hrTeam.push(off);
+   // else if (off['team'] == 'Membership') hrTeam.push(off);
     else if (off['team'] == 'Technology') techTeam.push(off);
     else if (off['team'] == 'AIM') aimTeam.push(off);
   };
@@ -140,7 +140,7 @@ export default function TeamPage({ officers }: TeamPageProps) {
               <Tabs value={value} onChange={handleChange} defaultValue={"All Members"} aria-label="teams" variant="scrollable" scrollButtons allowScrollButtonsMobile centered className="w-full bg-ais-new-orange h-[3rem] lg:pl-[calc(50%-551px)]">
                 <Tab value="All Members" label="All" /> {/*State for managing currently selected tab*/}
                 <Tab value="Executive Members" label="Executive" />
-                <Tab value="Membership Members" label="Membership" />
+            {/*    <Tab value="Membership Members" label="Membership" /> */}
                 <Tab value="Operation Members" label="Operations" />
                 <Tab value="Finance Members" label="Finance" />
                 <Tab value="Technology Members" label="Technology" />
@@ -153,9 +153,9 @@ export default function TeamPage({ officers }: TeamPageProps) {
                 <div className="text-center text-2xl font-roboto-bold text-ais-new-med-blue">Executive Team</div>
                 <TeamItem officers={execTeam} team={'Executive'} />
 
-                  {/* Display members of Membership Team */}
+                  {/* Display members of Membership Team 
                 <div className="text-center text-2xl font-roboto-bold text-ais-new-med-blue mt-40">Membership Team</div>
-                <TeamItem officers={hrTeam} team={'Membership'} />
+                <TeamItem officers={hrTeam} team={'Membership'} /> */}
 
                  {/* Display members of Operations Team */}
                 <div className="text-center text-2xl font-roboto-bold text-ais-new-med-blue mt-40">Operations Team</div>
@@ -178,7 +178,7 @@ export default function TeamPage({ officers }: TeamPageProps) {
                 <TeamItem officers={industryTeam} team={'Industry'} />
 
                            {/* Display members of AIM Team */}
-                <div className="text-center text-2xl font-roboto-bold text-ais-new-med-blue mt-40">AIM Team</div>
+                <div className="text-center text-2xl font-roboto-bold text-ais-new-med-blue mt-40">AI Team</div>
                 <TeamItem officers={aimTeam} team={'AIM'} />
 
                 {/* TabPanels for each specific team */}
@@ -187,9 +187,9 @@ export default function TeamPage({ officers }: TeamPageProps) {
               <TabPanel value="Executive Members">
                 <TeamItem officers={execTeam} team={'Executive'} />
               </TabPanel>
-              <TabPanel value="Membership Members">
+           {/*   <TabPanel value="Membership Members">
                 <TeamItem officers={hrTeam} team={'Membership'} />
-              </TabPanel>
+              </TabPanel> */}
               <TabPanel value="Operation Members">
                 <TeamItem officers={operationsTeam} team={'Operations'} />
               </TabPanel>
