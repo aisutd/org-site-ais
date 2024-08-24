@@ -26,10 +26,10 @@ module.exports = {
         basePath: false,
         permanent: true,
       },
-      //updated to S24
+      //updated to F24
       {
         source: '/aim/info',
-        destination: 'https://docs.google.com/document/d/17CkhWdFdWq9dXzcr89jm_9y9HYVp4IauxA-LOzOUox4/edit',
+        destination: 'https://docs.google.com/document/d/1hhLNZkQktB7XWIGm57CmPry1ZKM8Bn-ktTlpOmJkQXU/edit',
         basePath: false,
         permanent: true,
       },
