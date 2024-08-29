@@ -3,7 +3,8 @@ module.exports = {
     return [
       {
         source: '/member/attendance',
-        destination: 'https://coda.io/form/AIS-Event-Attendance-Form_dYfH_vMZ_U8',
+      //  destination: 'https://coda.io/form/AIS-Event-Attendance-Form_dYfH_vMZ_U8',
+        destination: 'https://coda.io/form/AIS-Event-Attendance-Form-F24_dvXogtZ8LZD',
         basePath: false,
         permanent: true,
       },
