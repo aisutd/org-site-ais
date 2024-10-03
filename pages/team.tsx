@@ -127,7 +127,7 @@ export default function TeamPage({ officers }: TeamPageProps) {
             <img
               src="/images/Shapes/team_blue_star.png"
               alt="Blue star"
-              className="absolute bottom-5 -right-16 h-60 w-40"
+              className="absolute bottom-5 -right-20 h-60 w-60"
             />
             {/* Yellow star positioned at the top left */}
             <img
