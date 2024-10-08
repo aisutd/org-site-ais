@@ -70,7 +70,7 @@ export default function TeamPage({ officers }: TeamPageProps) {
           content="The officers of the Artificial Intelligence Society - the people who make this all possible."
         />
       </Head>
-      <main className="min-h-screen bg-ais-new-beige font-roboto subpixel-antialiased overflow-x-hidden">
+      <main className="min-h-screen bg-ais-new-beige font-roboto subpixel-antialiased overflow-x-hidden pt-[5rem]">
         <section id="officers">
           <div className="text-7xl font-placard-bold tracking-wide text-ais-new-med-blue mb-4 p-4 text-center">
             MEET THE TEAM
