@@ -79,7 +79,7 @@ export default function TeamPage({ officers }: TeamPageProps) {
             <img
               src="/images/Shapes/team_blue_star.png"
               alt="Blue star"
-              className="absolute bottom-5 -right-16 h-60 w-40"
+              className="absolute bottom-5 -right-20 h-60 w-60"
             />
             <img
               src="/images/Shapes/team_yellow_star.png"
@@ -103,7 +103,7 @@ export default function TeamPage({ officers }: TeamPageProps) {
                 <Tab value="Operation Members" label="Operations" />
                 <Tab value="Finance Members" label="Finance" />
                 <Tab value="Technology Members" label="Technology" />
-                <Tab value="AI Members" label="AI" />
+                <Tab value="AI51 Members" label="AI51" />
                 <Tab value="Marketing Members" label="Marketing" />
                 <Tab value="Industry Members" label="Industry" />
                 <Tab value="AIM Members" label="AIM" />
@@ -125,9 +125,9 @@ export default function TeamPage({ officers }: TeamPageProps) {
                 <div className="text-center text-2xl font-roboto-bold text-ais-new-med-blue mt-40">Technology Team</div>
                 <TeamItem officers={techTeam} team={'Technology'} />
 
-                   {/* Display members of AI Team */}
-                   <div className="text-center text-2xl font-roboto-bold text-ais-new-med-blue mt-40">AI Team</div>
-                <TeamItem officers={aiTeam} team={'AI'} />
+                   {/* Display members of AI51 Team */}
+                   <div className="text-center text-2xl font-roboto-bold text-ais-new-med-blue mt-40">AI51 Team</div>
+                <TeamItem officers={aiTeam} team={'AI51'} />
 
                    {/* Display members of Marketing Team */}
                 <div className="text-center text-2xl font-roboto-bold text-ais-new-med-blue mt-40">Marketing Team</div>
@@ -153,8 +153,8 @@ export default function TeamPage({ officers }: TeamPageProps) {
               <TabPanel value="Technology Members">
                 <TeamItem officers={techTeam} team={'Technology'} />
               </TabPanel>
-              <TabPanel value="AI Members">
-                <TeamItem officers={aiTeam} team={'AI'} />
+              <TabPanel value="AI51 Members">
+                <TeamItem officers={aiTeam} team={'AI51'} />
               </TabPanel>
               <TabPanel value="Marketing Members">
                 <TeamItem officers={marketingTeam} team={'Marketing'} />
