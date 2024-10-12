@@ -36,10 +36,17 @@ export const getAllOfficers = async (fields?: string[]): Promise<Officer[]> => {
     for (let i = 0; i < rows.length; i++) {
       const row = rows[i].values;
 
-      // Extract and validate each field from the row
-      const team = Array.isArray(row['Team']) && row['Team'].length > 0 ? row['Team'][0].replace(/`/g, '').trim() : '';
-      const firstName = typeof row['First Name'] === 'string' ? row['First Name'].replace(/`/g, '').trim() : '';
-      const lastName = typeof row['Last Name'] === 'string' ? row['Last Name'].replace(/`/g, '').trim() : '';
+      // Extract and validate each field from the row, removing backticks using regex
+      const firstName = typeof row['First Name'] === 'string' ? row['First Name'].replace(/```/g, '').trim() : '';
+      const lastName = typeof row['Last Name'] === 'string' ? row['Last Name'].replace(/```/g, '').trim() : '';
+
+      const teamField = row['Team'];
+      let team = '';
+      if (Array.isArray(teamField) && teamField.length > 0) {
+        team = teamField[0] ? teamField[0].replace(/```/g, '').trim() : '';
+      } else if (typeof teamField === 'string') {
+        team = teamField.replace(/```/g, '').trim();
+      } 
 
       let ofemail = rows[i].values['AIS Email'];
       let ofgit = rows[i].values['GitHub Username'];
@@ -47,38 +54,44 @@ export const getAllOfficers = async (fields?: string[]): Promise<Officer[]> => {
       let personal = rows[i].values['Personal Website'];
       let imageUrl = rows[i].values['Headshot Photo (Square Aspect Ratio)'];
 
-      // Data Cleaning and Verifying
-      if (typeof ofemail == 'string')
-        ofemail = ofemail.length != 0 ? ofemail.replace(/```/gi, '') : null;
-      else ofemail = ofemail['url'];
+      // Data cleaning and verifying - remove backticks from all fields if necessary
+      if (typeof ofemail == 'string') {
+        ofemail = ofemail.length != 0 ? ofemail.replace(/```/g, '').trim() : null;
+      } else {
+        ofemail = ofemail ? ofemail['url'] : null;
+      }
 
-      if (typeof ofgit == 'string')
-        ofgit = ofgit.length != 0 ? ofgit.replace(/```/gi, '') : null;
-      else ofgit = ofgit['url'];
+      if (typeof ofgit == 'string') {
+        ofgit = ofgit.length != 0 ? ofgit.replace(/```/g, '').trim() : null;
+      } else {
+        ofgit = ofgit ? ofgit['url'] : null;
+      }
 
       if (typeof linkedIn === 'string') {
-        // If linkedIn is a string, assume it's a valid LinkedIn URL and use it directly
-        linkedIn = linkedIn.trim(); // Trim any leading or trailing whitespace
+        linkedIn = linkedIn.trim();
       } else {
-        // If linkedIn is not a string, set it to null
         linkedIn = null;
       }
-      
-      if (typeof personal == 'string')
-        personal = personal.length != 0 ? personal.replace(/```/gi, '') : null;
-      else personal = personal['url'];
 
-      if (typeof imageUrl == 'string')
-        imageUrl = imageUrl.length != 0 ? imageUrl.replace(/```/gi, '') : null;
-      else if (Array.isArray(imageUrl)) {
+      if (typeof personal == 'string') {
+        personal = personal.length != 0 ? personal.replace(/```/g, '').trim() : null;
+      } else {
+        personal = personal ? personal['url'] : null;
+      }
+
+      if (typeof imageUrl == 'string') {
+        imageUrl = imageUrl.length != 0 ? imageUrl.replace(/```/g, '').trim() : null;
+      } else if (Array.isArray(imageUrl)) {
         if (imageUrl.length != 0) imageUrl = imageUrl[0]['url'];
         else imageUrl = null;
-      } else imageUrl = imageUrl['url'];
+      } else {
+        imageUrl = imageUrl ? imageUrl['url'] : null;
+      }
 
       const officer: Officer = {
         name: `${firstName} ${lastName}`.trim(),
-        title: rows[i].values['Title'].replace(/```/gi, ''),
-        team: team, // Using "Team" instead of "Department"
+        title: rows[i].values['Title'] ? rows[i].values['Title'].replace(/```/g, '').trim() : '',
+        team: team,
         dateJoined: null, // Join date is not part of the new table, setting as null
         email: ofemail,
         github: ofgit,
@@ -86,8 +99,8 @@ export const getAllOfficers = async (fields?: string[]): Promise<Officer[]> => {
         personalWeb: personal,
         image: imageUrl,
         quote:
-          rows[i].values['Quote for AIS Website'].length != 0
-            ? rows[i].values['Quote for AIS Website'].replace(/```/gi, '')
+          rows[i].values['Quote for AIS Website'] && rows[i].values['Quote for AIS Website'].length != 0
+            ? rows[i].values['Quote for AIS Website'].replace(/```/g, '').trim()
             : null,
       };
 
@@ -122,6 +135,7 @@ function retrieveOfficers(): void {
   try {
     const officers = fs.readFileSync('./pages/api/OfficersBackup.json');
     OFFICERS_MAP = JSON.parse(officers.toString());
+    console.log('Restored officers from backup:', OFFICERS_MAP);
   } catch (error) {
     console.log('Failed to retrieve officers from backup:', error);
   }
