@@ -76,6 +76,20 @@ module.exports = {
         basePath: false,
         permanent: true,
       },
+      //tech tank
+      {
+        source: '/tech-tank',
+        destination: 'https://coda.io/d/Tech-Tank_dxYNkV0nCXo/Tech-Tank-Fall-2024-Info_suFjUyml#_luLNVmKN',
+        basePath: false,
+        permanent: true,
+      },
+      {
+        source: '/tech-tank/register',
+        destination: 'https://coda.io/form/AIS-Tech-Tank-Application_d18vqf155RP',
+        basePath: false,
+        permanent: true,
+      },
+      //socials
       {
         source: '/discord',
         destination: 'https://discord.com/invite/7fZQZyP',
