@@ -206,9 +206,16 @@ export default function EventsPage({ events }: EventsPageProps) {
               </div>
             </div>
             {pastEventsDiv}
-            <div className="py-4 w-full flex justify-center md:justify-end" onClick={() => (viewAllPastEvents ? setViewAllPastEvents(false) : setViewAllPastEvents(true))} >
-              <img src="/images/Events/viewall-btn.png" className='[cursor:pointer]'></img>
-            </div>
+            <div className="py-4 w-full flex justify-end" onClick={() => setViewAllPastEvents(!viewAllPastEvents)}>
+  <div className="w-[162px] h-[48px] bg-[#3E6EFF] rounded-[57px] [cursor:pointer]">
+    <div className="bg-[#3E6EFF] text-white relative w-[154px] h-[38px] top-[5px] left-[4px] rounded-[45px] border-[3px] border-solid border-[color:var(--variable-collection-bg-duplicate)] flex flex-col place-content-center">
+      <div className="top-[3px] font-bold text-[16px] leading-none text-center">
+        {viewAllPastEvents ? "View Less" : "View All"}
+      </div>
+    </div>
+  </div>
+</div>
+
           </div>
         </section>
       </main>
