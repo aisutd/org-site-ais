@@ -8,9 +8,9 @@ import * as fs from 'fs';
 let OFFICERS_MAP: { [key: string]: Officer } = {};
 
 /**
- * Fetch event information.
+ * Fetch officer information.
  *
- * @param officerId The unique identifier for the event
+ * @param officerId The unique identifier for the officer
  */
 export const getOfficer = async (officerId: string, fields?: string[]): Promise<Officer> => {
   await getAllOfficers();
@@ -18,103 +18,108 @@ export const getOfficer = async (officerId: string, fields?: string[]): Promise<
 };
 
 /**
- * Return all past and upcoming events.
+ * Return all officers.
  */
-
 export const getAllOfficers = async (fields?: string[]): Promise<Officer[]> => {
   // If officers were previously parsed, then return those
   const prevOfficers = Object.keys(OFFICERS_MAP);
   if (prevOfficers.length != 0) {
     return Object.values(OFFICERS_MAP);
   }
-  /**
-     * Coda API
-     * How to get an API KEY:
-     * 1. Go to https://coda.io/account and scroll down to "Coda API Tokens"
-     * 2. Generate a new API key WITH RESTRICTIONS of read only access to this doc: https://coda.io/d/AIS-Personnel_dzWBpla6LLN/AIS-Officers_sudo_#_lu0Yo
-     * 3. Create a file ".env.local" in your project directory
-     * 4. Add the following entry: "CODA_OFFICER_API_KEY='{Your API key}'"
-     */
 
   try {
     const CodaAPI = new Coda(process.env.NEXT_PUBLIC_CODA_OFFICER_API_KEY);
-    // AIS Personnel Doc: zWBpla6LLN
-    const doc = await CodaAPI.getDoc('zWBpla6LLN'); // Grab AIS Personnel Doc from Coda API using the Doc ID at https://coda.io/developers/apis/v1
-    const table = await doc.getTable('Copy of Officers Recordkeeping Table S24'); // Grab the actual table from the doc
-   // const table = await doc.getTable('Officers Recordkeeping Table S24');
-   // const table = await doc.getTable(''); // Grab the actual table from the doc
+    const doc = await CodaAPI.getDoc('zWBpla6LLN'); // Grab AIS Personnel Doc from Coda API using the Doc ID
+    const table = await doc.getTable('Officers Recordkeeping Table F24'); // Grab the actual table from the doc
     const rows = await table.listRows({ useColumnNames: true, valueFormat: 'rich' }); // Grab all the officer entries in the doc
 
-    //
     for (let i = 0; i < rows.length; i++) {
-      // For each officer in the table
+      const row = rows[i].values;
+
+      // Extract and validate each field from the row, removing backticks using regex
+      const firstName = typeof row['First Name'] === 'string' ? row['First Name'].replace(/```/g, '').trim() : '';
+      const lastName = typeof row['Last Name'] === 'string' ? row['Last Name'].replace(/```/g, '').trim() : '';
+
+      const teamField = row['Team'];
+      let team = '';
+      if (Array.isArray(teamField) && teamField.length > 0) {
+        team = teamField[0] ? teamField[0].replace(/```/g, '').trim() : '';
+      } else if (typeof teamField === 'string') {
+        team = teamField.replace(/```/g, '').trim();
+      } 
+
       let ofemail = rows[i].values['AIS Email'];
       let ofgit = rows[i].values['GitHub Username'];
       let linkedIn = rows[i].values['LinkedIn'];
       let personal = rows[i].values['Personal Website'];
       let imageUrl = rows[i].values['Headshot Photo (Square Aspect Ratio)'];
 
-      // Data Cleaning and Verifying
-      if (typeof ofemail == 'string')
-        ofemail = ofemail.length != 0 ? ofemail.replace(/```/gi, '') : null;
-      else ofemail = ofemail['url'];
+      // Data cleaning and verifying - remove backticks from all fields if necessary
+      if (typeof ofemail == 'string') {
+        ofemail = ofemail.length != 0 ? ofemail.replace(/```/g, '').trim() : null;
+      } else {
+        ofemail = ofemail ? ofemail['url'] : null;
+      }
 
-      if (typeof ofgit == 'string')
-        ofgit = ofgit.length != 0 ? ofgit.replace(/```/gi, '') : null;
-      else ofgit = ofgit['url'];
+      if (typeof ofgit == 'string') {
+        ofgit = ofgit.length != 0 ? ofgit.replace(/```/g, '').trim() : null;
+      } else {
+        ofgit = ofgit ? ofgit['url'] : null;
+      }
 
       if (typeof linkedIn === 'string') {
-        // If linkedIn is a string, assume it's a valid LinkedIn URL and use it directly
-        linkedIn = linkedIn.trim(); // Trim any leading or trailing whitespace
+        linkedIn = linkedIn.trim();
       } else {
-        // If linkedIn is not a string, set it to null
         linkedIn = null;
       }
-      
-      if (typeof personal == 'string')
-        personal = personal.length != 0 ? personal.replace(/```/gi, '') : null;
-      else personal = personal['url'];
 
-      if (typeof imageUrl == 'string')
-        imageUrl = imageUrl.length != 0 ? imageUrl.replace(/```/gi, '') : null;
-      else if (Array.isArray(imageUrl)) {
+      if (typeof personal == 'string') {
+        personal = personal.length != 0 ? personal.replace(/```/g, '').trim() : null;
+      } else {
+        personal = personal ? personal['url'] : null;
+      }
+
+      if (typeof imageUrl == 'string') {
+        imageUrl = imageUrl.length != 0 ? imageUrl.replace(/```/g, '').trim() : null;
+      } else if (Array.isArray(imageUrl)) {
         if (imageUrl.length != 0) imageUrl = imageUrl[0]['url'];
         else imageUrl = null;
-      } else imageUrl = imageUrl['url'];
+      } else {
+        imageUrl = imageUrl ? imageUrl['url'] : null;
+      }
 
       const officer: Officer = {
-        name:
-          rows[i].values['First Name'].replace(/```/gi, '') +
-          ' ' +
-          rows[i].values['Last Name'].replace(/```/gi, ''),
-        title: rows[i].values['Title'].replace(/```/gi, ''),
-        team: rows[i].values['Department'].replace(/```/gi, ''),
-        dateJoined: rows[i].values['Join Date'].length != 0 ? rows[i].values['Join Date'] : null,
+        name: `${firstName} ${lastName}`.trim(),
+        title: rows[i].values['Title'] ? rows[i].values['Title'].replace(/```/g, '').trim() : '',
+        team: team,
+        dateJoined: null, // Join date is not part of the new table, setting as null
         email: ofemail,
         github: ofgit,
         linkedInUrl: linkedIn,
         personalWeb: personal,
         image: imageUrl,
         quote:
-          rows[i].values['Quote for AIS Website'].length != 0
-            ? rows[i].values['Quote for AIS Website'].replace(/```/gi, '')
+          rows[i].values['Quote for AIS Website'] && rows[i].values['Quote for AIS Website'].length != 0
+            ? rows[i].values['Quote for AIS Website'].replace(/```/g, '').trim()
             : null,
       };
 
-      OFFICERS_MAP[officer.name] = officer;
+      if (officer.name) {
+        OFFICERS_MAP[officer.name] = officer;
+      }
     }
+
     // Create an offline backup if necessary
     storeOfficers();
   } catch (error) {
     console.log(error);
-    console.log('Error No: ' + error.errno);
-    console.log('Error Code: ' + error.code);
-    console.log('!~could not get officer list from coda : (')
+    console.log('Error No: ' + (error as any).errno);
+    console.log('Error Code: ' + (error as any).code);
+    console.log('!~could not get officer list from Coda : (');
     // Restore from an offline backup if necessary
-    //retrieveOfficers();
+    // retrieveOfficers();
   }
-  
-  //retrieveOfficers();
+
   return Object.values(OFFICERS_MAP);
 };
 
@@ -127,13 +132,11 @@ function storeOfficers(): void {
 }
 
 function retrieveOfficers(): void {
-  const officers = fs.readFileSync('./pages/api/OfficersBackup.json');
-  OFFICERS_MAP = JSON.parse(officers.toString());
+  try {
+    const officers = fs.readFileSync('./pages/api/OfficersBackup.json');
+    OFFICERS_MAP = JSON.parse(officers.toString());
+    console.log('Restored officers from backup:', OFFICERS_MAP);
+  } catch (error) {
+    console.log('Failed to retrieve officers from backup:', error);
+  }
 }
-
-// async function retrieveEvents(): Promise<void> {
-//   fs.readFile('./pages/api/eventsBackup.json', (err, events) => {
-//     if (err) throw err;
-//     EVENTS_MAP = JSON.parse(events);
-//   });
-// }
