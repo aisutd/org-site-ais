@@ -75,7 +75,7 @@ export default function TeamPage({ officers }: TeamPageProps) {
       {
         return 1;
       }
-      else //neither are directors
+      else //neither are director
       {
         if(a.name < b.name)
           return -1;
@@ -118,7 +118,7 @@ export default function TeamPage({ officers }: TeamPageProps) {
         <section id="officers">
           {/* Title */}
           <div className="text-7xl font-placard-bold tracking-wide text-ais-new-med-blue mb-4 p-4 text-center">
-            MEET THE TEAM
+            MEET THE TEAMs
           </div>
           {/* Container for displaying team members */}
           <div className="flex flex-grow flex-wrap -mt-10 pt-10 pb-8 gap-8 justify-around relative">
