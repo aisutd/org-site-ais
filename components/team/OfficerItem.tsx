@@ -191,7 +191,7 @@ function personalQuote(officer: Officer) {
 export default function OfficerItem({ officer }: OfficerItemProps) {
   const { name, title } = officer;
   let directorAtt: string;
-  if (title.includes('Director') || title.includes('President') || title.includes('Founder'))
+  if ((title.includes('Director') && (!title.includes('Assistant')))  || title.includes('President') || title.includes('Founder'))
     directorAtt = ' order-first ';
   else if (title.includes('VP')) directorAtt = ' order-1 ';
   else if (title.includes('Faculty')) directorAtt = ' order-last ';
