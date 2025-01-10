@@ -48,7 +48,7 @@ export default function TeamPage({ officers }: TeamPageProps) {
       return b.title.includes('Director') ? 1 : a.name < b.name ? -1 : 1;
     }
   });
-
+    
   for (const off of officers) {
     if (off['team'] == 'Executive') execTeam.push(off);
     else if (off['team'] == 'Industry') industryTeam.push(off);
@@ -73,7 +73,7 @@ export default function TeamPage({ officers }: TeamPageProps) {
       <main className="min-h-screen bg-ais-new-beige font-roboto subpixel-antialiased overflow-x-hidden pt-[5rem]">
         <section id="officers">
           <div className="text-7xl font-placard-bold tracking-wide text-ais-new-med-blue mb-4 p-4 text-center">
-            MEET THE TEAM
+            MEET THE TEAMs
           </div>
           <div className="flex flex-grow flex-wrap -mt-10 pt-10 pb-8 gap-8 justify-around relative">
             <img
