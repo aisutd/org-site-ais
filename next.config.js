@@ -3,34 +3,34 @@ module.exports = {
     return [
       {
         source: '/member/attendance',
-        destination: 'https://coda.io/form/AIS-Event-Attendance-Form_dYfH_vMZ_U8',
+        destination: 'https://coda.io/form/AIS-Event-Attendance-Form-F24_dvXogtZ8LZD',
         basePath: false,
         permanent: true,
       },
       {
         source: '/member/apply',
-        destination: 'https://coda.io/form/AIS-Membership-Interest-Form-Spring-2024_dOD_caSLbak',
+        destination: 'https://coda.io/form/AIS-Membership-Interest-Form_dEsa-S87Hwd',
         basePath: false,
         permanent: true,
       },
       {
         source: '/member/info',
-        destination:
-          'https://docs.google.com/document/d/10DimpEjMir8sgyJb6dKGGHHj5cIoNZP4KcQWdLKfrtM/edit',
+        destination: 'https://docs.google.com/document/d/1hfI_WeyWj3W61npRw5AcZHHHVuafcoh-qTEAKTVCa20/edit',
         basePath: false,
         permanent: true,
       },
       //updated to F24
       {
         source: '/aim/apply',
-        destination: 'https://coda.io/form/AIM-Mentee-Application-F24_d8Nf9j0sinV',
+        destination: 'https://coda.io/form/AIM-Mentee-Application-S25_d9fydtkOxrc',
         basePath: false,
         permanent: true,
       },
-      //updated to S24
+      //updated to F24
       {
         source: '/aim/info',
-        destination: 'https://docs.google.com/document/d/17CkhWdFdWq9dXzcr89jm_9y9HYVp4IauxA-LOzOUox4/edit',
+        //destination: 'https://docs.google.com/document/d/1hhLNZkQktB7XWIGm57CmPry1ZKM8Bn-ktTlpOmJkQXU/edit',
+        destination: 'https://docs.google.com/document/d/1ht0ClJmdPNe2YbhcLEJJIphEwhImEI68xT9vPIE0SOE/edit',
         basePath: false,
         permanent: true,
       },
@@ -50,32 +50,49 @@ module.exports = {
       //updated to F24
       {
         source: '/aim/mentor/apply',
-        destination: 'https://coda.io/form/AIM-Mentor-Applications-F24_dTOVFZ-M_2c',
+        //destination: 'https://coda.io/form/AIM-Mentor-Applications-F24_dTOVFZ-M_2c',
+        destination: 'https://coda.io/form/AIM-Mentor-App-S25_d8M1RIaMfv3',
         basePath: false,
         permanent: true,
       },
       //updated to F24
       {
         source: '/aim/mentor/info',
-        destination: 'https://docs.google.com/document/d/1j0CbR1hqVepiN3KsbtuYUfrF3JUPv5KUCjaybusRoGo/edit',
+        //destination: 'https://docs.google.com/document/d/1j0CbR1hqVepiN3KsbtuYUfrF3JUPv5KUCjaybusRoGo/edit',
+        destination: 'https://docs.google.com/document/d/1tDf70VJE2XoWclNialSL5py5_5dJh1oNHvOTDKxQwxA/edit',
         basePath: false,
         permanent: true,
       },
       //updated to F24
       {
         source: '/officer/apply',
-        destination: 'https://coda.io/form/AIS-Officer-Application-F24_dY_jh9snDTK',
+        //destination: 'https://coda.io/form/AIS-Officer-Application-F24_dY_jh9snDTK',
+        destination: 'https://coda.io/form/AIS-Officer-Applications-S25_dLtJCE5nHlI',
         basePath: false,
         permanent: true,
       },
       //updated to F24
       {
         source: '/officer/info',
-        destination:
-          'https://docs.google.com/document/d/1RfBhTp4NdrubXxo6IX7Vm4KDjKXXlCeXMCLsFaSm7M4/edit',
+       // destination:'https://docs.google.com/document/d/1RfBhTp4NdrubXxo6IX7Vm4KDjKXXlCeXMCLsFaSm7M4/edit',
+        destination:'https://docs.google.com/document/d/1B-bdjpBiUE-Ws3OOhgw4mUnKluBvTJGaP9C4NXfe4yk/edit',
         basePath: false,
         permanent: true,
       },
+      //tech tank
+      {
+        source: '/tech-tank',
+        destination: 'https://coda.io/d/Tech-Tank_dxYNkV0nCXo/Tech-Tank-Fall-2024-Info_suFjUyml#_luLNVmKN',
+        basePath: false,
+        permanent: true,
+      },
+      {
+        source: '/tech-tank/register',
+        destination: 'https://coda.io/form/AIS-Tech-Tank-Application_d18vqf155RP',
+        basePath: false,
+        permanent: true,
+      },
+      //socials
       {
         source: '/kickoff-s25',
         destination:
