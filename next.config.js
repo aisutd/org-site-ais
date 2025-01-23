@@ -77,6 +77,27 @@ module.exports = {
         permanent: true,
       },
       {
+        source: '/kickoff-s25',
+        destination:
+          'https://docs.google.com/forms/d/e/1FAIpQLSdJdjHP82rgM6uXk_BdkkP3y3fJyLZQD2RNmMXK0UOc5kNVtQ/viewform',
+        basePath: false,
+        permanent: true,
+      },
+      {
+        source: '/hackai/terms',
+        destination:
+          'https://docs.google.com/document/d/1zYOwR975UYSqGE-Wr31G6hngBBVVZG9FbKYTjxwDX2c/edit?usp=sharing',
+        basePath: false,
+        permanent: true,
+      },
+      {
+        source: '/hackai/conduct',
+        destination:
+          'https://docs.google.com/document/d/1D8rrGkZV05XY0YnASF-fIyKc1Q9vUJyzYY--cRO2c00/edit?usp=sharing',
+        basePath: false,
+        permanent: true,
+      },
+      {
         source: '/discord',
         destination: 'https://discord.com/invite/7fZQZyP',
         basePath: false,
