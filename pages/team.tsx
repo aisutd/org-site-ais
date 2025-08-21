@@ -26,6 +26,7 @@ export default function TeamPage({ officers }: TeamPageProps) {
   const aiTeam : Officer[] = [];
   const aimTeam: Officer[] = [];
   const execTeam: Officer[] = [];
+  const aiAcademyTeam: Officer[] = [];
   const [value, setValue] = React.useState('All Members');
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
@@ -58,6 +59,7 @@ export default function TeamPage({ officers }: TeamPageProps) {
     else if (off['team'] == 'Technology') techTeam.push(off);
     else if (off['team'] == 'AI') aiTeam.push(off);
     else if (off['team'] == 'AIM') aimTeam.push(off);
+    else if (off['team'] == 'AI Academy') aiAcademyTeam.push(off);
   }
 
   return (
@@ -126,7 +128,7 @@ export default function TeamPage({ officers }: TeamPageProps) {
                 <TeamItem officers={techTeam} team={'Technology'} />
 
                    {/* Display members of AI51 Team */}
-                   <div className="text-center text-2xl font-roboto-bold text-ais-new-med-blue mt-40">AI51 Team</div>
+                   <div className="text-center text-2xl font-roboto-bold text-ais-new-med-blue mt-40">Innovation Lab</div>
                 <TeamItem officers={aiTeam} team={'AI51'} />
 
                    {/* Display members of Marketing Team */}
@@ -140,6 +142,13 @@ export default function TeamPage({ officers }: TeamPageProps) {
                   {/* Display members of AIM Team */}
                 <div className="text-center text-2xl font-roboto-bold text-ais-new-med-blue mt-40">AIM Team</div>
                 <TeamItem officers={aimTeam} team={'AIM'} />
+
+                  {/* Display members of AI Academy Team */}
+                <div className="text-center text-2xl font-roboto-bold text-ais-new-med-blue mt-40">AI Academy</div>
+                <TeamItem officers={aiAcademyTeam} team={'AIM'} />
+
+              
+              
               </TabPanel>
               <TabPanel value="Executive Members">
                 <TeamItem officers={execTeam} team={'Executive'} />
@@ -164,6 +173,9 @@ export default function TeamPage({ officers }: TeamPageProps) {
               </TabPanel>
               <TabPanel value="AIM Members">
                 <TeamItem officers={aimTeam} team={'AIM'} />
+              </TabPanel>
+              <TabPanel value="AI Academy Members">
+                <TeamItem officers={aiAcademyTeam} team={'AI Academy'} />
               </TabPanel>
             </TabContext>
           </div>
