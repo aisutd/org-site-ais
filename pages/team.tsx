@@ -34,12 +34,25 @@ export default function TeamPage({ officers }: TeamPageProps) {
   };
 
   officers.sort((a, b) => {
-    if (a.team === 'Executive') {
-      if (a.title === 'President') return -1;
-      if (a.title === 'Secretary') return 1;
-      if (b.title === 'President') return 1;
-      return -1;
-    } else if (a.title.includes('Director')) {
+    // Executive team sorting
+    if (a.team === 'Executive' && b.team === 'Executive') {
+      // President always comes first
+      if (a.title === 'President' && b.title !== 'President') return -1;
+      if (a.title !== 'President' && b.title === 'President') return 1;
+      // Vice-President comes after President
+      if (a.title === 'Vice-President' && b.title !== 'Vice-President') return 1;
+      if (a.title !== 'Vice-President' && b.title === 'Vice-President') return -1;
+      // Secretary comes after President and Vice-President
+      if (a.title === 'Secretary' && b.title !== 'Secretary') return 1;
+      if (a.title !== 'Secretary' && b.title === 'Secretary') return -1;
+      // Otherwise, sort by name
+      return a.name < b.name ? -1 : 1;
+    }
+    // If only one is Executive, Executive comes first
+    if (a.team === 'Executive') return -1;
+    if (b.team === 'Executive') return 1;
+    // Directors sorting
+    if (a.title.includes('Director')) {
       if (b.title.includes('Director')) {
         return a.name < b.name ? -1 : 1;
       } else {

@@ -95,20 +95,25 @@ export const JoinPage = () => {
               </div>
             </div>
             {/* Apply options */}
-            <div className="w-full justify-items-center grid grid-cols-1 gap-[2rem] px-[calc(50%-10rem)]
-              md:px-[calc(30%-12rem)] md:grid-rows-2 md:grid-cols-2 xl:grid-rows-1 xl:grid-cols-4 xl:px-[calc(25%-12rem)] text-center">
-              <AppBox title="AIS Member"
+            <div className="grid grid-cols-1 gap-8
+              sm:grid-cols-2
+              lg:grid-cols-2      /* still 2 columns on large screens */
+              justify-items-center
+              mx-auto max-w-5xl   /* keeps grid centered on large screens */
+              px-4 sm:px-6 lg:px-8
+              text-center">
+              {/* <AppBox title="AIS Member"
               desc="Apply to our membership program to gain access to exclusive perks and a member-only community of fellow AI enthusiasts."
               appLink="https://www.aisutd.org/member/apply"
-              learnLink="https://www.aisutd.org/member/info"/>
+              learnLink="https://www.aisutd.org/member/info"/> */}
               <AppBox title="AI Mentee"
               desc="Apply as a mentee and get a chance to learn foundational concepts in ML and work on AI projects of your interest, guided by experienced mentors."
               appLink="https://www.aisutd.org/aim/apply"
               learnLink="https://www.aisutd.org/aim/info"/>
-              <AppBox title="AI Mentor"
+              {/* <AppBox title="AI Mentor"
               desc="Apply as a mentor and get a chance to guide a team through a semester-long project in foundational AI and ML concepts."
               appLink="https://www.aisutd.org/aim/mentor/apply"
-              learnLink="https://www.aisutd.org/aim/mentor/info"/>
+              learnLink="https://www.aisutd.org/aim/mentor/info"/> */}
               <AppBox title="AIS Officer"
               desc="Apply to the team and get an opportunity to organize events, be a part of our officer community, and more."
               appLink="https://www.aisutd.org/officer/apply"

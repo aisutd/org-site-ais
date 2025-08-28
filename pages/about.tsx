@@ -88,8 +88,8 @@ export const AboutPage = () => {
             sampleText="We host various social events for UTD students to get together and connect throughout the year."
           />
           <CollapsibleItem
-            title="AI51"
-            sampleText="AI51 is our official program where experienced students involved with AIS can work on club-sponsored projects as a next step for refining their technical expertise in the field."
+            title="Innovation Lab"
+            sampleText="Innovation Lab is our official program where experienced students involved with AIS can work on club-sponsored projects as a next step for refining their technical expertise in the field."
           />
         </div>
         <div className="w-full sm:w-1/2 text-center">
