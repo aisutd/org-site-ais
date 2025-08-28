@@ -45,12 +45,12 @@ export default function FeatureEvent({ event, onGoing }: EventItemProps) {
       {onGoing && !mobile ? 
       <div className="flex justify-center items-center text-ais-dark-blue text-sm gap-4 font-bold relative">
         <div style={ image ? {backgroundImage: `url(${image})`} : {backgroundImage: "url('/images/Logos/ais_logo_brain_events.png')"} }
-          className="w-8/12 h-96 bg-contain bg-center bg-no-repeat rounded-2xl relative z-10 [cursor:pointer]" onClick={() => {window.open(image, "_blank")}}
+          className="w-8/12 h-96 bg-contain bg-center bg-no-repeat rounded-2xl relative z-10"
         >
           <div className="bg-ais-white w-3/12 h-36 rounded-tl-3xl ml-auto text-center absolute bottom-0 right-0">
             <div className="mt-10 text-4xl text-ais-black">{eventDay}</div>
             <div className="text-xl text-ais-black">{eventMonth.toUpperCase()}</div>
-            <div className="text-xl text-ais-white hover:text-ais-black">{eventYear}</div>
+            <div className="text-xl text-ais-white text-ais-black">{eventYear}</div>
           </div>
         </div>
         <div className="h-auto w-1/2 pl-8 pr-16">
@@ -123,7 +123,7 @@ export default function FeatureEvent({ event, onGoing }: EventItemProps) {
       </div>
       :
       <div>
-
+        {/* (This is for future updates, keep this) onClick={() => {window.open("/images/Logos/ais_logo_brain_events.png", "_blank")}} */}
         { image ? 
         <div style={{backgroundImage: `url(${image})`}}  onClick={() => {window.open(image, "_blank")}}
           className="bg-contain bg-center bg-no-repeat w-full h-64 rounded-t-2xl mb-4 relative [cursor:pointer]"
@@ -131,17 +131,16 @@ export default function FeatureEvent({ event, onGoing }: EventItemProps) {
           <div className="bg-ais-white w-4/12 h-24 rounded-tl-3xl ml-auto text-center absolute bottom-0 right-0">
             <div className="mt-4 text-2xl">{eventDay}</div>
             <div className="text-sm">{eventMonth.toUpperCase()}</div>
-            <div className="text-xl text-ais-white hover:text-ais-black">{eventYear}</div>
+            <div className="text-xl text-ais-whitetext-ais-black">{eventYear}</div>
           </div>
         </div>
         : 
-        <div className="bg-contain bg-center bg-no-repeat w-full h-64 rounded-t-2xl mb-4 relative bg-[url('/images/Logos/ais_logo_brain_events.png')] [cursor:pointer]"
-          onClick={() => {window.open("/images/Logos/ais_logo_brain_events.png", "_blank")}}
+        <div className="bg-contain bg-center bg-no-repeat w-full h-64 rounded-t-2xl mb-4 relative bg-[url('/images/Logos/ais_logo_brain_events.png')]"
         >
           <div className="bg-ais-white w-4/12 h-24 rounded-tl-3xl ml-auto text-center absolute bottom-0 right-0">
             <div className="mt-4 text-2xl">{eventDay}</div>
             <div className="text-sm">{eventMonth.toUpperCase()}</div>
-            <div className="text-xl text-ais-white hover:text-ais-black">{eventYear}</div>
+            <div className="text-xl text-ais-white text-ais-black">{eventYear}</div>
           </div>
         </div>
         }
