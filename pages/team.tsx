@@ -175,7 +175,7 @@ export default function TeamPage({ officers }: TeamPageProps) {
               <TabPanel value="Technology Members">
                 <TeamItem officers={techTeam} team={'Technology'} />
               </TabPanel>
-              <TabPanel value="AI51 Members">
+              <TabPanel value="Innovation Lab Members">
                 <TeamItem officers={aiTeam} team={'AI51'} />
               </TabPanel>
               <TabPanel value="Marketing Members">
