@@ -118,7 +118,7 @@ export default function TeamPage({ officers }: TeamPageProps) {
                 <Tab value="Operation Members" label="Operations" />
                 <Tab value="Finance Members" label="Finance" />
                 <Tab value="Technology Members" label="Technology" />
-                <Tab value="AI51 Members" label="AI51" />
+                <Tab value="Innovation Lab Members" label="Inno Lab" />
                 <Tab value="Marketing Members" label="Marketing" />
                 <Tab value="Industry Members" label="Industry" />
                 <Tab value="AIM Members" label="AIM" />
