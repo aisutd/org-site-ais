@@ -40,6 +40,12 @@ module.exports = {
           cloud:'#DCE7ED',
           white: '#fafafa',
         },
+        techTank: {
+          'dark-green': '#205732',
+          'darker-green': '#1D3E1E',
+          'yellow': '#FBD300',
+          'light-green': '#4D9B44',
+        }
       },
       fontFamily: {
         sans: ['IBM Plex Sans', 'sans-serif'],
