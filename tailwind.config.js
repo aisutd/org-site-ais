@@ -43,8 +43,10 @@ module.exports = {
         techTank: {
           'dark-green': '#205732',
           'darker-green': '#1D3E1E',
-          'yellow': '#FBD300',
+          yellow: '#FBD300',
           'light-green': '#4D9B44',
+          'lighter-green': '#C9E16D',
+          white: '#F5F0EA'
         }
       },
       fontFamily: {
@@ -60,6 +62,7 @@ module.exports = {
         fredoka: ['var(--fredoka)'],
         primer: ['var(--primer)'],
         lucidity: ['var(--lucidity)'],
+        sailors: ['var(--sailors)'],
         campground: ['var(--campground)'],
         cooper: ['var(--cooper)'],
         rust: ['var(--rust)'],
@@ -100,5 +103,20 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      const newUtilities = {
+        '.text-stroke': {
+          '-webkit-text-stroke': '1px black',
+        },
+        '.text-stroke-2': {
+          '-webkit-text-stroke': '2px black',
+        },
+        '.text-stroke-white': {
+          '-webkit-text-stroke': '1px white',
+        },
+      }
+      addUtilities(newUtilities, ['responsive'])
+    },
+  ],
 };

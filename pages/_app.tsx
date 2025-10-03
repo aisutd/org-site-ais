@@ -15,6 +15,14 @@ const placard = localFont({
   ]
 });
 
+const sailors = localFont({
+  src: [
+    {
+      path: "../public/techTank2025/fonts/sailors.ttf"
+    }
+  ]
+});
+
 const placardBold = localFont({
   src: [
     {
@@ -97,7 +105,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>Home &ndash; AIS</title>
-        {path == "/tech-tank" || path == "/tech-tank/profile" ? 
+        {path == "/tech-tank" || path == "/tech-tank/profile" || path == "/techTank2025" ? 
           <link rel="icon" href="/tech-tank/tech-tank-logo.png" type="image/png" sizes="any"/>
         :
           <link rel="icon" href="/images/Logos/square-logo-dark.jpg" type="image/jpg" sizes="any"/>
@@ -110,7 +118,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           --placard-bold: ${placardBold.style.fontFamily};
           --roboto: ${roboto.style.fontFamily};
           --roboto-bold: ${robotoBold.style.fontFamily};
-
+          --sailors: ${sailors.style.fontFamily};
           --lucidity: ${lucidity.style.fontFamily};
           --cooper: ${cooper.style.fontFamily};
           --campground: ${campground.style.fontFamily};

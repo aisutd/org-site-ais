@@ -1,22 +1,22 @@
 // Footer.tsx (the new wrapper component)
 import * as React from 'react';
-import DesktopFooter from './DesktopFooter'; // Or the correct path
-import MobileFooter from './MobileFooter';   // Or the correct path
+import DesktopSponsors from './DesktopSponsors'; // Or the correct path
+import MobileSponsors from './MobileSponsors';   // Or the correct path
 
-function Footer() {
+function Sponsors() {
   return (
     <>
       {/* Mobile Footer: Visible by default, hidden on medium screens and up */}
       <div className="block md:hidden">
-        <MobileFooter />
+        <MobileSponsors />
       </div>
 
       {/* Desktop Footer: Hidden by default, visible on medium screens and up */}
       <div className="hidden md:block">
-        <DesktopFooter />
+        <DesktopSponsors />
       </div>
     </>
   );
 }
 
-export default Footer;
+export default Sponsors;
