@@ -17,7 +17,7 @@ export default function HackAI26Page() {
           It sits ON the background, but UNDER the lights.
           Added 'absolute inset-0' to ensure it aligns perfectly with the bg.
       */}
-      <div className="absolute inset-0 z-1 flex h-full items-center justify-center flex-col pointer-events-auto">
+      <div className="pt-[5rem] absolute inset-0 z-1 flex h-full items-center justify-center flex-col pointer-events-auto">
         <Image
           src="/images/Logos/ais_logo_white.png"
           alt="HackAI 2026"
@@ -31,12 +31,14 @@ export default function HackAI26Page() {
           width={900}
           height={200}
         />
-        <div className="flex flex-col items-center text-[#fff9f5] font-allerta mt-8 gap-2">
-          <span className="text-xl">march 7th-8th</span>
-          <span className="text-lg opacity-80">registration opens [date], 2026</span>
-          <button className="mt-4 px-6 py-2 border border-[#fff9f5] rounded hover:bg-[#fff9f5] hover:text-black transition-colors cursor-pointer">
-            learn more about HackAI
-          </button>
+        <div className="flex flex-col items-center text-[#fff9f5] font-allerta gap-2">
+          <span className="text-3xl text-bold text-white ">MARCH 7TH-8TH</span>
+          <span className="text-xl opacity-80 uppercase">registration opens in January, stay tuned!</span>
+          <a href="/hackAI">
+            <button className="uppercase mt-4 px-6 py-2 border border-[#fff9f5] rounded hover:bg-[#fff9f5] hover:text-black transition-colors cursor-pointer">
+                Learn more about HackAI
+            </button>
+          </a>
         </div>
       </div>
 
