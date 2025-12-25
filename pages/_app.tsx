@@ -87,6 +87,15 @@ const rust = localFont({
   ]
 });
 
+const allerta = localFont({
+  src: [
+    {
+      path: "../public/hackai/hackai26-preview/fonts/AllertaStencil/AllertaStencil-Regular.ttf",
+    },
+  ],
+});
+
+
 /**
  * A wrapper for the root website component.
  */
@@ -117,6 +126,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           --fredoka: ${fredoka.style.fontFamily};
           --primer: ${primer.style.fontFamily};
           --rust: ${rust.style.fontFamily};
+          --allerta: ${allerta.style.fontFamily};
         }
       `}</style>
 
