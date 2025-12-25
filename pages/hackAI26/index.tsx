@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function HackAI26Page() {
   return (
     <div className="relative h-screen w-full overflow-hidden bg-black">
-      {/* Base image */}
+      {/* Base Image */}
       <Image
         src="/hackai/hackai26-preview/hackai-bg.png"
         alt="HackAI wall background"
@@ -14,20 +14,25 @@ export default function HackAI26Page() {
 
       {/* Content */}
       <div className="pt-[5rem] absolute inset-0 z-1 flex h-full items-center justify-center flex-col pointer-events-auto">
-        <Image
-          src="/images/Logos/ais_logo_white.png"
-          alt="HackAI 2026"
-          width={150}
-          height={200}
-        />
-        <span className="text-[#fff9f5] font-allerta mt-4">PRESENTS</span>
+        <div className="fade-in-delayed">
+            <Image
+            src="/images/Logos/ais_logo_white.png"
+            alt="HackAI 2026"
+            width={150}
+            height={200}
+            />
+        </div>
+        <span className="text-[#fff9f5] font-allerta mt-4 fade-in-delayed">PRESENTS</span>
+
         <Image
           src="/hackai/hackai26-preview/hackai-2026.png"
           alt="HackAI 2026"
           width={900}
           height={200}
+          priority
         />
-        <div className="flex flex-col items-center text-[#fff9f5] font-allerta gap-2">
+
+        <div className="flex flex-col items-center text-[#fff9f5] font-allerta gap-2 fade-in-delayed">
           <span className="text-3xl text-bold text-white ">MARCH 7TH-8TH</span>
           <span className="text-xl opacity-80 uppercase">registration opens in January, stay tuned!</span>
           <a href="/hackAI">
@@ -38,12 +43,13 @@ export default function HackAI26Page() {
         </div>
       </div>
 
-      {/* Lighting Layer */}
+      {/* Lighting */}
       <div 
         className="absolute inset-0 z-10 pointer-events-none"
         style={{
           backgroundColor: '#000', 
           mixBlendMode: 'multiply', 
+          // Darkness fades out starting at 3s, taking 0.5s. Ends at 3.5s.
           animation: 'fadeOut 0.5s ease-out 3s forwards'
         }}
       >
@@ -52,7 +58,6 @@ export default function HackAI26Page() {
           style={{
             position: 'absolute',
             inset: 0,
-            // Warm white light to reveal the logo/bg
             background: 'radial-gradient(circle at 10% 30%, #fff9c4 0%, transparent 40%)',
             opacity: 0,
             animation: 'leftFlicker 0.8s steps(1) 0.3s',
@@ -84,6 +89,24 @@ export default function HackAI26Page() {
 
       {/* Keyframe animations */}
       <style jsx>{`
+        /* New class for the delayed entrance */
+        .fade-in-delayed {
+            opacity: 0; /* Start hidden */
+            /* Start at 3.6s (just after darkness fades), take 1s to fade in */
+            animation: contentFadeInUp 1s ease-out 3.6s forwards;
+        }
+
+        @keyframes contentFadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px); /* Optional: slight upward drift */
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         @keyframes leftFlicker {
           0% { opacity: 0; }
           5% { opacity: 1; }
