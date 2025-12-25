@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function HackAI26Page() {
   return (
     <div className="relative h-screen w-full overflow-hidden bg-black">
-      {/* 1. The Base Image (Bottom Layer) */}
+      {/* Base image */}
       <Image
         src="/hackai/hackai26-preview/hackai-bg.png"
         alt="HackAI wall background"
@@ -12,11 +12,7 @@ export default function HackAI26Page() {
         className="object-cover z-0"
       />
 
-      {/* 2. The Content (Middle Layer) 
-          Changed z-index from 20 to 1. 
-          It sits ON the background, but UNDER the lights.
-          Added 'absolute inset-0' to ensure it aligns perfectly with the bg.
-      */}
+      {/* Content */}
       <div className="pt-[5rem] absolute inset-0 z-1 flex h-full items-center justify-center flex-col pointer-events-auto">
         <Image
           src="/images/Logos/ais_logo_white.png"
@@ -42,11 +38,7 @@ export default function HackAI26Page() {
         </div>
       </div>
 
-      {/* 3. The Lighting Layer (Top Layer)
-          z-index is 10.
-          Because this is on top with 'multiply', it hides everything below it (Image AND Logo)
-          until the white 'lights' reveal them.
-      */}
+      {/* Lighting Layer */}
       <div 
         className="absolute inset-0 z-10 pointer-events-none"
         style={{
