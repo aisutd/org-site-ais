@@ -82,6 +82,7 @@ module.exports = {
         campground: ['var(--campground)'],
         cooper: ['var(--cooper)'],
         rust: ['var(--rust)'],
+        allerta: ['var(--allerta)'],
       },
       scale: {
         85: '0.85',
