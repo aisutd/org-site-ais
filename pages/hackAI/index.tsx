@@ -12,7 +12,7 @@ export default function HackAiHome() {
       
       <Hero />
       <AboutSection />
-      <PastWinners />
+      <PastWinners /> 
       <SponsorsSlideshow />
       <FAQSection />
       {/* More content */}

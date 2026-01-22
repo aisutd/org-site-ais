@@ -118,6 +118,7 @@ export const JoinPage = () => {
               desc="Apply to the team and get an opportunity to organize events, be a part of our officer community, and more."
               appLink="https://www.aisutd.org/officer/apply"
               learnLink="https://www.aisutd.org/officer/info"/>
+
             </div>
           </div>
         </div>

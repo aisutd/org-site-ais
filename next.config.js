@@ -63,11 +63,11 @@ module.exports = {
         basePath: false,
         permanent: true,
       },
-      //updated to F24
+      //updated to S26
       {
         source: '/officer/apply',
         //destination: 'https://coda.io/form/AIS-Officer-Application-F24_dY_jh9snDTK',
-        destination: 'https://coda.io/form/AIS-Officer-Applications-S25_dLtJCE5nHlI',
+        destination: 'https://coda.io/form/AIS-Officer-Applications-S26_dLtJCE5nHlI',
         basePath: false,
         permanent: true,
       },
