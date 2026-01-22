@@ -1,3 +1,4 @@
+import { Button } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 
 const images = [
@@ -31,6 +32,32 @@ const Hero = () => {
             A weekend of rapid prototyping and collaboration. See past winners and resources below.
           </p>
         </header>
+
+        <div className="w-64 h-32 bg-ais-new-blue rounded-xl justify-center items-center mx-auto">
+          <a
+          href="https://coda.io/form/Hack-AI-2026-Interest_dh6_fn-2o0i"
+          target="_blank"
+          rel="noopener noreferrer"
+          >
+            <Button
+              className="
+                mt-6
+                flex justify-center
+                bg-ais-new-blue
+                text-ais-new-blue
+                px-2 
+                rounded-xl
+                w-fit mx-auto
+              "
+            >
+              Register Interest
+            </Button>
+          </a>
+        </div>
+
+        
+
+
 
         <section className="mt-8 flex justify-center ">
           <div className="relative w-full max-w-5xl aspect-video bg-white rounded-lg overflow-hidden shadow-md">
