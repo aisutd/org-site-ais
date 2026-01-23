@@ -33,7 +33,7 @@ const Hero = () => {
           </p>
         </header>
 
-        <div className="w-64 h-32 bg-ais-new-blue rounded-xl justify-center items-center mx-auto">
+        {/* <div className="w-64 h-32 bg-ais-new-blue rounded-xl justify-center items-center mx-auto">
           <a
           href="https://coda.io/form/Hack-AI-2026-Interest_dh6_fn-2o0i"
           target="_blank"
@@ -53,7 +53,7 @@ const Hero = () => {
               Register Interest
             </Button>
           </a>
-        </div>
+        </div> */}
 
         
 
