@@ -19,10 +19,10 @@ module.exports = {
         basePath: false,
         permanent: true,
       },
-      //updated to F25
+      //updated to S26
       {
         source: '/aim/apply',
-        destination: 'https://coda.io/form/AIM-Fall-2025-Mentee-Application_dnGQ618RMkp/',
+        destination: 'https://coda.io/form/AIM-S26-Mentee-Application_dw1wTJ2KU3J?utm_source=ig&utm_medium=social&utm_content=link_in_bio',
         basePath: false,
         permanent: false
       },
