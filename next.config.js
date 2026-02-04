@@ -19,7 +19,7 @@ module.exports = {
         basePath: false,
         permanent: true,
       },
-      //updated to S26
+      //updated to S26 - adding a comment here
       {
         source: '/aim/apply',
         destination: 'https://coda.io/form/AIM-S26-Mentee-Application_dw1wTJ2KU3J',
