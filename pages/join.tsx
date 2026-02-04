@@ -102,15 +102,11 @@ export const JoinPage = () => {
               mx-auto max-w-5xl   /* keeps grid centered on large screens */
               px-4 sm:px-6 lg:px-8
               text-center">
-              {/* <AppBox title="AIS Member"
-              desc="Apply to our membership program to gain access to exclusive perks and a member-only community of fellow AI enthusiasts."
-              appLink="https://www.aisutd.org/member/apply"
-              learnLink="https://www.aisutd.org/member/info"/> */}
               <AppBox title="AI Mentee"
               desc="Apply as a mentee and get a chance to learn foundational concepts in ML and work on AI projects of your interest, guided by experienced mentors."
               appLink="https://www.aisutd.org/aim/apply"
               learnLink="https://www.aisutd.org/aim/info"/>
-              {/* <AppBox title="AI Mentor"
+              {/* <AppBox title="AIM Mentor"
               desc="Apply as a mentor and get a chance to guide a team through a semester-long project in foundational AI and ML concepts."
               appLink="https://www.aisutd.org/aim/mentor/apply"
               learnLink="https://www.aisutd.org/aim/mentor/info"/> */}
