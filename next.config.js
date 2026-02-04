@@ -22,7 +22,7 @@ module.exports = {
       //updated to S26
       {
         source: '/aim/apply',
-        destination: 'https://coda.io/form/AIM-S26-Mentee-Application_dw1wTJ2KU3J?utm_source=ig&utm_medium=social&utm_content=link_in_bio',
+        destination: 'https://coda.io/form/AIM-S26-Mentee-Application_dw1wTJ2KU3J',
         basePath: false,
         permanent: false
       },
