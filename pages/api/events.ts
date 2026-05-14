@@ -2,7 +2,7 @@ import { Event } from '../../lib/types';
 import { Coda } from 'coda-js';
 import { Description } from '@mui/icons-material';
 import * as fs from 'fs';
-
+//Trigger update
 /**
  * List of events
  */
