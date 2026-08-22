@@ -21,7 +21,7 @@ export default function TeamItems({ officers, team, color }: TeamProps) {
     <div className="bg-ais-new-beige font-semibold">
       <div className="">
         <div className="px-10">
-          <div className={'flex flex-wrap flex-grow gap-20 justify-center place-items-center py-8'}>
+          <div className={'flex flex-wrap flex-grow gap-20 justify-center place-items-bottom py-8'}>
             {officerCards}
           </div>
         </div>
