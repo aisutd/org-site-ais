@@ -9,7 +9,7 @@ interface OfficerItemProps {
 }
 
 function officerImage(officer: Officer) {
-  const animatedProps = useSpring
+  //const animatedProps = useSpring
   ({
     from: { transform: 'rotate(0deg)' },
     to: { transform: 'rotate(360000deg)' },
@@ -37,7 +37,7 @@ function officerImage(officer: Officer) {
     return (
       //<animated.div className="flex justify-center h-52" style={isPresident ? animatedProps : noStyle}>
       <div className="flex justify-center h-52 w-full">
-        <img src="/default_photo.svg" className="rounded-full p-4 object-cover" />
+        <img src="/ais_logo.jpg" className="rounded-full p-4 h-52 w-52 object-cover" />
       </div>
       //</animated.div>
     );
@@ -145,43 +145,34 @@ function personalLink(officer: Officer) {
   }
 }
 
+// helper for personalQuote -> helps place the quote item at a bug-free location
+function PersonalQuote({quote}: {quote: string}) {
+  const [isHovering, setIsHovering] = useState(false);
+  return (
+    <div className="relative flex items-center px-2">
+      <button
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
+        className="transition duration-400 ease-in-out transform hover:-translate-y-1 hover:scale-110"
+        type="button"
+      >
+        <FormatQuote color="primary" />
+      </button>
+
+      {isHovering && (
+        <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 z-50">
+          <div className="bg-ais-light-gray shadow-xl p-3 rounded-xl text-sm text-center text-black">
+            {quote}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function personalQuote(officer: Officer) {
   if (officer.quote) {
-    const [isHovering, setIsHovering] = useState(false);
-    const handleMouseOver = () => {
-      setIsHovering(true);
-    };
-    const handleMouseOut = () => {
-      setIsHovering(false);
-    };
-    // eslint-disable-next-line react/prop-types
-    const QuoteIcon = ({ handleMouseOver, handleMouseOut }) => {
-      return (
-        <div className="px-2">
-          <button
-            onMouseEnter={handleMouseOver}
-            onMouseLeave={handleMouseOut}
-            className="transition duration-200 ease-in-out transform hover:-translate-y-1 hover:scale-110"
-          >
-            <FormatQuote color="primary" />
-          </button>
-        </div>
-      );
-    };
-    const HoverCard = () => {
-      return (
-        <div className="absolute">
-          <div className="bg-ais-light-gray shadow-xl p-4 rounded-xl">{officer.quote}</div>
-        </div>
-      );
-    };
-    return (
-      <div>
-        {/* Hover over this div to hide/show <HoverText /> */}
-        <QuoteIcon handleMouseOver={handleMouseOver} handleMouseOut={handleMouseOut} />
-        {isHovering && <HoverCard />}
-      </div>
-    );
+    return <PersonalQuote quote={officer.quote}/>;
   }
 }
 
@@ -206,15 +197,13 @@ export default function OfficerItem({ officer }: OfficerItemProps) {
     <div
       className={
         directorAtt +
-        'min-h-80 w-64 transition duration-300 transform hover:scale-110 hover:shadow-lg hover:bg-ais-blue-gray rounded-xl s'
+        'w-64 mt-4 mb-4 pb-4 transition duration-300 transform hover:scale-110 hover:shadow-lg hover:bg-ais-blue-gray rounded-xl s'
       }
     >
       {officerImg}
       <div className="text-2xl font-bold text-center">{name}</div>
-      <div className="">
-        <div className="text-lg text-center font-light py-2">{title}</div>
-      </div>
-      <div className="flex justify-center -mt-2 pb-3">
+      <div className="text-md text-center font-light py-2">{title}</div>
+      <div className="flex justify-center pb-4">
         {officerEmail}
         {officerGitHub}
         {officerLinkedIn}
