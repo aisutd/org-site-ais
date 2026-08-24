@@ -2,6 +2,12 @@ module.exports = {
   async redirects() {
     return [
       {
+        source: '/kickoff',
+        destination: 'https://portal.aisutd.org/events/cmt7bnulg000004l4d2qj62m9',
+        basePath: false,
+        permanent: true,
+      },
+      {
         source: '/member/attendance',
         destination: 'https://coda.io/form/AIS-Event-Attendance-Form-S25_dDjLy_YnT1A',
         basePath: false,
