@@ -70,7 +70,7 @@ export default function TeamPage({ officers }: TeamPageProps) {
     else if (off['team'] == 'Operations') operationsTeam.push(off);
     else if (off['team'] == 'Finance') financeTeam.push(off);
     else if (off['team'] == 'Technology') techTeam.push(off);
-    else if (off['team'] == 'AI') aiTeam.push(off);
+    else if (off['team'] == 'Innovation Labs') aiTeam.push(off);
     else if (off['team'] == 'AIM') aimTeam.push(off);
     else if (off['team'] == 'AI Academy') aiAcademyTeam.push(off);
   }
@@ -117,11 +117,12 @@ export default function TeamPage({ officers }: TeamPageProps) {
                 <Tab value="Executive Members" label="Executive" />
                 <Tab value="Operation Members" label="Operations" />
                 <Tab value="Finance Members" label="Finance" />
-                <Tab value="Technology Members" label="Technology" />
-                <Tab value="Innovation Lab Members" label="Inno Lab" />
                 <Tab value="Marketing Members" label="Marketing" />
                 <Tab value="Industry Members" label="Industry" />
+                <Tab value="Technology Members" label="Technology" />
+                <Tab value="Innovation Lab Members" label="Inno Lab" />
                 <Tab value="AIM Members" label="AIM" />
+                <Tab value="AI Academy Members" label="Academy" />
               </Tabs>
               <TabPanel value="All Members">
                  {/* Display members of Executive Team */}
@@ -136,14 +137,6 @@ export default function TeamPage({ officers }: TeamPageProps) {
                 <div className="text-center text-2xl font-roboto-bold text-ais-new-med-blue mt-40">Finance Team</div>
                 <TeamItem officers={financeTeam} team={'Finance'} />
 
-                   {/* Display members of a Super Cool Hot Sexy Smart Team */}
-                <div className="text-center text-2xl font-roboto-bold text-ais-new-med-blue mt-40">Technology Team</div>
-                <TeamItem officers={techTeam} team={'Technology'} />
-
-                   {/* Display members of AI51 Team */}
-                   <div className="text-center text-2xl font-roboto-bold text-ais-new-med-blue mt-40">Innovation Lab</div>
-                <TeamItem officers={aiTeam} team={'AI51'} />
-
                    {/* Display members of Marketing Team */}
                 <div className="text-center text-2xl font-roboto-bold text-ais-new-med-blue mt-40">Marketing Team</div>
                 <TeamItem officers={marketingTeam} team={'Marketing'} />
@@ -152,13 +145,21 @@ export default function TeamPage({ officers }: TeamPageProps) {
                 <div className="text-center text-2xl font-roboto-bold text-ais-new-med-blue mt-40">Industry Team</div>
                 <TeamItem officers={industryTeam} team={'Industry'} />
 
+                   {/* Display members of a Super Cool Hot Sexy Smart Team */}
+                <div className="text-center text-2xl font-roboto-bold text-ais-new-med-blue mt-40">Technology Team</div>
+                <TeamItem officers={techTeam} team={'Technology'} />
+
+                 {/* Display members of AI51 Team */}
+                   <div className="text-center text-2xl font-roboto-bold text-ais-new-med-blue mt-40">Innovation Lab</div>
+                <TeamItem officers={aiTeam} team={'AI51'} />
+
                   {/* Display members of AIM Team */}
                 <div className="text-center text-2xl font-roboto-bold text-ais-new-med-blue mt-40">AIM Team</div>
                 <TeamItem officers={aimTeam} team={'AIM'} />
 
                   {/* Display members of AI Academy Team */}
                 <div className="text-center text-2xl font-roboto-bold text-ais-new-med-blue mt-40">AI Academy</div>
-                <TeamItem officers={aiAcademyTeam} team={'AIM'} />
+                <TeamItem officers={aiAcademyTeam} team={'AI Academy'} />
 
               
               

@@ -58,6 +58,23 @@ export default function HomePage() {
                 INTELLIGENCE
               </span>
             </div>
+
+            <div className="w-full flex justify-center mt-12 animate-[fadeInUp_0.8s_ease-out_1.1s_both]">
+              <Link href="https://portal.aisutd.org">
+                <button className="relative group overflow-hidden bg-gradient-to-r from-[#361CFF] to-[#FFBC85] text-white font-medium px-14 py-3.5 rounded-full text-lg shadow-[0_4px_20px_rgba(54,28,255,0.25)] transition-all duration-300 hover:scale-105 hover:shadow-[0_6px_25px_rgba(54,28,255,0.4)] active:scale-95">
+                  {/* Subtle overlay effect on hover */}
+                  <span className="absolute inset-0 w-full h-full bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                  <span className="relative z-10 flex items-center gap-2 font-bold">
+                    PORTAL
+                    {/* Sleek inline arrow icon */}
+                    <svg xmlns="http://w3.org" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-200">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                    </svg>
+                  </span>
+                </button>
+              </Link>
+            </div>
+            
             
             <div className="absolute hidden">
               <button className="border border-ais-blue text-ais-blue bg-white px-12 py-1.5 rounded-xl text-lg">

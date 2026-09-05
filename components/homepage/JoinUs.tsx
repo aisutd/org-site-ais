@@ -62,7 +62,7 @@ export default function JoinUs() {
           />
         </div>
 
-        <div
+        {/* <div
           className="w-[162px] h-[48px] bg-[#3E6EFF] rounded-[57px] mb-10 cursor-pointer"
           onClick={() => handleItemClick('/join')}
         >
@@ -71,7 +71,7 @@ export default function JoinUs() {
               Learn More
             </div>
           </div>
-        </div>
+        </div> */}
       </section>
 
       {/* --- BACKGROUND SHAPES SECTION --- */}
