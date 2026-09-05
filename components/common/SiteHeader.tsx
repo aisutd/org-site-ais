@@ -32,6 +32,7 @@ export default function SiteHeader() {
     AboutUs: false,
     OurTeam: false,
     JoinUs: false,
+    Portal: false,
   });
 
   const headerButtonStyles = (category: string) => {
@@ -40,6 +41,7 @@ export default function SiteHeader() {
       AboutUs: category === 'AboutUs',
       OurTeam: category === 'OurTeam',
       JoinUs: category === 'JoinUs',
+      Portal: category === 'Portal',
     });
   };
 
@@ -75,18 +77,21 @@ export default function SiteHeader() {
         <div className="hidden 2xl:block"/>
         <div className="items-center md:col-span-2 md:flex md:gap-[1rem] md:pr-[2rem]">
           <div className="gap-[2rem] justify-self-start hidden md:flex lg:justify-self-center text-ais-new-soft-black font-robotoMed text-[0.9rem] leading-normal">
-            <div onClick={() => headerButtonStyles('Events')}>
+            <div onClick={() => headerButtonStyles('Portal')}>
+              <NavButton handleItemClick={handleItemClick} link="https://portal.aisutd.org" title="Portal" active={buttonStyles.JoinUs}/>
+            </div> 
+            {/* <div onClick={() => headerButtonStyles('Events')}>
               <NavButton handleItemClick={handleItemClick} link="/events" title="Events" active={buttonStyles.Events}/>
-            </div>
+            </div> */}
             <div onClick={() => headerButtonStyles('OurTeam')}>
               <NavButton handleItemClick={handleItemClick} link="/team" title="Our Team" active={buttonStyles.OurTeam}/>
             </div>  
             <div onClick={() => headerButtonStyles('Hack AI')}>
               <NavButton handleItemClick={handleItemClick} link="/hackAI" title="Hack AI" active={buttonStyles.AboutUs}/>
             </div>
-            <div onClick={() => headerButtonStyles('JoinUs')}>
+            {/* <div onClick={() => headerButtonStyles('JoinUs')}>
               <NavButton handleItemClick={handleItemClick} link="/join" title="Join Us" active={buttonStyles.JoinUs}/>
-            </div> 
+            </div>  */}
           </div>
           <div className="flex md:hidden">
             <Button
@@ -107,10 +112,11 @@ export default function SiteHeader() {
                 'aria-labelledby': 'basic-button'
               }}
             >
-                <MenuItem onClick={() => {handleItemClick('/events', 'Events')}}>Events</MenuItem>
+                {/* <MenuItem onClick={() => {handleItemClick('/events', 'Events')}}>Events</MenuItem> */}
+                <MenuItem onClick={() => {handleItemClick('https://portal.aisutd.org', 'Portal')}}>Portal</MenuItem>
                 <MenuItem onClick={() => {handleItemClick('/team', 'OurTeam')}}>Our Team</MenuItem>        
                 <MenuItem onClick={() => {handleItemClick('/hackAI', 'HackAI')}}>Hack AI</MenuItem>
-                <MenuItem onClick={() => {handleItemClick('/join', 'JoinUs')}}>Join Us</MenuItem>
+                {/* <MenuItem onClick={() => {handleItemClick('/join', 'JoinUs')}}>Join Us</MenuItem> */}
             
             </Menu>
           </div>
