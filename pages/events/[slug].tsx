@@ -44,6 +44,7 @@ const ONLINE_MAPPINGS = {
 export default function EventPage({
   event,
   presenterOfficers,
+  now,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const {
     id,
@@ -75,7 +76,7 @@ export default function EventPage({
   };
   const eventStart = new Date(startDate);
   const eventEnd = new Date(endDate);
-  const timeNow = new Date();
+  const timeNow = new Date(now);
   const inFuture = timeNow < eventStart;
   const inPast = timeNow > eventEnd;
 
@@ -366,6 +367,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     props: {
       event,
       presenterOfficers,
+      now: Date.now(),
     },
   };
 };

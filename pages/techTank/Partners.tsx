@@ -23,7 +23,7 @@ const sponsorLinks =  [
 const sponsorPaths = sponsorLogos.map((row) => row.map((path) => sponsorDir + '/' + path))
 
 function displaySponsors() {
-  const mobile = useMediaQuery('(max-width:1023.99px)')
+  const mobile = useMediaQuery('(max-width:1023.99px)', { noSsr: true })
 
   return (
     sponsorPaths.map((row, rowIndex) => {
