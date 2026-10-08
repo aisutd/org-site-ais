@@ -117,7 +117,7 @@ export const getAllOfficers = async (fields?: string[]): Promise<Officer[]> => {
     console.log('Error Code: ' + (error as any).code);
     console.log('!~could not get officer list from Coda : (');
     // Restore from an offline backup if necessary
-    // retrieveOfficers();
+    retrieveOfficers();
   }
 
   return Object.values(OFFICERS_MAP);

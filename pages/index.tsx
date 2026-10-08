@@ -1,108 +1,271 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import * as React from 'react';
-import Button from '@mui/material/Button';
-import Paper from '@mui/material/Paper';
+import { useEffect, useRef } from 'react';
+import { getAllEvents } from './api/events';
+import { Event } from '../lib/types';
+import { setMood, setMoodMix, setCritters, setScrollReactive, Mood } from '../lib/portal/bus';
+import { useCountUp } from '../lib/portal/useCountUp';
+import { FAKE_UPCOMING_EVENT } from '../lib/fakeEvent';
 
-import PastEvent from '../components/homepage/PastEvent';
-import JoinUs from '../components/homepage/JoinUs';
-import Summary from '../components/homepage/Summary';
-import SplitContent from '../components/homepage/SplitContent';
-import AboutPage from './about';
+interface HomePageProps {
+  events: Event[];
+}
+
+/** Where the sun sits in the sky at each time of day on Home — an arc across the sky. */
+const HOME_SUN: Record<string, [number, number]> = {
+  team: [0, .10],
+  programs: [.24, .34],
+  events: [.42, .2],
+  hackai: [.55, -.08],
+  lab: [.62, -.46],
+  aim: [.5, .3],
+};
 
 /**
- * The root page for the organization website.
- *
- * This page contains an overview of the organization and links to our programs
- * and events.
+ * Home — ported from ais-site/index.html. The page is one day: each section is a time of
+ * day, and the sky + sky creatures follow as you scroll (see useHomeSky below).
  */
-export default function HomePage() {
+export default function HomePage({ events }: HomePageProps) {
+  useHomeSky();
+  const statsRef = useRef<HTMLElement>(null);
+  useCountUp(statsRef);
+
+  const upcoming = events.length > 0
+    ? events.slice().sort((a, b) => new Date(a.startDate).valueOf() - new Date(b.startDate).valueOf()).slice(0, 4)
+    : [FAKE_UPCOMING_EVENT];
+
   return (
-    <div>
-      {/*<KickoffModal/>*/}
+    <div className="view" data-view="home">
       <Head>
-        {/*<title>Home &ndash; AIS</title>
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" className="object-cover"/>*/}
+        <title>AIS &ndash; Artificial Intelligence Society</title>
         <meta
           name="description"
           content="Welcome to the Artificial Intelligence Society at UTD. We make AI understandable and accessible to everyone"
         />
       </Head>
-      <main className="min-h-screen bg-ais-new-beige font-roboto subpixel-antialiased overflow-x-hidden">
-        <section id="intro" className="bg-ais-new-beige w-full mb-10 lg:mb-10 relative pt-[9rem] pb-[4rem]">
-          <div className="flex flex-col h-full justify-center text-center md:items-start">
-            <img
-              src="/images/Shapes/home_string.png"
-              alt="Home string"
-              className="absolute hidden md:block h-[40vw] w-[40vw] top-[calc(26rem-10vw)] lg:h-[calc(30vw)] lg:w-[calc(30vw)] lg:top-[calc(28rem-25vw)] xl:top-[calc(26rem-20vw)]"
-            />
-            
-            {/* Line 1 */}
-            <div className="flex font-placard-bold text-ais-blue mb-8 justify-center text-5xl sm:text-8xl md:pl-[calc(15%-5rem)] lg:text-[7rem] lg:pl-[calc(50%-20rem)] lg:justify-start xl:text-9xl animate-[fadeInUp_0.8s_ease-out_0.2s_both]">
-              STEP INTO
-              
-            </div>
-            
-            {/* Line 2 */}
-            <div className="font-placard-bold text-ais-blue mb-8 text-5xl sm:text-8xl md:pl-[calc(38%-9rem)] lg:text-[7rem] lg:pl-[calc(50%-14rem)] xl:text-9xl animate-[fadeInUp_0.8s_ease-out_0.5s_both]">
-              THE WORLD OF
-            </div>
-            
-            {/* Line 3 */}
-            <div className="flex font-placard-bold text-5xl items-center flex-col sm:text-8xl md:pl-[calc(60%-10rem)] md:items-end lg:text-[7rem] lg:pl-[calc(50%-31rem)] lg:flex-row lg:items-center xl:text-9xl animate-[fadeInUp_0.8s_ease-out_0.8s_both]">
-              <span className="bg-gradient-to-r from-[#361CFF] from-50% to-[#FFBC85] text-transparent bg-clip-text">
-                ARTIFICIAL
-              </span>
-              <img src="/images/Shapes/AIstar.png" alt="AI Star" className="h-16 w-16 hidden lg:block"/>
-              <span className="bg-gradient-to-r from-[#361CFF] to-[#FFBC85] text-transparent bg-clip-text">
-                INTELLIGENCE
-              </span>
-            </div>
 
-            <div className="w-full flex justify-center mt-12 animate-[fadeInUp_0.8s_ease-out_1.1s_both]">
-              <Link href="https://portal.aisutd.org">
-                <button className="relative group overflow-hidden bg-gradient-to-r from-[#361CFF] to-[#FFBC85] text-white font-medium px-14 py-3.5 rounded-full text-lg shadow-[0_4px_20px_rgba(54,28,255,0.25)] transition-all duration-300 hover:scale-105 hover:shadow-[0_6px_25px_rgba(54,28,255,0.4)] active:scale-95">
-                  {/* Subtle overlay effect on hover */}
-                  <span className="absolute inset-0 w-full h-full bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                  <span className="relative z-10 flex items-center gap-2 font-bold">
-                    PORTAL
-                    {/* Sleek inline arrow icon */}
-                    <svg xmlns="http://w3.org" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-200">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                    </svg>
-                  </span>
-                </button>
+      <header className="hero home-hero col stage-s" data-mood="team">
+        <div className="hh-copy">
+          <div className="eyebrow">
+            Welcome to AIS<small>UT Dallas</small>
+          </div>
+          <h1 className="home-title">
+            <span className="ln">
+              <span className="w">ARTIFICIAL</span>
+            </span>
+            <span className="ln">
+              <span className="w">INTELLIGENCE</span>
+            </span>
+            <span className="ln">
+              <span className="w">SOCIETY</span>
+            </span>
+          </h1>
+          <p className="sub home-sub">UTD's community for learning, building and growing with AI. No experience needed, just curiosity.</p>
+          <div className="btnrow">
+            <a className="btn" href="https://portal.aisutd.org" target="_blank" rel="noreferrer">
+              Get involved →
+            </a>
+            <Link className="btn ghost" href="/programs">
+              Explore our work
+            </Link>
+          </div>
+        </div>
+        <div className="members-card">
+          <b>750+</b>
+          <span>Active members</span>
+        </div>
+      </header>
+
+      <div className="stack home-stack">
+        <section className="stage-s" data-mood="programs">
+          <div className="col sec-head">
+            <div>
+              <h2 className="h2">UPCOMING &amp; RECENT EVENTS</h2>
+            </div>
+            <div className="navbtns">
+              <Link className="textlink" href="/events">
+                View all →
               </Link>
             </div>
-            
-            
-            <div className="absolute hidden">
-              <button className="border border-ais-blue text-ais-blue bg-white px-12 py-1.5 rounded-xl text-lg">
-                Join Us
-              </button>
+          </div>
+          <div className="col ev-strip">
+            {upcoming.length > 0 ? (
+              upcoming.map((e) => (
+                <Link key={e.id} className="evc" href={e.id === FAKE_UPCOMING_EVENT.id ? '/events' : `/events/${e.id}`}>
+                  <small>{e.eventType}</small>
+                  <b>{e.title}</b>
+                  {e.image ? (
+                    <img src={e.image} alt={e.title} className="ph" style={{ objectFit: 'cover' }} />
+                  ) : (
+                    <div className="ph">Event photo</div>
+                  )}
+                  <time>{e.startDate ? new Date(e.startDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : 'TBA'}</time>
+                </Link>
+              ))
+            ) : (
+              <p>Coming soon!</p>
+            )}
+          </div>
+        </section>
+
+        <section className="col stage-s" data-mood="events">
+          <div className="panel mission">
+            <div>
+              <small className="kicker">Our mission</small>
+              <h2 className="h2">DEMYSTIFY AI. FOR EVERYONE.</h2>
+            </div>
+            <div>
+              <p>
+                We believe artificial intelligence should be understandable and approachable — not intimidating. AIS breaks down the
+                jargon so every student, regardless of background, can learn to build with AI.
+              </p>
+              <div className="chips">
+                <span className="chip">Workshops</span>
+                <span className="chip">Mentorship</span>
+                <span className="chip">Community</span>
+                <span className="chip">Real projects</span>
+              </div>
             </div>
           </div>
         </section>
 
-        <section id="summary" className="relative w-full bg-ais-new-soft-black">
-          <AboutPage />
+        <section className="col stage-s bare" data-mood="hackai">
+          <div className="portal-card">
+            <div>
+              <small className="kicker light">Ready to get involved?</small>
+              <h2>CREATE YOUR MEMBER ACCOUNT ON THE AIS PORTAL</h2>
+              <p>Sign up on our member portal to RSVP for events, apply to AI Academy &amp; AIM, and track your involvement all in one place.</p>
+            </div>
+            <a className="btn light" href="https://portal.aisutd.org" target="_blank" rel="noreferrer">
+              Go to member portal →
+            </a>
+          </div>
         </section>
-        {/* <section id="past event" className="relative">
-          <PastEvent />
-        </section> */}
-        <section id="split content" className="relative mt-8">
-          <SplitContent
-            topImageSrc="/images/Photos/ml-mon.png"
-            topBodyText="AIS usually hosts an ML Mondays workshop series about once a year where students have the opportunity to learn the basics of machine learning. Any student can attend these events absolutely free!"
-            bottomImageSrc="/images/Photos/aim-presentation.png"
-            bottomTitle="AI MENTORSHIP"
-            bottomBodyText="Our AIM program is designed to give students a hands-on experience to learn and create their first AI project in the scope of a single semester. Students can apply for either mentor or mentee roles depending on experience level."
-          />
+
+        <section className="col stage-s" data-mood="lab" ref={statsRef}>
+          <div className="panel">
+            <div className="tg-head">
+              <div>
+                <small className="kicker">Our mission</small>
+                <h2 className="h2">LEARN. BUILD. GROW. TOGETHER.</h2>
+              </div>
+              <p>AIS provides students with hands-on experience in artificial intelligence through workshops, mentorship, collaborative projects, and community-driven learning.</p>
+            </div>
+            <div className="tg-stats">
+              <div>
+                <b data-count="25">25</b>
+                <sup>+</sup>
+                <span>AI projects</span>
+              </div>
+              <div>
+                <b data-count="40">40</b>
+                <sup>+</sup>
+                <span>Workshops hosted</span>
+              </div>
+              <div>
+                <b data-count="12">12</b>
+                <sup>+</sup>
+                <span>Industry partners</span>
+              </div>
+            </div>
+          </div>
         </section>
-        <section>
-          <JoinUs/>
+
+        <section className="col stage-s" data-mood="aim">
+          <div className="sec-head" style={{ justifyContent: 'center', textAlign: 'center' }}>
+            <div>
+              <h2 className="h2">GO FROM ZERO TO HERO IN YOUR AI/ML JOURNEY</h2>
+            </div>
+          </div>
+          <div className="zero">
+            <Link className="zcard" href="/events">
+              <div className="ph">ML Mondays workshop</div>
+              <div className="zbody">
+                <small>Start here · free</small>
+                <b>ML Mondays</b>
+                <p>AIS hosts an ML Mondays workshop series about once a month where students learn the basics of machine learning. Any student can attend these events absolutely free.</p>
+              </div>
+            </Link>
+            <Link className="zcard" href="/aim">
+              <div className="ph">AIM final presentations</div>
+              <div className="zbody">
+                <small>Then · 10 weeks</small>
+                <b>AIM</b>
+                <p>Our AIM program gives students hands-on experience building their first AI project over 10 weeks with a mentor. Apply as either a mentor or a mentee depending on your experience level.</p>
+              </div>
+            </Link>
+          </div>
         </section>
-      </main>
+
+        <section className="col stage-s night-end bare" data-mood="aim">
+          <small className="kicker light">The day's not over</small>
+          <h2>THE SMARTEST THING YOU DO TONIGHT IS SHOW UP.</h2>
+          <div className="btnrow" style={{ justifyContent: 'center' }}>
+            <Link className="btn light" href="/events">
+              See what's next
+            </Link>
+            <Link className="btn ghost light" href="/team">
+              Meet the team
+            </Link>
+          </div>
+        </section>
+      </div>
     </div>
   );
+}
+
+/** Scroll position blends the sky/creatures between neighboring moods; ported from setupHome() in ais-site/index.html. */
+function useHomeSky() {
+  useEffect(() => {
+    document.body.classList.add('on-home');
+    setScrollReactive(true);
+    const ease = (x: number) => x * x * (3 - 2 * x);
+    const update = () => {
+      const stages = Array.from(document.querySelectorAll<HTMLElement>('.stage-s'));
+      if (!stages.length) return;
+      const mid = innerHeight * 0.5;
+      const centers = stages.map((st) => {
+        const r = st.getBoundingClientRect();
+        return r.top + r.height * 0.5;
+      });
+      let i = 0, f = 0;
+      if (scrollY < 40 || mid <= centers[0]) {
+        i = 0; f = 0;
+      } else if (mid >= centers[centers.length - 1]) {
+        i = centers.length - 2; f = 1;
+      } else {
+        while (i < centers.length - 2 && mid > centers[i + 1]) i++;
+        f = (mid - centers[i]) / (centers[i + 1] - centers[i]);
+      }
+      f = ease(Math.min(Math.max((f - .2) / .6, 0), 1));
+      const a = (stages[i].dataset.mood || 'team') as Mood;
+      const bm = (stages[i + 1]?.dataset.mood || a) as Mood;
+      const now = f < .5 ? a : bm;
+      const sa = HOME_SUN[a] || HOME_SUN.team, sb = HOME_SUN[bm] || sa;
+      setMoodMix(a, bm, f, [sa[0] + (sb[0] - sa[0]) * f, sa[1] + (sb[1] - sa[1]) * f]);
+      setCritters(now);
+    };
+    setMood('team', true);
+    setMoodMix('team', 'team', 0, HOME_SUN.team);
+    const onScroll = () => requestAnimationFrame(update);
+    addEventListener('scroll', onScroll, { passive: true });
+    addEventListener('resize', update);
+    update();
+    return () => {
+      document.body.classList.remove('on-home');
+      setScrollReactive(false);
+      removeEventListener('scroll', onScroll);
+      removeEventListener('resize', update);
+    };
+  }, []);
+}
+
+export async function getStaticProps() {
+  const events = await getAllEvents();
+  return {
+    props: {
+      events,
+    },
+  };
 }

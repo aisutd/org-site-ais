@@ -23,7 +23,7 @@ export default function FeatureEvent({ event, onGoing }: EventItemProps) {
   const eventDay = Moment(new Date(startDate)).format('D');
   const eventMonth = Moment(new Date(startDate)).format('MMM');
   const eventYear = Moment(new Date(startDate)).format('YYYY');
-  const mobile = useMediaQuery('(max-width:1023px)');
+  const mobile = useMediaQuery('(max-width:1023px)', { noSsr: true });
 
   //calendar variables
   const calEvent = {

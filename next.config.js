@@ -40,12 +40,6 @@ module.exports = {
         basePath: false,
         permanent: true,
       },
-      {
-        source: '/aim',
-        destination: '/aim/info',
-        basePath: false,
-        permanent: true,
-      },
       //updated to S24
       {
         source: '/aim/discord',

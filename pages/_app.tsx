@@ -1,11 +1,16 @@
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import { usePathname } from 'next/navigation';
+import { useRouter } from 'next/router';
 import React from 'react';
 import 'tailwindcss/tailwind.css';
+import '../styles/portal.css';
 import localFont from "@next/font/local";
-import SiteFooter from '../components/common/SiteFooter';
-import SiteHeader from '../components/common/SiteHeader';
+import Sky from '../components/portal/Sky';
+import SkyCreatures from '../components/portal/SkyCreatures';
+import PortalNav from '../components/portal/PortalNav';
+import PortalFooter from '../components/portal/PortalFooter';
+import MotionToggle from '../components/portal/MotionToggle';
+import PortalIcons from '../components/portal/PortalIcons';
 
 const placard = localFont({
   src: [
@@ -95,18 +100,18 @@ const allerta = localFont({
   ],
 });
 
-
 /**
  * A wrapper for the root website component.
  */
 export default function MyApp({ Component, pageProps }: AppProps) {
-  const path = usePathname()
+  const { pathname: path } = useRouter();
+  const isTechTank = path === "/tech-tank" || path === "/tech-tank/profile";
 
   return (
     <>
       <Head>
         <title>Home &ndash; AIS</title>
-        {path == "/tech-tank" || path == "/tech-tank/profile" ? 
+        {isTechTank ?
           <link rel="icon" href="/tech-tank/tech-tank-logo.png" type="image/png" sizes="any"/>
         :
           <link rel="icon" href="/images/Logos/square-logo-dark.jpg" type="image/jpg" sizes="any"/>
@@ -130,15 +135,20 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         }
       `}</style>
 
-      {path == "/tech-tank" ? 
+      {isTechTank ?
         <Component {...pageProps}/>
       :
-        <>
-          
-          <SiteHeader/>
-          <Component {...pageProps} />
-          <SiteFooter/>
-        </>
+        <div className="portal-root">
+          <PortalIcons/>
+          <Sky/>
+          <SkyCreatures/>
+          <PortalNav/>
+          <div className="page">
+            <Component {...pageProps} />
+          </div>
+          <PortalFooter/>
+          <MotionToggle/>
+        </div>
       }
     </>
   );
