@@ -1,4 +1,4 @@
-import { Officer } from '../../lib/types.js';
+import { Officer } from '../../lib/types';
 import { Coda } from 'coda-js';
 import * as fs from 'fs';
 
