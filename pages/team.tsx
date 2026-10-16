@@ -133,6 +133,10 @@ export default function TeamPage({ officers }: TeamPageProps) {
                 <div className="text-center text-2xl font-roboto-bold text-ais-new-med-blue mt-40">Operations Team</div>
                 <TeamItem officers={operationsTeam} team={'Operations'} />
 
+                   {/* Display members of a Super Cool Hot Sexy Smart Team */}
+                <div className="text-center text-2xl font-roboto-bold text-ais-new-med-blue mt-40">Technology Team</div>
+                <TeamItem officers={techTeam} team={'Technology'} />
+
                    {/* Display members of Finance Team */}
                 <div className="text-center text-2xl font-roboto-bold text-ais-new-med-blue mt-40">Finance Team</div>
                 <TeamItem officers={financeTeam} team={'Finance'} />
@@ -144,10 +148,6 @@ export default function TeamPage({ officers }: TeamPageProps) {
                   {/* Display members of Industry Team */}
                 <div className="text-center text-2xl font-roboto-bold text-ais-new-med-blue mt-40">Industry Team</div>
                 <TeamItem officers={industryTeam} team={'Industry'} />
-
-                   {/* Display members of a Super Cool Hot Sexy Smart Team */}
-                <div className="text-center text-2xl font-roboto-bold text-ais-new-med-blue mt-40">Technology Team</div>
-                <TeamItem officers={techTeam} team={'Technology'} />
 
                  {/* Display members of AI51 Team */}
                    <div className="text-center text-2xl font-roboto-bold text-ais-new-med-blue mt-40">Innovation Lab</div>
