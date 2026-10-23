@@ -153,7 +153,7 @@ export default function TeamPage({ officers }: TeamPageProps) {
                       <article key={key} className={`card${isLead ? ' lead' : ''}${open ? ' open' : ''}`}>
                         <div className="avatar">
                           {m.image ? (
-                            <img src={m.image} alt={m.name} />
+                            <img src={m.image} alt={m.name} loading="lazy" decoding="async" />
                           ) : (
                             <svg>
                               <use href="#ph" />

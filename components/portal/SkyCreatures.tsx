@@ -2,11 +2,14 @@ import { useEffect, useRef } from 'react';
 import { registerCreatures, getFlowRunning, prefersReducedMotion, Mood } from '../../lib/portal/bus';
 
 /**
- * SKY CREATURES — ported from ais-site/index.html. Each page has its own thing in the sky:
- * Team → paper planes (a real boids flock), HackAI → glowing sky lanterns, Programs → dandelion
- * seeds, AI Academy → origami cranes, AIM → shooting stars + constellations, Innovation Lab →
- * fireflies that wire themselves into a network, Events → kites. They keep to the side margins
- * below the hero and react to the cursor and scroll speed.
+ * SKY CREATURES — same boids/physics engine as the prototype; every page now renders the same
+ * simple glowing particle (brand blue/violet/gold, no illustrated chrome) — only color, count,
+ * and the underlying motion (unchanged step()/make() physics) differ per page: Team → a real
+ * boids flock, HackAI → rising embers, Programs → a drifting dot, Events → the same particle
+ * on the kite's wind-anchor physics with an outward ping, AI Academy → a drifting dot on the
+ * crane's wander physics. AIM → shooting stars + constellations (already reads as a graph —
+ * untouched), Innovation Lab → fireflies wiring into a network (already a graph — untouched).
+ * They keep to the side margins below the hero and react to the cursor and scroll speed.
  *
  * Pages pick the creature by calling setCritters() from lib/portal/bus — the prototype did this
  * via a `window.setCritters` global; same idea, no global.
@@ -32,21 +35,28 @@ export default function SkyCreatures() {
     const heroZone = () => scrollY < H * .4;
 
     /* ---------- builders ---------- */
-    const PLANE_COLS = [['#ffffff', '#ffe1d2'], ['#ffffff', '#dcd0ff'], ['#fff8f2', '#ffc9b3'], ['#f4f1ff', '#b9a6ff']];
+    const PLANE_COLS = [['#dfe8ff', '#2f5bff'], ['#e9e3ff', '#8a6ff0'], ['#fff2df', '#ffb36b'], ['#dfe8ff', '#1f3fc7']];
     // planes spawn in loose squadrons (shared starting point + heading) rather than scattered individually
     const makePlane = (i: number, cx: number, cy: number, heading: number) => {
       const a = heading + (Math.random() - .5) * .7, speed = .8 + Math.random() * .7;
-      return { x: cx + (Math.random() - .5) * 70, y: cy + (Math.random() - .5) * 70, vx: Math.cos(a) * speed, vy: Math.sin(a) * speed - .4, z: .45 + Math.random() * .85, ph: Math.random() * 6.28, c: PLANE_COLS[i % 4], ax: 0, ay: 0 };
+      return { x: cx + (Math.random() - .5) * 40, y: cy + (Math.random() - .5) * 40, vx: Math.cos(a) * speed, vy: Math.sin(a) * speed - .4, z: .45 + Math.random() * .85, ph: Math.random() * 6.28, c: PLANE_COLS[i % 4], ax: 0, ay: 0 };
     };
-    const LANTERN_COLS = [['#fff1c9', '#ff9b6a'], ['#ffe2ef', '#ff7fb8'], ['#efe6ff', '#a88bff'], ['#fff4dc', '#ffb36b']];
-    const makeLantern = (i: number, fresh: boolean) => ({ x: heroZone() ? Math.random() * W : inMarginX(), y: fresh ? Math.random() * H : H + 40 + Math.random() * 120, z: .5 + Math.random() * .8, ph: Math.random() * 6.28, c: LANTERN_COLS[i % 4], vx: 0 });
-    const makeSeed = (i: number, fresh: boolean) => {
+    const LANTERN_COLS = [['#dfe8ff', '#2f5bff'], ['#e9e3ff', '#8a6ff0'], ['#fff2df', '#ffb36b'], ['#dfe8ff', '#1f3fc7']];
+    // lanterns/seeds spawn in loose clusters (shared center) instead of scattered individually
+    const makeLantern = (i: number, fresh: boolean, cx?: number, cy?: number) => {
+      const x = cx !== undefined ? cx + (Math.random() - .5) * 90 : (heroZone() ? Math.random() * W : inMarginX());
+      const y = cy !== undefined ? cy + (Math.random() - .5) * 60 : (fresh ? Math.random() * H : H + 40 + Math.random() * 120);
+      return { x, y, z: .5 + Math.random() * .8, ph: Math.random() * 6.28, c: LANTERN_COLS[i % 4], vx: 0 };
+    };
+    const makeSeed = (i: number, fresh: boolean, cx?: number, cy?: number) => {
       const m = margin(), side = Math.random() < .5;
-      return { x: fresh ? (heroZone() ? Math.random() * W : inMarginX()) : (m > 90 ? (side ? -20 : W * .5 + Math.random() * 0) : -20), y: fresh ? Math.random() * H : Math.random() * H, z: .5 + Math.random() * .8, ph: Math.random() * 6.28, rot: (Math.random() - .5) * .8, vx: 0, dir: 1 };
+      const x = cx !== undefined ? cx + (Math.random() - .5) * 90 : (fresh ? (heroZone() ? Math.random() * W : inMarginX()) : (m > 90 ? (side ? -20 : W * .5 + Math.random() * 0) : -20));
+      const y = cy !== undefined ? cy + (Math.random() - .5) * 70 : (fresh ? Math.random() * H : Math.random() * H);
+      return { x, y, z: .5 + Math.random() * .8, ph: Math.random() * 6.28, rot: (Math.random() - .5) * .8, vx: 0, dir: 1, c: PLANE_COLS[i % 4] };
     };
-    const CRANE_COLS = [['#ffffff', '#ffcf3d'], ['#fff8ee', '#2f5bff'], ['#ffffff', '#ff8f7a'], ['#fffaf2', '#9a7cff']];
+    const CRANE_COLS = [['#eaf0ff', '#2f5bff'], ['#f0ecff', '#8a6ff0'], ['#fff5e8', '#ffb36b'], ['#eaf0ff', '#1f3fc7']];
     const makeCrane = (i: number) => ({ x: Math.random() * W, y: Math.random() * H, a: (Math.random() < .5 ? 0 : Math.PI) + (Math.random() - .5) * .6, z: (i % 9 === 0 ? 1.35 + Math.random() * .35 : .4 + Math.random() * .75), ph: Math.random() * 6.28, c: CRANE_COLS[i % 4], turn: 0 });
-    const KITE_COLS = [['#ff8a5c', '#ffd27a'], ['#5b7bff', '#ffffff'], ['#b98bff', '#ffe1c2'], ['#ff6fa8', '#ffd27a']];
+    const KITE_COLS = [['#2f5bff', '#1f3fc7'], ['#8a6ff0', '#5b3fd1'], ['#ffb36b', '#d1863f'], ['#2f5bff', '#8a6ff0']];
     const makeKite = (i: number, zone: 'left' | 'right' | 'mid') => {
       const m = margin();
       let ax: number;
@@ -70,28 +80,6 @@ export default function SkyCreatures() {
       });
     }
 
-    // one round "tuft" sprite drawn once, then stamped, scaled and slowly spun (dandelion seeds)
-    const tuftSprite = (() => {
-      const R = 64, c = document.createElement('canvas');
-      c.width = c.height = R * 2;
-      const x = c.getContext('2d')!;
-      x.translate(R, R);
-      const halo = x.createRadialGradient(0, 0, 0, 0, 0, R * .95);
-      halo.addColorStop(0, 'rgba(255,255,255,.55)'); halo.addColorStop(.6, 'rgba(255,255,255,.18)'); halo.addColorStop(1, 'rgba(255,255,255,0)');
-      x.fillStyle = halo; x.beginPath(); x.arc(0, 0, R * .95, 0, 7); x.fill();
-      const N = 64;
-      for (let k = 0; k < N; k++) {
-        const a = k / N * Math.PI * 2 + (k % 2) * .05, r = R * (.72 + ((k * 37) % 11) / 11 * .18), ex = Math.cos(a) * r, ey = Math.sin(a) * r;
-        x.strokeStyle = 'rgba(80,70,170,.18)'; x.lineWidth = 2.2; x.beginPath(); x.moveTo(0, 0); x.lineTo(ex, ey); x.stroke();
-        x.strokeStyle = 'rgba(255,255,255,.95)'; x.lineWidth = 1.1; x.beginPath(); x.moveTo(0, 0); x.lineTo(ex, ey); x.stroke();
-        for (let j = -2; j <= 2; j++) { const b = a + j * .32, l = R * .12; x.strokeStyle = 'rgba(255,255,255,.75)'; x.lineWidth = .8;
-          x.beginPath(); x.moveTo(ex, ey); x.lineTo(ex + Math.cos(b) * l, ey + Math.sin(b) * l); x.stroke(); }
-      }
-      const core = x.createRadialGradient(-3, -3, 1, 0, 0, R * .16);
-      core.addColorStop(0, '#fff8ec'); core.addColorStop(1, '#c9b49a');
-      x.fillStyle = core; x.beginPath(); x.arc(0, 0, R * .14, 0, 7); x.fill();
-      return c;
-    })();
     const flySprite = (() => {
       const c = document.createElement('canvas');
       c.width = c.height = 48;
@@ -110,8 +98,16 @@ export default function SkyCreatures() {
         const groups = Array.from({ length: groupCount }, () => ({ cx: Math.random() * W, cy: Math.random() * H * .8, heading: Math.random() * Math.PI * 2 }));
         items = Array.from({ length: n }, (_, i) => { const g = groups[i % groupCount]; return makePlane(i, g.cx, g.cy, g.heading); });
       }
-      else if (mode === 'hackai') { const n = big ? 26 : mid ? 18 : 10; items = Array.from({ length: n }, (_, i) => makeLantern(i, true)); }
-      else if (mode === 'programs') { const n = big ? 26 : mid ? 18 : 10; items = Array.from({ length: n }, (_, i) => makeSeed(i, true)); }
+      else if (mode === 'hackai') {
+        const n = big ? 26 : mid ? 18 : 10, groupCount = Math.max(2, Math.round(n / 6));
+        const groups = Array.from({ length: groupCount }, () => ({ cx: heroZone() ? Math.random() * W : inMarginX(), cy: Math.random() * H }));
+        items = Array.from({ length: n }, (_, i) => { const g = groups[i % groupCount]; return makeLantern(i, true, g.cx, g.cy); });
+      }
+      else if (mode === 'programs') {
+        const n = big ? 26 : mid ? 18 : 10, groupCount = Math.max(2, Math.round(n / 6));
+        const groups = Array.from({ length: groupCount }, () => ({ cx: heroZone() ? Math.random() * W : inMarginX(), cy: Math.random() * H }));
+        items = Array.from({ length: n }, (_, i) => { const g = groups[i % groupCount]; return makeSeed(i, true, g.cx, g.cy); });
+      }
       else if (mode === 'academy') { const n = big ? 40 : mid ? 28 : 14; items = Array.from({ length: n }, (_, i) => makeCrane(i)); }
       else if (mode === 'aim') {
         shooters = []; buildConstellations();
@@ -157,7 +153,7 @@ export default function SkyCreatures() {
         let ax = 0, ay = 0, cx = 0, cy = 0, avx = 0, avy = 0, n = 0;
         for (const o of items) { if (o === b) continue; const dx = o.x - b.x, dy = o.y - b.y, d2 = dx * dx + dy * dy;
           if (d2 < 16000) { n++; cx += o.x; cy += o.y; avx += o.vx; avy += o.vy; if (d2 < 520 * b.z) { ax -= dx / (d2 + 1) * 14; ay -= dy / (d2 + 1) * 14; } } }
-        if (n) { ax += (cx / n - b.x) * .006 + (avx / n - b.vx) * .08; ay += (cy / n - b.y) * .006 + (avy / n - b.vy) * .08; }
+        if (n) { ax += (cx / n - b.x) * .011 + (avx / n - b.vx) * .08; ay += (cy / n - b.y) * .011 + (avy / n - b.vy) * .08; }
         const mx = b.x - mouse.x, my = b.y - mouse.y, md = Math.hypot(mx, my); if (md < 140) { ax += mx / md * .9; ay += my / md * .9; }
         if (margins && heroGone && b.x > colL - 10 && b.x < colR + 10) ax += (b.x < W / 2 ? -1 : 1) * .35;
         if (b.x < 30) ax += .25; if (b.x > W - 30) ax -= .25;
@@ -171,13 +167,16 @@ export default function SkyCreatures() {
         b.ph += .16 + sp * .05;
       }
     }
+    // a traveling light-particle instead of a paper airplane — just a glowing dot, the same
+    // visual language as the node/network motif already used on AIM and Innovation Lab
     function drawPlane(b: any) {
-      const s = 7.5 * b.z, flap = Math.cos(b.ph), bank = Math.max(-1, Math.min(1, (b.vx * b.ay - b.vy * b.ax) * 3));
-      g.save(); g.translate(b.x, b.y); g.rotate(Math.atan2(b.vy, b.vx)); g.globalAlpha = .35 + b.z * .55;
-      const wl = s * (.55 + .45 * flap) * (1 - bank * .35), wr = s * (.55 + .45 * flap) * (1 + bank * .35);
-      g.fillStyle = b.c[0]; g.beginPath(); g.moveTo(s * 1.5, 0); g.lineTo(-s, -wl * 1.1); g.lineTo(-s * .45, 0); g.closePath(); g.fill();
-      g.fillStyle = b.c[1]; g.beginPath(); g.moveTo(s * 1.5, 0); g.lineTo(-s, wr * 1.1); g.lineTo(-s * .45, 0); g.closePath(); g.fill();
-      g.strokeStyle = 'rgba(90,70,190,.35)'; g.lineWidth = .8; g.beginPath(); g.moveTo(s * 1.5, 0); g.lineTo(-s * .45, 0); g.stroke();
+      const s = 7 * b.z;
+      g.save(); g.translate(b.x, b.y); g.globalAlpha = .4 + b.z * .55;
+      const pulse = .78 + .22 * Math.sin(b.ph * .6);
+      const glow = g.createRadialGradient(0, 0, 0, 0, 0, s * 1.6 * pulse);
+      glow.addColorStop(0, `${b.c[1]}aa`); glow.addColorStop(1, `${b.c[1]}00`);
+      g.fillStyle = glow; g.beginPath(); g.arc(0, 0, s * 1.6 * pulse, 0, 7); g.fill();
+      g.fillStyle = 'rgba(255,255,255,.95)'; g.beginPath(); g.arc(0, 0, s * .3, 0, 7); g.fill();
       g.restore();
     }
 
@@ -191,16 +190,15 @@ export default function SkyCreatures() {
         if (b.y < -90) { const nb = makeLantern(i, false); Object.assign(b, nb, { z: b.z }); }
       });
     }
+    // a rising glowing ember instead of a paper lantern — same particle language as the
+    // planes, no illustrated chrome, just a warm pulsing light drifting upward
     function drawLantern(b: any) {
       const s = b.z, flick = .85 + Math.sin(t * 9 + b.ph * 5) * .08 + Math.sin(t * 23 + b.ph) * .05;
-      g.save(); g.translate(b.x, b.y); g.rotate(Math.sin(t * .8 + b.ph) * .08);
-      const glow = g.createRadialGradient(0, 4 * s, 0, 0, 4 * s, 46 * s); glow.addColorStop(0, `rgba(255,190,140,${.45 * flick})`); glow.addColorStop(1, 'rgba(255,150,120,0)');
-      g.fillStyle = glow; g.beginPath(); g.arc(0, 4 * s, 46 * s, 0, 7); g.fill();
-      const body = g.createLinearGradient(0, -16 * s, 0, 16 * s); body.addColorStop(0, b.c[0]); body.addColorStop(1, b.c[1]);
-      g.globalAlpha = .55 + .45 * s; g.fillStyle = body;
-      g.beginPath(); g.moveTo(-9 * s, -14 * s); g.quadraticCurveTo(0, -19 * s, 9 * s, -14 * s); g.lineTo(12 * s, 12 * s); g.quadraticCurveTo(0, 16 * s, -12 * s, 12 * s); g.closePath(); g.fill();
-      g.fillStyle = 'rgba(255,255,255,.45)'; g.beginPath(); g.ellipse(-4 * s, -3 * s, 2.2 * s, 8 * s, -.15, 0, 7); g.fill();
-      g.fillStyle = `rgba(255,248,210,${flick})`; g.beginPath(); g.ellipse(0, 14 * s, 3 * s, 2.2 * s, 0, 0, 7); g.fill();
+      g.save(); g.translate(b.x, b.y); g.globalAlpha = .55 + .45 * s;
+      const glow = g.createRadialGradient(0, 0, 0, 0, 0, 13 * s * flick);
+      glow.addColorStop(0, `${b.c[1]}dd`); glow.addColorStop(.5, `${b.c[1]}55`); glow.addColorStop(1, `${b.c[1]}00`);
+      g.fillStyle = glow; g.beginPath(); g.arc(0, 0, 13 * s * flick, 0, 7); g.fill();
+      g.fillStyle = `rgba(255,255,255,${.8 * flick})`; g.beginPath(); g.arc(0, 0, 2.6 * s, 0, 7); g.fill();
       g.restore();
     }
 
@@ -209,18 +207,19 @@ export default function SkyCreatures() {
     function drawKite(k: any) {
       const s = 20 * k.z, wind = Math.sin(t * .35 + k.ph) * 26 * k.z + Math.min(Math.max(vel, -60), 60) * .4;
       k.x = k.ax + wind + k.push; k.y = k.ay + Math.sin(t * .7 + k.ph * 2) * 10;
-      const rot = Math.sin(t * .5 + k.ph) * .16 + wind * .004;
       g.save(); g.globalAlpha = .6 + .4 * k.z;
-      g.translate(k.x, k.y); g.rotate(rot);
-      let px = 0, py = s * 1.6; g.strokeStyle = 'rgba(90,60,40,.45)'; g.lineWidth = 1.2; g.beginPath(); g.moveTo(px, py);
-      const bows: [number, number, number][] = [];
-      for (let i = 1; i <= 14; i++) { px = Math.sin(t * 2.2 - i * .55 + k.ph) * (4 + i * 1.3); py = s * 1.6 + i * 6 * k.z; g.lineTo(px, py); if (i % 3 === 0) bows.push([px, py, i]); }
-      g.stroke();
-      bows.forEach(([bx, by, i]) => { g.fillStyle = k.c[i % 2]; g.beginPath(); g.moveTo(bx, by); g.lineTo(bx - 6 * k.z, by - 3 * k.z); g.lineTo(bx - 6 * k.z, by + 3 * k.z); g.closePath(); g.moveTo(bx, by); g.lineTo(bx + 6 * k.z, by - 3 * k.z); g.lineTo(bx + 6 * k.z, by + 3 * k.z); g.closePath(); g.fill(); });
-      const P = [[0, -1.25 * s], [.85 * s, 0], [0, 1.6 * s], [-.85 * s, 0]];
-      for (let i = 0; i < 4; i++) { const a = P[i], b = P[(i + 1) % 4]; g.fillStyle = k.c[i % 2]; g.beginPath(); g.moveTo(0, 0); g.lineTo(a[0], a[1]); g.lineTo(b[0], b[1]); g.closePath(); g.fill(); }
-      g.strokeStyle = 'rgba(90,60,40,.4)'; g.lineWidth = 1; g.beginPath(); g.moveTo(P[0][0], P[0][1]); g.lineTo(P[2][0], P[2][1]); g.moveTo(P[3][0], P[3][1]); g.lineTo(P[1][0], P[1][1]); g.stroke();
-      g.fillStyle = 'rgba(255,255,255,.35)'; g.beginPath(); g.moveTo(0, -1.25 * s); g.lineTo(-.85 * s, 0); g.lineTo(0, 0); g.closePath(); g.fill();
+      g.translate(k.x, k.y);
+      // a glowing badge with a ping ring — no tail/string, same simple particle language as
+      // the planes/lanterns, just with an outward pulse to read as "signal"
+      const br = .85 * s;
+      const ping = (t * .6 + k.ph) % 1;
+      g.strokeStyle = `${k.c[0]}${Math.round(255 * (1 - ping)).toString(16).padStart(2, '0')}`; g.lineWidth = br * .12;
+      g.beginPath(); g.arc(0, 0, br * (.5 + ping * .9), 0, 7); g.stroke();
+      const blink = .55 + .45 * Math.sin(t * 3 + k.ph * 2);
+      const glow = g.createRadialGradient(0, 0, 0, 0, 0, br * .95);
+      glow.addColorStop(0, `${k.c[1]}${Math.round(220 * blink).toString(16).padStart(2, '0')}`); glow.addColorStop(1, `${k.c[1]}00`);
+      g.fillStyle = glow; g.beginPath(); g.arc(0, 0, br * .95, 0, 7); g.fill();
+      g.fillStyle = 'rgba(255,255,255,.9)'; g.beginPath(); g.arc(0, 0, br * .22, 0, 7); g.fill();
       g.restore();
     }
 
@@ -239,9 +238,16 @@ export default function SkyCreatures() {
         if (b.y < -40) b.y = H + 40; if (b.y > H + 40) b.y = -40;
       });
     }
+    // a simple glowing dot instead of a dandelion puff — same particle language as the planes
     function drawTuft(b: any) {
-      const r = (10 + b.z * 16); g.save(); g.translate(b.x, b.y); g.rotate(b.rot); g.globalAlpha = .55 + .45 * b.z;
-      g.drawImage(tuftSprite, -r, -r, r * 2, r * 2); g.restore();
+      const s = 7 * b.z;
+      g.save(); g.translate(b.x, b.y); g.globalAlpha = .45 + b.z * .5;
+      const pulse = .78 + .22 * Math.sin(b.ph * .6);
+      const glow = g.createRadialGradient(0, 0, 0, 0, 0, s * 1.6 * pulse);
+      glow.addColorStop(0, `${b.c[1]}aa`); glow.addColorStop(1, `${b.c[1]}00`);
+      g.fillStyle = glow; g.beginPath(); g.arc(0, 0, s * 1.6 * pulse, 0, 7); g.fill();
+      g.fillStyle = 'rgba(255,255,255,.95)'; g.beginPath(); g.arc(0, 0, s * .3, 0, 7); g.fill();
+      g.restore();
     }
 
     /* ---------- origami cranes (AI Academy, dawn) ---------- */
@@ -259,17 +265,16 @@ export default function SkyCreatures() {
         b.ph += .09 + sp * .02;
       });
     }
+    // a simple glowing dot instead of an origami crane — same particle language as every
+    // other page now, for consistency, instead of another illustrated micro-icon
     function drawCrane(b: any) {
-      const s = 12.5 * b.z, f = Math.sin(b.ph), facing = Math.cos(b.a) < 0 ? -1 : 1;
-      g.save(); g.translate(b.x, b.y); g.scale(facing, 1); g.rotate(Math.sin(b.a) * .4 * facing); g.globalAlpha = Math.min(1, .7 + .3 * b.z);
-      g.strokeStyle = 'rgba(70,50,140,.28)'; g.lineWidth = .9; g.lineJoin = 'round';
-      g.fillStyle = b.c[1]; g.beginPath(); g.moveTo(-.2 * s, 0); g.lineTo(.6 * s, 0); g.lineTo(-.4 * s, -2.4 * s * f - .2 * s); g.closePath(); g.fill();
-      g.fillStyle = b.c[0];
-      g.beginPath(); g.moveTo(-1.1 * s, .1 * s); g.lineTo(0, .7 * s); g.lineTo(1.1 * s, .1 * s); g.lineTo(0, -.2 * s); g.closePath(); g.fill(); g.stroke();
-      g.beginPath(); g.moveTo(-.6 * s, .25 * s); g.lineTo(-2.2 * s, -.7 * s); g.lineTo(-.9 * s, .05 * s); g.closePath(); g.fill();
-      g.beginPath(); g.moveTo(.6 * s, .25 * s); g.lineTo(2.1 * s, -.8 * s); g.lineTo(2.5 * s, -.55 * s); g.lineTo(2.05 * s, -.6 * s); g.lineTo(.9 * s, .05 * s); g.closePath(); g.fill();
-      g.fillStyle = b.c[0]; g.beginPath(); g.moveTo(-.4 * s, .05 * s); g.lineTo(.5 * s, .05 * s); g.lineTo(.1 * s, -2.8 * s * f); g.closePath(); g.fill(); g.stroke();
-      g.strokeStyle = 'rgba(160,90,60,.35)'; g.lineWidth = .7; g.beginPath(); g.moveTo(-.4 * s, .05 * s); g.lineTo(.1 * s, -2.8 * s * f); g.stroke();
+      const s = 7 * b.z;
+      g.save(); g.translate(b.x, b.y); g.globalAlpha = .45 + b.z * .5;
+      const pulse = .78 + .22 * Math.sin(b.ph * .6);
+      const glow = g.createRadialGradient(0, 0, 0, 0, 0, s * 1.6 * pulse);
+      glow.addColorStop(0, `${b.c[1]}aa`); glow.addColorStop(1, `${b.c[1]}00`);
+      g.fillStyle = glow; g.beginPath(); g.arc(0, 0, s * 1.6 * pulse, 0, 7); g.fill();
+      g.fillStyle = 'rgba(255,255,255,.95)'; g.beginPath(); g.arc(0, 0, s * .3, 0, 7); g.fill();
       g.restore();
     }
 

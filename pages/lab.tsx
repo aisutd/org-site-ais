@@ -47,6 +47,10 @@ export default function LabPage() {
               Meet the lab →
             </Link>
           </div>
+          <div className="sys-status">
+            <i />
+            All systems operational · 1 project in production
+          </div>
         </div>
         <div className="term live" aria-hidden="true">
           <div className="term-bar">
@@ -74,24 +78,32 @@ export default function LabPage() {
               <p>A longer program. One strong AIM project, taken all the way to production.</p>
             </div>
           </div>
-          <div className="dpanel">
-            <ol className="pipeline">
-              <li>
-                <span className="node">01</span>
-                <h3>Inherit</h3>
-                <p>Pick up a promising project that came out of AIM and scope what it takes to make it real.</p>
-              </li>
-              <li>
-                <span className="node">02</span>
-                <h3>Develop</h3>
-                <p>Rebuild it into a full-scale, production-grade system — real infrastructure, not just a demo.</p>
-              </li>
-              <li>
-                <span className="node">03</span>
-                <h3>Launch</h3>
-                <p>Deploy it with a real domain, so actual people can use it, then show it off.</p>
-              </li>
-            </ol>
+          <div className="deploy-pipeline">
+            <div className="dp-track">
+              <div className="dp-stage">
+                <span className="dp-dot">✓</span>
+                <div>
+                  <b>inherit</b>
+                  <p>Pick up a promising project that came out of AIM and scope what it takes to make it real.</p>
+                </div>
+              </div>
+              <span className="dp-arrow">→</span>
+              <div className="dp-stage">
+                <span className="dp-dot">✓</span>
+                <div>
+                  <b>develop</b>
+                  <p>Rebuild it into a full-scale, production-grade system — real infrastructure, not just a demo.</p>
+                </div>
+              </div>
+              <span className="dp-arrow">→</span>
+              <div className="dp-stage">
+                <span className="dp-dot">✓</span>
+                <div>
+                  <b>launch</b>
+                  <p>Deploy it with a real domain, so actual people can use it, then show it off.</p>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -102,51 +114,55 @@ export default function LabPage() {
               <p>Add your current projects here.</p>
             </div>
           </div>
-          <div className="col lab-grid">
-            <article className="lcard wide">
-              <div className="ph">Project image</div>
-              <div className="lbody">
-                <span className="lstat">
-                  <i />
-                  Deployed
-                </span>
-                <b>Project name</b>
-                <p>One sentence on the problem and the system the team built.</p>
-                <div className="stack-tags">
-                  <span>Python</span>
-                  <span>PyTorch</span>
-                  <span>FastAPI</span>
+          <div className="col services">
+            <div className="svc-head">
+              <span>Service</span>
+              <span>Stack</span>
+              <span>Status</span>
+            </div>
+            <div className="svc-row">
+              <div className="svc-name">
+                <i className="svc-dot" />
+                <div>
+                  <b>Project name</b>
+                  <small>lab.aisutd.org/project</small>
                 </div>
               </div>
-            </article>
-            <article className="lcard">
-              <div className="lbody">
-                <span className="lstat building">
-                  <i />
-                  Building
-                </span>
-                <b>Project name</b>
-                <p>One sentence on the problem and the system the team built.</p>
-                <div className="stack-tags">
-                  <span>Tag</span>
-                  <span>Tag</span>
+              <div className="svc-stack">
+                <span>Python</span>
+                <span>PyTorch</span>
+                <span>FastAPI</span>
+              </div>
+              <span className="svc-status">Deployed</span>
+            </div>
+            <div className="svc-row">
+              <div className="svc-name">
+                <i className="svc-dot building" />
+                <div>
+                  <b>Project name</b>
+                  <small>building — not public yet</small>
                 </div>
               </div>
-            </article>
-            <article className="lcard">
-              <div className="lbody">
-                <span className="lstat building">
-                  <i />
-                  Building
-                </span>
-                <b>Project name</b>
-                <p>One sentence on the problem and the system the team built.</p>
-                <div className="stack-tags">
-                  <span>Tag</span>
-                  <span>Tag</span>
+              <div className="svc-stack">
+                <span>Tag</span>
+                <span>Tag</span>
+              </div>
+              <span className="svc-status building">Building</span>
+            </div>
+            <div className="svc-row">
+              <div className="svc-name">
+                <i className="svc-dot building" />
+                <div>
+                  <b>Project name</b>
+                  <small>building — not public yet</small>
                 </div>
               </div>
-            </article>
+              <div className="svc-stack">
+                <span>Tag</span>
+                <span>Tag</span>
+              </div>
+              <span className="svc-status building">Building</span>
+            </div>
           </div>
         </section>
 
