@@ -35,7 +35,7 @@ export default function Sky() {
       float asp = uRes.x/uRes.y;
 
       // sky: deep AIS blue up top, violet, then a peach horizon
-      vec3 deep=uTop, violet=uMid, peach=uLow, blue=vec3(.23,.36,1.), cream=vec3(1.,.97,.93);
+      vec3 deep=uTop, violet=uMid, peach=uLow, blue=vec3(.23,.36,1.), cream=vec3(.95,.92,.89);
       vec3 col = mix(peach, violet, smoothstep(-.55,.05,p.y));
       col = mix(col, deep, smoothstep(.05,.62,p.y));
 
@@ -56,14 +56,15 @@ export default function Sky() {
       float R = uP.z + sin(t*.6)*.006;
       float swirl = fbm(vec2(a*1.6 + t*.25, d*6. - t*.7));
       float halo = .022/(abs(d-R)+.025);
-      float rays = pow(fbm(vec2(a*5.5 + sin(t*.1)*.4, t*.12)), 2.6) * exp(-max(d-R,0.)*2.4) * smoothstep(R*.85, R*1.5, d);
+      float rays = pow(fbm(vec2(a*5.5 + sin(t*.1)*.4, t*.12)), 2.6) * exp(-max(d-R,0.)*3.8) * smoothstep(R*.85, R*1.15, d);
       vec3 inside = mix(cream, mix(uSun, vec3(1.,.82,.92), swirl*.6), smoothstep(0., R, d)*.8);
       inside += blue * smoothstep(.55,.8,swirl) * .18;
-      col += halo * mix(vec3(.75,.65,1.), uSun, .6) * (.25 + .3*uRing);
-      col += rays * mix(vec3(1.,.86,.8), uSun, .4) * 1.6 * uRays;
+      inside *= .96;
+      col += halo * mix(vec3(.75,.65,1.), uSun, .6) * (.19 + .22*uRing);
+      col += rays * mix(vec3(1.,.86,.8), uSun, .85) * 1.1 * uRays;
       col = mix(col, inside, smoothstep(R, R*.86, d));
       float ring = exp(-pow((d-R)/(.010 + .008*swirl), 2.));
-      col += ring * vec3(1.,.97,1.) * .9 * uRing;
+      col += ring * vec3(1.,.97,1.) * .65 * uRing;
 
       // clouds, lit by the portal; denser low and out in the margins
       float light = exp(-length(p-c)*2.1);

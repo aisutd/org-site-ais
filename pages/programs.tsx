@@ -26,24 +26,61 @@ function useJourneyPipe(sectionRef: RefObject<HTMLElement>) {
       const paths = Array.from(sec.querySelectorAll<SVGPathElement>('.jp'));
       const stages = Array.from(sec.querySelectorAll<HTMLElement>('.stage'));
       const gradient = sec.querySelector('#jg');
-      let W = 0, H = 0, L = 1, tt = 0;
+      let W = 0, H = 0, L = 1, tt = 0, horizontal = false;
       const prog = { v: reduce ? 1 : 0 };
+      const HORIZONTAL_BREAK = 960;
 
       const layout = () => {
         const r = sec.getBoundingClientRect();
         W = r.width; H = r.height;
-        gradient?.setAttribute('y2', String(H + 200));
+        horizontal = W >= HORIZONTAL_BREAK;
+        if (horizontal) {
+          gradient?.setAttribute('x1', '0'); gradient?.setAttribute('y1', '0');
+          gradient?.setAttribute('x2', String(W + 160)); gradient?.setAttribute('y2', '0');
+        } else {
+          gradient?.setAttribute('x1', '0'); gradient?.setAttribute('y1', '0');
+          gradient?.setAttribute('x2', '0'); gradient?.setAttribute('y2', String(H + 200));
+        }
       };
       const render = () => {
-        const y0 = -150, y1 = H - 60, N = 760, pts: [number, number][] = [];
-        const loops = W < 600 ? 10 : 15;
-        for (let i = 0; i <= N; i++) {
-          const s = i / N, y = y0 + (y1 - y0) * s;
-          const sway = Math.sin(s * Math.PI * 3.05 + .25 + Math.sin(tt * .4) * .08);
-          const cx = W * .5 - sway * W * .42;
-          const r = (34 + 40 * (.5 + .5 * Math.sin(s * 6.1 + 1.2))) * (W < 600 ? .6 : 1);
-          const a = s * loops * Math.PI * 2 + tt * .5;
-          pts.push([cx + Math.cos(a) * r, y + Math.sin(a) * r * 1.05]);
+        const N = 760, pts: [number, number][] = [];
+        const loops = (horizontal ? H : W) < 600 ? 10 : 15;
+        if (horizontal) {
+          const x0 = -80, x1 = W + 80;
+          // the wave deliberately peaks at each card's center — up at Academy, down at AIM,
+          // back up at Innovation Lab — instead of a generic sine unrelated to card position
+          const K = [1 / 6, .5, 5 / 6], keyY = [-1, 1, -1];
+          const waveAt = (s: number) => {
+            if (s <= K[0]) return keyY[0];
+            if (s >= K[2]) return keyY[2];
+            if (s <= K[1]) { const u = (s - K[0]) / (K[1] - K[0]); const e = .5 - .5 * Math.cos(u * Math.PI); return keyY[0] + (keyY[1] - keyY[0]) * e; }
+            const u = (s - K[1]) / (K[2] - K[1]); const e = .5 - .5 * Math.cos(u * Math.PI); return keyY[1] + (keyY[2] - keyY[1]) * e;
+          };
+          // a clean curve, not the loopy spiral the vertical pipe uses — that read as chaotic
+          // scribble instead of a deliberate line connecting three specific points. Amplitude
+          // is a fixed px value (not a fraction of the very tall section height, which sent
+          // earlier versions flying off above/below the cards into empty padding space) —
+          // generous enough to swing clearly outside the cards, since the cards' own scale()
+          // transforms make them visually bleed past their layout box into the gap
+          const amp = 160;
+          for (let i = 0; i <= N; i++) {
+            const s = i / N, x = x0 + (x1 - x0) * s;
+            // layered on top of the big up/down/up shape: a few smaller, faster S-curves so
+            // the line reads as a deliberately twisty path, not just one smooth arc
+            const twist = Math.sin(s * Math.PI * 7 + tt * .4) * 42 + Math.sin(s * Math.PI * 13 - tt * .3) * 18;
+            const cy = H * .5 + waveAt(s) * amp + twist;
+            pts.push([x, cy]);
+          }
+        } else {
+          const y0 = -150, y1 = H - 60;
+          for (let i = 0; i <= N; i++) {
+            const s = i / N, y = y0 + (y1 - y0) * s;
+            const sway = Math.sin(s * Math.PI * 3.05 + .25 + Math.sin(tt * .4) * .08);
+            const cx = W * .5 - sway * W * .42;
+            const r = (34 + 40 * (.5 + .5 * Math.sin(s * 6.1 + 1.2))) * (W < 600 ? .6 : 1);
+            const a = s * loops * Math.PI * 2 + tt * .5;
+            pts.push([cx + Math.cos(a) * r, y + Math.sin(a) * r * 1.05]);
+          }
         }
         let d = 'M' + pts[0][0].toFixed(1) + ',' + pts[0][1].toFixed(1);
         for (let i = 1; i < pts.length; i++) d += 'L' + pts[i][0].toFixed(1) + ',' + pts[i][1].toFixed(1);
@@ -138,9 +175,9 @@ export default function ProgramsPage() {
                 <stop offset="1" stopColor="#f2a07f" />
               </linearGradient>
             </defs>
-            <path className="jp edge" fill="none" stroke="#2a3fd0" strokeOpacity={0.3} strokeWidth={22} strokeLinecap="round" strokeLinejoin="round" />
-            <path className="jp body" fill="none" stroke="url(#jg)" strokeWidth={15} strokeLinecap="round" strokeLinejoin="round" />
-            <path className="jp hi" fill="none" stroke="#fff" strokeOpacity={0.6} strokeWidth={4} strokeLinecap="round" strokeLinejoin="round" transform="translate(-2,-4)" />
+            <path className="jp edge" fill="none" stroke="#2a3fd0" strokeOpacity={0.55} strokeWidth={28} strokeLinecap="round" strokeLinejoin="round" />
+            <path className="jp body" fill="none" stroke="url(#jg)" strokeWidth={19} strokeLinecap="round" strokeLinejoin="round" />
+            <path className="jp hi" fill="none" stroke="#fff" strokeOpacity={0.85} strokeWidth={5} strokeLinecap="round" strokeLinejoin="round" transform="translate(-2,-4)" />
           </svg>
           <article className="stage s-notebook">
             <span className="tape" aria-hidden="true" />
